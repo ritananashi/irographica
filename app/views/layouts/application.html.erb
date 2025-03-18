@@ -20,12 +20,15 @@
 
   <body>
     <div class="flex flex-col h-screen">
-      <header>
+      <header class="sticky top-0">
         <%= render 'layouts/header' %>
       </header>
-      <main class="container mx-auto mt-28 px-5 flex">
+      <main class="container mx-auto mt-28 px-5 flex-grow">
         <%= yield %>
       </main>
+      <footer class="footer bg-[#A6ABBD] text-[#424656] items-center p-4 sticky bottom-0">
+        <%= render 'layouts/footer' %>
+      </footer>
     </div>
   </body>
 </html>
