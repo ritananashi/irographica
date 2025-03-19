@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <title><%= content_for(:title) || "InkLog" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -23,7 +23,7 @@
       <header class="sticky top-0">
         <%= render 'layouts/header' %>
       </header>
-      <main class="container mx-auto mt-28 px-5 flex-grow">
+      <main class="flex-grow">
         <%= yield %>
       </main>
       <footer class="footer bg-[#A6ABBD] text-[#424656] items-center p-4 sticky bottom-0">
