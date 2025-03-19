@@ -24,6 +24,13 @@
         <%= render 'layouts/header' %>
       </header>
       <main class="flex-grow">
+        <% flash.each do |message_type, message| %>
+          <% if flash[:alert] %>
+            <div class="alert alert-warning"><%= message %></div>
+          <% else %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        <% end %>
         <%= yield %>
       </main>
       <footer class="footer bg-[#A6ABBD] text-[#424656] items-center p-4 sticky bottom-0">
