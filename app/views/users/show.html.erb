@@ -1,0 +1,18 @@
+<div class="container mx-auto w-full px-10 py-10">
+  <div class="flex justify-center items-center gap-10 my-2">
+    <div>
+      <div class="bg-white w-[187px] rounded-full mx-10"><%= image_tag 'kkrn_icon_user_1.png' %> </div>
+    </div>
+    <div>
+      <p class="text-[36px] mx-10"><%= current_user.name %></p>
+    </div>
+  </div>
+  <div>
+    <div class="w-full mx-auto">
+      <p class="text-[36px] mx-10 text-center"><%= t('users.show.current_user_reviews') %></p>
+    </div>
+    <div class="w-full mx-auto">
+      <p class="mx-10"><%= t('users.show.review_not_found') %></p>
+    </div>
+  </div>
+</div>

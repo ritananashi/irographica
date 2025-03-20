@@ -14,3 +14,8 @@ ja:
     post: 投稿する
     mypage: マイページ
     notification: 通知
+  users:
+    show:
+      title: マイページ
+      current_user_reviews: 投稿一覧
+      review_not_found: 投稿がありません。
