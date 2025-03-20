@@ -1,12 +1,12 @@
-<div class="navbar bg-base-100 border-b border-[#9CACDC] h-[90px]">
+<div class="navbar bg-base-100 border-b border-primary h-[70px]">
   <div class="flex-1">
     <%= link_to '/' do %>
-      <%= image_tag 'logo_default3.png', class: 'h-[70px] w-[184px] object-contain' %>
+      <%= image_tag 'logo_default3.png', class: 'h-[50px] w-[184px] object-contain' %>
     <% end %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
-      <li><%= link_to t('header.sign_in'), user_session_path %></li><span class="w-[1px] bg-black"></span><li><%= link_to t('header.to_register_page'), new_user_registration_path %></li>
+      <li><%= link_to t('header.sign_in'), user_session_path %></li><span class="w-[1px] bg-black mx-2"></span><li><%= link_to t('header.to_register_page'), new_user_registration_path %></li>
     </ul>
   </div>
 </div>
