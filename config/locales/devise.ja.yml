@@ -106,6 +106,10 @@ ja:
         sign_up: 新規登録
         signed_up: 新規登録が完了しました。
         minimum_password_length: "%{password_length}文字以上"
+        account_validate: 半角英数4文字以上
+        maximum_name_length: 10文字以下
+        input_email: メールアドレスを入力
+        re_input_password: パスワードをもう一度入力
         signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
         signed_up_but_locked: アカウントがロックされているためログインできません。
         signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。
