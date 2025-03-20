@@ -8,6 +8,6 @@ ja:
       email: メールアドレス
       password: パスワード
   header:
-    login: ログイン
-    logout: ログアウト
+    sign_in: ログイン
+    sign_out: ログアウト
     to_register_page: 新規登録
