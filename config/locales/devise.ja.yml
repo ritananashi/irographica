@@ -112,6 +112,7 @@ ja:
         update_needs_confirmation: アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。
         updated: アカウント情報を変更しました。
         updated_but_not_signed_in: あなたのアカウントは正常に更新されましたが、パスワードが変更されたため、再度ログインしてください。
+        create: 登録する
     sessions:
       already_signed_out: 既にログアウト済みです。
       new:
@@ -120,16 +121,16 @@ ja:
         signed_in: ログインしました。
         signed_out: ログアウトしました。
         to_register_page: 初めてご利用の方はこちら
-        password_forget: パスワードをお忘れの方はこちら
+        password_forget: パスワードを忘れた方はこちら
     shared:
       links:
         back: 戻る
         didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか？
         didn_t_receive_unlock_instructions: アカウントのロック解除方法のメールを受け取っていませんか？
         forgot_your_password: パスワードを忘れた方はこちら
-        sign_in: ログイン
+        sign_in: ログインはこちら
         sign_in_with_provider: "%{provider}でログイン"
-        sign_up: アカウント登録
+        sign_up: 初めてご利用の方はこちら
       minimum_password_length: "（%{count}字以上）"
     unlocks:
       new:
