@@ -1,5 +1,5 @@
 <div class="container mx-auto w-[540px] px-10 py-5">
-  <h1 class="text-5xl font-bold text-center mb-10">ログイン</h1>
+  <h1 class="text-5xl font-bold text-center mb-10"><%= t('devise.sessions.new.title') %></h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "ログイン", class: "btn btn-secondary mb-6 w-full mx-auto mt-2" %>
+      <%= f.submit t('devise.sessions.new.sign_in'), class: "btn btn-secondary mb-6 w-full mx-auto mt-2" %>
     </div>
   <% end %>
 
