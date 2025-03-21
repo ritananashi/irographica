@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { maximum: 10 }
   validates :account, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 4, maximum: 20 }
 
+  has_many :reviews
+
   def to_param
     account
   end
