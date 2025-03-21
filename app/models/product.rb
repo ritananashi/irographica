@@ -3,4 +3,7 @@ class Product < ApplicationRecord
 
   belongs_to :brand
   has_many :reviews
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
 end
