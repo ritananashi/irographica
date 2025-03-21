@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :account, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 4, maximum: 20 }
 
   has_many :reviews
+  has_one_attached :avatar
 
   def to_param
     account
