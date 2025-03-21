@@ -45,6 +45,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_hash (3.3.1)
+      activesupport (>= 5.0.0)
     activejob (7.2.2.1)
       activesupport (= 7.2.2.1)
       globalid (>= 0.3.6)
@@ -326,6 +328,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  active_hash
   bootsnap
   brakeman
   capybara
