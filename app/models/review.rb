@@ -5,5 +5,5 @@ class Review < ApplicationRecord
   validates :pen, length: { maximum: 50 }
 
   belongs_to :user
-  belong_to :product
+  belongs_to :product
 end
