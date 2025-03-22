@@ -2,33 +2,33 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "input input-bordered form-control mb-6 w-full mx-auto mt-2" %>
+      <%= f.label :title, class: "px-3" %>
+      <%= f.text_field :title, class: "input input-bordered form-control mb-6 w-full mx-auto" %>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
-      <%= f.label :body %>
-      <%= f.text_area :body, class: "textarea textarea-bordered textarea-lg form-control mb-6 w-full mx-auto mt-2" %>
+      <%= f.label :body, class: "px-3" %>
+      <%= f.text_area :body, class: "textarea textarea-bordered textarea-lg form-control mb-6 w-full mx-auto" %>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
-      <%= f.label :product_name %>
-      <%= text_field_tag :product_name, @review.product&.name, class: "input input-bordered form-control mb-2 w-full mx-auto mt-2" %>
+      <%= f.label :product_name, class: "px-3" %>
+      <%= text_field_tag :product_name, @review.product&.name, class: "input input-bordered form-control mb-2 w-full mx-auto" %>
     </div>
     <div class="w-full px-3">
-      <%= link_to "インクを選択", "#", class: "btn btn-primary w-full mx-auto" %>
+      <%= link_to t('reviews.new.select_product'), "#", class: "btn btn-primary w-full mx-auto" %>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <%= f.label :paper %>
-      <%= f.text_field :paper, class: "input input-bordered form-control mb-6 w-full mx-auto mt-2" %>
+      <%= f.label :paper, class: "px-3" %>
+      <%= f.text_field :paper, class: "input input-bordered form-control mb-6 w-full mx-auto" %>
     </div>
     <div class="w-full md:w-1/2 px-3">
-      <%= f.label :pen %>
-      <%= f.text_field :pen, class: "input input-bordered form-control mb-6 w-full mx-auto mt-2" %>
+      <%= f.label :pen, class: "px-3" %>
+      <%= f.text_field :pen, class: "input input-bordered form-control mb-6 w-full mx-auto" %>
     </div>
   </div>
   <%= f.submit nil, class: "btn btn-secondary w-full mx-auto mt-2" %>
