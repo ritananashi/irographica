@@ -1,7 +1,7 @@
 ja:
   helpers:
     submit:
-      create: 登録
+      create: 投稿する
       submit: 保存
       update: 更新
     label:
