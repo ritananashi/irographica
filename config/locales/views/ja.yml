@@ -19,3 +19,6 @@ ja:
       title: マイページ
       current_user_reviews: 投稿一覧
       review_not_found: 投稿がありません。
+  reviews:
+    new:
+      select_product: インクを選択
