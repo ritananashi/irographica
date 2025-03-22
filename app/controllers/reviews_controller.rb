@@ -8,5 +8,6 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @review = Review.new
   end
 end

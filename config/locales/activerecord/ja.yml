@@ -9,3 +9,9 @@ ja:
         account: ユーザーID
         password: パスワード
         password_confirmation: パスワード確認
+      review:
+        title: タイトル
+        body: 本文
+        product_name: インク
+        paper: 使用した紙
+        pen: 使用したペン
