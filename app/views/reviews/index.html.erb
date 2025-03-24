@@ -1,4 +1,11 @@
-<div>
-  <h1 class="font-bold text-4xl">Reviews#index</h1>
-  <p>Find me in app/views/reviews/index.html.erb</p>
+<div class="container mx-auto w-[540px] px-10 py-5">
+  <h1 class="text-5xl font-bold text-center mb-10">レビュー一覧</h1>
+
+  <div class="grid grid-cols-2 gap-4">
+    <% if @reviews.present? %>
+      <%= render @reviews %>
+    <% else %>
+      <div>レビューがありません。</div>
+    <% end %>
+  </div>
 </div>
