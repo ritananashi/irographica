@@ -1,0 +1,24 @@
+<div class="card card-side m-4 w-[540px] h-[240px] shadow" id="review-<%= review.id %>">
+  <div class="px-4 py-4 relative">
+    <%= image_tag 'kkrn_icon_shashin_3.png' class: "h-[170px] w-[170px] rounded-lg" %>
+    <!-- 画像投稿機能作成後に使う部分
+    <div class=" bg-black bg-opacity-50 absolute top-4 right-4 rounded-tr-lg rounded-bl-lg px-2">
+      <p class="text-white"><i class="fa-solid fa-images"></i>添付画像枚数</p>
+    </div>
+    -->
+    <!-- いいね・ブックマーク・Xシェア機能実装後に使う部分
+    <div class="card-actions justify-end">
+      <i class="fa-regular fa-heart"></i>
+      <i class="fa-regular fa-bookmark"></i>
+      <i class="fa-brands fa-square-x-twitter"></i>
+    </div>
+    -->
+  </div>
+  <div class="card-body flex-shrink-0 w-[340px] px-4 py-4">
+    <h2 class="card-title"><%= review.title %></h2>
+    <p><%= review.body %></p>
+    <div class="card-actions justify-end">
+      <%= link_to "詳しく見る", review_path(review), class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
+</div>

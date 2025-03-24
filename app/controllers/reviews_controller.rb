@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :redirect_root, only: :new
+
   def index
     @reviews = Review.includes(:user, :product).all
   end
@@ -9,5 +11,23 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+  end
+
+  def create
+    @review = current_user.reviews.build(review_params)
+
+    if @review.save
+      flash[:notice] = "レビューを投稿しました！"
+      redirect_to reviews_path
+    else
+      flash.now[:alert] = "レビューの投稿に失敗しました"
+      render new_review_path, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :body, :product_id, :paper, :pen)
   end
 end

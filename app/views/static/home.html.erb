@@ -1,18 +1,17 @@
-<div>
-  <h1 class="text-4xl text-green-700 font-semibold underline">Static#home</h1>
-  <p>Find me in app/views/static/home.html.erb</p>
-</div>
-
-<button class="btn" onclick="my_modal_1.showModal()">open modal</button>
-<dialog id="my_modal_1" class="modal">
-  <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </form>
+<div class="container mx-auto px-5 py-5">
+  <div class="flex justify-center items-center">
+    <%= image_tag "banner5.png", class: "h-[270px] w-[720px] object-scale-down flex-1" %>
+    <div class="text-center text-2xl flex-1 tracking-wider">
+      <p>インク沼のための</p>
+      <p>万年筆・ガラスペン用インクレビューサービス</p>
     </div>
   </div>
-</dialog>
+  <h1 class="text-5xl font-bold text-center mb-10 tracking-wider">レビューを見る</h1>
+  <div class="grid grid-cols-2 gap-4">
+    <% if @reviews.present? %>
+      <%= render partial: 'reviews/review', collection: @reviews %>
+    <% else %>
+      <div class="tracking-wider">レビューがありません。</div>
+    <% end %>
+  </div>
+</div>
