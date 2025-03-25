@@ -1,9 +1,14 @@
 ja:
   helpers:
     submit:
-      create: 投稿する
-      submit: 保存
-      update: 更新
+      reviews:
+        create: 投稿する
+        submit: 保存する
+        update: 更新する
+      products:
+        create: 登録する
+        submit: 保存する
+        update: 更新する
     label:
       email: メールアドレス
       password: パスワード
@@ -22,3 +27,8 @@ ja:
   reviews:
     new:
       select_product: インクを選択
+  product:
+    new:
+      title: インクを登録する
+      notice: インクを登録しました
+      alert: インクの登録に失敗しました
