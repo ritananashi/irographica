@@ -15,3 +15,6 @@ ja:
         product_name: インク
         paper: 使用した紙
         pen: 使用したペン
+      product:
+        name: インクの名前
+        brand_name: メーカー名
