@@ -1,11 +1,11 @@
 <div class="container mx-auto w-full px-10 py-5">
-  <h1 class="text-5xl font-bold text-center mb-10">レビュー一覧</h1>
+  <h1 class="text-5xl font-bold text-center mb-10"><%= t('reviews.index.title') %></h1>
 
   <div class="flex flex-wrap justify-center items-center p-5 gap-5">
     <% if @reviews.present? %>
       <%= render @reviews %>
     <% else %>
-      <div>レビューがありません。</div>
+      <div><%= t('reviews.index.without_review') %></div>
     <% end %>
   </div>
 </div>

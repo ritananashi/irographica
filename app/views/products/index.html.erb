@@ -1,11 +1,11 @@
-<%= render "shared/remote_modal", title: "インクを探す" do %>
+<%= render "shared/remote_modal", title: t('product.index.title') do %>
   <div class="container mx-auto w-full px-10 py-5">
-    <p>お探しのインクはありましたか？</p><%= link_to 'インクを登録する', new_product_path, class: "link text-[#3F51B5]" %>
+    <p><%= t('product.index.find_the_product') %></p><%= link_to t('product.new.title'), new_product_path, class: "link text-[#3F51B5]" %>
     <div class="flex flex-wrap p-5 gap-5">
       <% if @products.present? %>
         <%= render @products %>
       <% else %>
-        インクが登録されていません。
+        <p><%= t('product.index.without_product') %></p>
       <% end %>
     </div>
   </div>
