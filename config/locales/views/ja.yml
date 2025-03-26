@@ -16,6 +16,9 @@ ja:
       back: 前のページに戻る
   errors:
     error_count: 件のエラーが発生しました
+  time:
+    formats:
+      default: "%Y.%m.%d"
   header:
     sign_in: ログイン
     sign_out: ログアウト
@@ -43,6 +46,9 @@ ja:
       select_product: インクを選択
       notice: レビューを投稿しました！
       alert: レビューの投稿に失敗しました
+    show:
+      using_paper: 使った紙：
+      using_pen: 使ったペン：
   product:
     index:
       title: インクを探す
