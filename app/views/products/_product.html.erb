@@ -1,0 +1,11 @@
+<div class="card bg-base-100 w-96 shadow-xl">
+  <div class="card-body">
+    <p class="text-[#959595]"><%= product.brand.name %></p>
+    <h2 class="card-title"><%= product.name %></h2>
+    <form method="dialog">
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary" data-action="click->product#select" data-name="<%= product.name %>">このインクを選択</button>
+      </div>
+    </form>
+  </div>
+</div>
