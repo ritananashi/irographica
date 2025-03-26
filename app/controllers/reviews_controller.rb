@@ -15,6 +15,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
+    product_name = params[:review][:product_name]
+    product = Product.find_by(name: product_name)
+    @review.product_id = product.id if product
 
     if @review.save
       flash[:notice] = "レビューを投稿しました！"
