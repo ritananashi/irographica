@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Reviews#show</h1>
-  <p>Find me in app/views/reviews/show.html.erb</p>
-</div>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-10 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" %>
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
+        <div class="flex mb-4">
+          <div class="flex items-center">
+            <%= image_tag "kkrn_icon_user_1.png", class: "w-12 rounded-full" %>
+            <%= link_to @review.user.name, "#" %>
+          </div>
+          <div class="flex ml-auto items-center justify-center text-[#959595]"><%= l(@review.created_at) %></div>
+        </div>
+        <p class="leading-relaxed whitespace-pre-wrap"><%= @review.body %></p>
+        <div class="mt-6 items-center pb-5 border-t-2 border-gray-100 mb-5">
+          <p><%= link_to @review.product.brand.name, "#", class: "link text-[#3F51B5]" %></p>
+          <p>使った紙：<%= @review.paper %></p>
+          <p>使ったペン：<%= @review.pen %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5 mb-5">
+    <%= link_to t('helpers.links.back'), :back, class: "btn btn-outline btn-primary" %>
+  </div>
+</section>
