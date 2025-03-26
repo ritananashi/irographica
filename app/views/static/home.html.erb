@@ -2,16 +2,15 @@
   <div class="flex justify-center items-center">
     <%= image_tag "banner5.png", class: "h-[270px] w-[720px] object-scale-down flex-1" %>
     <div class="text-center text-2xl flex-1 tracking-wider">
-      <p>インク沼のための</p>
-      <p>万年筆・ガラスペン用インクレビューサービス</p>
+      <p><%= simple_format(t('home.copywriting')) %></p>
     </div>
   </div>
-  <h1 class="text-5xl font-bold text-center mb-10 tracking-wider">レビューを見る</h1>
-  <div class="grid grid-cols-2 gap-4">
+  <h1 class="text-5xl font-bold text-center mb-10 tracking-wider"><%= t('home.see_review') %></h1>
+  <div class="flex flex-wrap justify-center items-center p-5 gap-5">
     <% if @reviews.present? %>
       <%= render partial: 'reviews/review', collection: @reviews %>
     <% else %>
-      <div class="tracking-wider">レビューがありません。</div>
+      <div class="tracking-wider"><%= t('reviews.index.without_review') %></div>
     <% end %>
   </div>
 </div>

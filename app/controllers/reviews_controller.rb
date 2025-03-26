@@ -15,12 +15,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(review_params)
+    product_name = params[:review][:product_name]
+    product = Product.find_by(name: product_name)
+    @review.product_id = product.id if product
 
     if @review.save
-      flash[:notice] = "レビューを投稿しました！"
+      flash[:notice] = t('reviews.new.notice')
       redirect_to reviews_path
     else
-      flash.now[:alert] = "レビューの投稿に失敗しました"
+      flash.now[:alert] = t('reviews.new.alert')
       render new_review_path, status: :unprocessable_entity
     end
   end

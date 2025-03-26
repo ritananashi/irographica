@@ -12,6 +12,10 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+    links:
+      back: 前のページに戻る
+  errors:
+    error_count: 件のエラーが発生しました
   header:
     sign_in: ログイン
     sign_out: ログアウト
@@ -19,16 +23,36 @@ ja:
     post: 投稿する
     mypage: マイページ
     notification: 通知
+  home:
+    see_review: レビューを見る
+    copywriting: |
+      インク沼のための
+      万年筆・ガラスペン用インクレビューサービス
   users:
     show:
       title: マイページ
       current_user_reviews: 投稿一覧
-      review_not_found: 投稿がありません。
+      review_not_found: 投稿がありません
   reviews:
+    index:
+      title: レビュー一覧
+      without_review: レビューがありません
+      show_review: 詳しく見る
     new:
+      title: 新規投稿
       select_product: インクを選択
+      notice: レビューを投稿しました！
+      alert: レビューの投稿に失敗しました
   product:
+    index:
+      title: インクを探す
+      find_the_product: お探しのインクはありましたか？
+      without_product: インクがありません
+      select_product: このインクを選択
     new:
       title: インクを登録する
       notice: インクを登録しました
       alert: インクの登録に失敗しました
+  category:
+    select:
+      include_blank: 色系統を選択

@@ -2,6 +2,9 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      review: レビュー
+      product: インク
+      brand: メーカー
     attributes:
       user:
         email: メールアドレス
@@ -13,8 +16,15 @@ ja:
         title: タイトル
         body: 本文
         product_name: インク
+        product: インク
         paper: 使用した紙
         pen: 使用したペン
       product:
         name: インクの名前
         brand_name: メーカー名
+    errors:
+      models:
+        review:
+          attributes:
+            product:
+              required: "は「インクを選択」から選んでください。"
