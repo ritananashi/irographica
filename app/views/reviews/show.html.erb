@@ -1,7 +1,18 @@
 <section class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-10 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" %>
+      <% if @review.images.attached? %>
+        <div class="flax flex-col">
+          <%= image_tag @review.images[0], class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded" %>
+          <div class="flex gap-[10px] mt-1">
+            <% @review.images.each do |image| %>
+              <%= image_tag image.variant(resize_to_limit: [170, 170]).processed, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center rounded" %>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" %>
+      <% end %>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
         <div class="flex mb-4">

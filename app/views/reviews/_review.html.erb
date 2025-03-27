@@ -1,11 +1,15 @@
 <div class="card card-side m-4 shadow" id="review-<%= review.id %>">
   <div class="px-4 py-4 relative">
-    <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg" %>
-    <!-- 画像投稿機能作成後に使う部分
-    <div class=" bg-black bg-opacity-50 absolute top-4 right-4 rounded-tr-lg rounded-bl-lg px-2">
-      <p class="text-white"><i class="fa-solid fa-images"></i>添付画像枚数</p>
-    </div>
-    -->
+    <% if review.images.attached? %>
+      <%= image_tag review.images[0].variant(resize_to_limit: [170, 170]).processed, class: "h-[170px] w-[170px] rounded-lg" %>
+    <% else %>
+      <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg" %>
+    <% end %>
+    <% if review.images.count > 1 %>
+      <div class=" bg-black bg-opacity-50 absolute top-4 right-4 rounded-tr-lg rounded-bl-lg px-2">
+        <p class="text-white"><i class="fa-solid fa-images"></i> <%= review.images.count %></p>
+      </div>
+    <% end %>
     <!-- いいね・ブックマーク・Xシェア機能実装後に使う部分
     <div class="card-actions justify-end">
       <i class="fa-regular fa-heart"></i>
