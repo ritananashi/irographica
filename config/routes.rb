@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  unless defined?(::Rake::SprocketsTask)
+    devise_for :users, controllers: { registrations: 'users/registrations' }
+  end
   resources :users, only: :show
 
   resources :products, only: %i[index show new create]
