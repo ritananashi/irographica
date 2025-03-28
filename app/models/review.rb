@@ -7,7 +7,7 @@ class Review < ApplicationRecord
   validates :body, presence: true, length: { maximum: 2000 }
   validates :paper, length: { maximum: 50 }
   validates :pen, length: { maximum: 50 }
-  validates :images,  content_type: { in: ['image/png', 'image/jpeg'], spoofing_protection: true },
-                      total_size: { less_than: 3.megabytes, },
-                      limit: { max: 4 }
+  validates :images,  total_size: { less_than: 3.megabytes, },
+                      limit: { max: 4 },
+                      content_type: { in: ['image/png', 'image/jpeg'], spoofing_protection: true }
 end
