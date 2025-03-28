@@ -9,5 +9,5 @@ class Review < ApplicationRecord
   validates :pen, length: { maximum: 50 }
   validates :images,  total_size: { less_than: 3.megabytes, },
                       limit: { max: 4 }
-#                      content_type: { in: ['image/png', 'image/jpeg'], spoofing_protection: true }
+                      content_type: { in: ['image/png', 'image/jpeg'], spoofing_protection: true }
 end
