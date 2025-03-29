@@ -1,17 +1,29 @@
 <section class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-10 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <% if @review.images.attached? %>
-        <div class="flax flex-col">
-          <%= image_tag @review.images[0], class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded" %>
-          <div class="flex gap-[10px] mt-1">
-            <% @review.images.each do |image| %>
-              <%= image_tag image.variant(resize_to_limit: [170, 170]).processed, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center rounded" %>
-            <% end %>
+      <% if @review.images.present? %>
+        <div class="flax flex-col lg:w-1/2">
+          <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 lg:w-[350px] lg:h-[350px]">
+            <div class="swiper-wrapper">
+              <% @review.images.each do |image| %>
+                <%= image_tag image, class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded swiper-slide" %>
+              <% end %>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+          <div thumbsSlider="" class="swiper mySwiper lg:w-[350px] mt-1">
+            <div class="swiper-wrapper">
+              <% @review.images.each do |image| %>
+                <%= image_tag image.variant(resize_to_limit: [80, 80]).processed, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center rounded swiper-slide" %>
+              <% end %>
+            </div>
           </div>
         </div>
       <% else %>
-        <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" %>
+        <div class="lg:w-1/2">
+          <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded mx-auto" %>
+        </div>
       <% end %>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
@@ -35,3 +47,25 @@
     <%= link_to t('helpers.links.back'), :back, class: "btn btn-outline btn-primary" %>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
+</script>
