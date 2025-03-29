@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path
     else
       flash.now[:alert] = t('reviews.new.alert')
-      render new_review_path, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
       redirect_to review_path(@review)
     else
       flash.now[:alert] = "レビューの編集に失敗しました"
-      render edit_review_path, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
