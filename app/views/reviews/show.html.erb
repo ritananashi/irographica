@@ -40,6 +40,12 @@
           <p><%= t('reviews.show.using_paper') %><%= @review.paper %></p>
           <p><%= t('reviews.show.using_pen') %><%= @review.pen %></p>
         </div>
+        <% if current_user == @review.user %>
+          <div class="flex items-center justify-center gap-4">
+            <%= link_to "編集", edit_review_path, class: "btn btn-accent" %>
+            <%= link_to "削除", "#", class: "btn btn-error" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -2,11 +2,7 @@ class ReviewsController < ApplicationController
   before_action :redirect_root, only: :new
 
   def index
-    @reviews = Review.includes(:user, :product).all
-  end
-
-  def show
-    @review = Review.find(params[:id])
+    @reviews = Review.includes(:user, :product).order(created_at: "DESC").all
   end
 
   def new
@@ -24,7 +20,30 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path
     else
       flash.now[:alert] = t('reviews.new.alert')
-      render new_review_path, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @review = Review.find(params[:id])
+  end
+
+  def edit
+    @review = current_user.reviews.find(params[:id])
+  end
+
+  def update
+    @review = current_user.reviews.find(params[:id])
+    product_name = params[:review][:product_name]
+    product = Product.find_by(name: product_name)
+    @review.product_id = product.id if product
+
+    if @review.update(review_params)
+      flash[:notice] = t('reviews.edit.notice')
+      redirect_to review_path(@review)
+    else
+      flash.now[:alert] = t('reviews.edit.alert')
+      render :edit, status: :unprocessable_entity
     end
   end
 
