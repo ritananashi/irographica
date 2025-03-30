@@ -4,7 +4,7 @@ ja:
       reviews:
         create: 投稿する
         submit: 保存する
-        update: 更新する
+        update: 編集する
       products:
         create: 登録する
         submit: 保存する
@@ -37,18 +37,24 @@ ja:
       current_user_reviews: 投稿一覧
       review_not_found: 投稿がありません
   reviews:
+    form:
+      select_product: インクを選択
+      number_of_images: 4枚まで投稿できます
     index:
       title: レビュー一覧
       without_review: レビューがありません
       show_review: 詳しく見る
     new:
       title: 新規投稿
-      select_product: インクを選択
       notice: レビューを投稿しました！
       alert: レビューの投稿に失敗しました
     show:
       using_paper: 使った紙：
       using_pen: 使ったペン：
+    edit:
+      title: 投稿の編集
+      notice: レビューを編集しました！
+      alert: レビューの編集に失敗しました
   product:
     index:
       title: インクを探す

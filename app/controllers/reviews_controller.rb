@@ -39,10 +39,10 @@ class ReviewsController < ApplicationController
     @review.product_id = product.id if product
 
     if @review.update(review_params)
-      flash[:notice] = "レビューを編集しました"
+      flash[:notice] = t('reviews.edit.notice')
       redirect_to review_path(@review)
     else
-      flash.now[:alert] = "レビューの編集に失敗しました"
+      flash.now[:alert] = t('reviews.edit.alert')
       render :edit, status: :unprocessable_entity
     end
   end
