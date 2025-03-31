@@ -4,14 +4,14 @@
       <div class="flex flex-col gap-2">
         <h1 class="text-black text-3xl font-bold"><%= @product.name %></h1>
         <p><%= @product.brand.name %></p>
-        <p><%= @product.category.color %>インク</p>
+        <p><%= @product.category.color %><%= t('product.show.color') %></p>
       </div>
       <div class="flex flex-col justify-center items-center gap-4">
         <% if @product.brand.official_url.present? %>
-          <%= link_to "公式サイトを見る", @product.brand.official_url, class: "btn btn-primary btn-wide text-[20px]" %>
+          <%= link_to t('product.show.official_url'), @product.brand.official_url, class: "btn btn-primary btn-wide text-[20px]" %>
         <% end %>
         <% if @product.brand.official_shopping_url.present? %>
-          <%= link_to "公式通販を見る", @product.brand.official_shopping_url, class: "btn btn-secondary btn-wide text-[20px]" %>
+          <%= link_to t('product.show.official_shopping_url'), @product.brand.official_shopping_url, class: "btn btn-secondary btn-wide text-[20px]" %>
         <% end %>
       </div>
     </div>
