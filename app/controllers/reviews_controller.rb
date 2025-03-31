@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
     review = current_user.reviews.find(params[:id])
     review.images.purge if review.images.attached?
     review.destroy!
-    flash[:notice] = "投稿を削除しました！"
+    flash[:notice] = t('reviews.delete.notice')
     redirect_to root_path, status: :see_other
   end
 

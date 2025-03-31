@@ -42,8 +42,8 @@
         </div>
         <% if current_user == @review.user %>
           <div class="flex items-center justify-center gap-4">
-            <%= link_to "編集", edit_review_path, class: "btn btn-accent" %>
-            <%= link_to "削除", review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+            <%= link_to t('reviews.edit.button'), edit_review_path, class: "btn btn-accent" %>
+            <%= link_to t('reviews.delete.button'), review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: t('reviews.delete.delete_confirm') } %>
           </div>
         <% end %>
       </div>

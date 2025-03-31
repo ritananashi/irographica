@@ -46,15 +46,20 @@ ja:
       show_review: 詳しく見る
     new:
       title: 新規投稿
-      notice: レビューを投稿しました！
+      notice: レビューを投稿しました
       alert: レビューの投稿に失敗しました
     show:
       using_paper: 使った紙：
       using_pen: 使ったペン：
     edit:
       title: 投稿の編集
-      notice: レビューを編集しました！
+      notice: レビューを編集しました
       alert: レビューの編集に失敗しました
+      button: 編集
+    delete:
+      delete_confirm: 投稿を削除しますか？
+      notice: 投稿を削除しました
+      button: 削除
   product:
     index:
       title: インクを探す
