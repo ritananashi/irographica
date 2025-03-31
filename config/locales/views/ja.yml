@@ -70,6 +70,10 @@ ja:
       title: インクを登録する
       notice: インクを登録しました
       alert: インクの登録に失敗しました
+    show:
+      color: インク
+      official_url: 公式サイトを見る
+      official_shopping_url: 公式通販を見る
   category:
     select:
       include_blank: 色系統を選択
