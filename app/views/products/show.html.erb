@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Products#show</h1>
-  <p>Find me in app/views/products/show.html.erb</p>
-</div>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-1/2 justify-center mx-auto mb-20 rounded-lg border border-gray-400 p-8 gap-10">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-black text-3xl font-bold"><%= @product.name %></h1>
+        <p><%= @product.brand.name %></p>
+        <p><%= @product.category.color %>インク</p>
+      </div>
+      <div class="flex flex-col justify-center items-center gap-4">
+        <% if @product.brand.official_url.present? %>
+          <%= link_to "公式サイトを見る", @product.brand.official_url, class: "btn btn-primary btn-wide text-[20px]" %>
+        <% end %>
+        <% if @product.brand.official_shopping_url.present? %>
+          <%= link_to "公式通販を見る", @product.brand.official_shopping_url, class: "btn btn-secondary btn-wide text-[20px]" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-wrap -m-4 justify-center items-center">
+      <% if @reviews.present? %>
+        <%= render partial: 'reviews/review', collection: @reviews %>
+      <% else %>
+        <div class="tracking-wider"><%= t('reviews.index.without_review') %></div>
+      <% end %>
+    </div>
+  </div>
+</section>
