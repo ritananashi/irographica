@@ -46,6 +46,8 @@ module.exports = {
   safelist: [
     "alert-warning",
     "alert-success",
-    "alert-danger"
+    "alert-danger",
+    "not_active_tabs",
+    "active_tabs"
   ],
 }
