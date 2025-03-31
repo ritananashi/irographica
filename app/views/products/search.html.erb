@@ -1,0 +1,10 @@
+<div class="container mx-auto w-full px-10 py-5">
+  <%= render 'shared/search_tab' %>
+  <div class="flex flex-wrap justify-center items-center p-5 gap-5">
+    <% if @products.present? %>
+      <%= render @products %>
+    <% else %>
+      <div><%= t('reviews.index.without_review') %></div>
+    <% end %>
+  </div>
+</div>
