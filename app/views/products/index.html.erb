@@ -1,5 +1,8 @@
 <%= render "shared/remote_modal", title: t('product.index.title') do %>
   <div class="container mx-auto w-full px-10 py-5">
+    <div class=" flex justify-center items-center">
+      <%= render 'search_form', url: products_path %>
+    </div>
     <p><%= t('product.index.find_the_product') %></p><%= link_to t('product.new.title'), new_product_path, class: "link text-[#3F51B5]" %>
     <div class="flex flex-wrap p-5 gap-5">
       <% if @products.present? %>
