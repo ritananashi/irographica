@@ -6,4 +6,12 @@ class Product < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+
+  def self.ransackable_associations(auth_object = nil)
+    ["brand"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["brand_id", "category_id", "name"]
+  end
 end

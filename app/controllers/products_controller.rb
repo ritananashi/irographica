@@ -28,6 +28,8 @@ class ProductsController < ApplicationController
   end
 
   def search
+    @q = params[:q]
+    @products = Product.ransack(name_or_brand_name_cont: @q).result(distinct: true).order(:created_at, :id)
   end
 
   private
