@@ -1,9 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :redirect_root, only: :new
 
-  def index
-    @reviews = Review.includes(:user, :product).order(created_at: "DESC").all
-  end
+  def index; end
 
   def new
     @review = Review.new
@@ -17,7 +15,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       flash[:notice] = t('reviews.new.notice')
-      redirect_to reviews_path
+      redirect_to root_path
     else
       flash.now[:alert] = t('reviews.new.alert')
       render :new, status: :unprocessable_entity
@@ -45,6 +43,14 @@ class ReviewsController < ApplicationController
       flash.now[:alert] = t('reviews.edit.alert')
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    review = current_user.reviews.find(params[:id])
+    review.images.purge if review.images.attached?
+    review.destroy!
+    flash[:notice] = t('reviews.delete.notice')
+    redirect_to root_path, status: :see_other
   end
 
   private
