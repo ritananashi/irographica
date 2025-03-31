@@ -11,3 +11,12 @@
 }
 
 */
+
+@layer components {
+  .active_tabs {
+    @apply text-black border-black active dark:text-black dark:border-black
+  }
+  .not_active_tabs {
+    @apply border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
+  }
+}

@@ -54,6 +54,8 @@ class ReviewsController < ApplicationController
   end
 
   def search
+    @q = params[:q]
+    @reviews = Review.ransack(title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name_cont: @q).result(distinct: true).order(:created_at, :id)
   end
 
   private
