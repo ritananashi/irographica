@@ -53,6 +53,9 @@ class ReviewsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def search
+  end
+
   private
 
   def review_params
