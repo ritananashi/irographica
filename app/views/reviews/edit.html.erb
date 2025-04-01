@@ -2,6 +2,6 @@
   <h1 class="text-5xl font-bold text-center mb-10"><%= t('reviews.edit.title') %></h1>
   <%= render 'form', review: @review, images: @review.reload.images %>
   <div class="text-center mt-10">
-    <%= link_to t('helpers.links.back'), :back, class: "btn btn-outline btn-primary" %>
+    <%= link_to t('helpers.links.back'), 'javascript:history.back()', class: "btn btn-outline btn-primary" %>
   </div>
 </div>
