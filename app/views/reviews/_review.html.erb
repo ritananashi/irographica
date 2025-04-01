@@ -10,13 +10,16 @@
         <p class="text-white"><i class="fa-solid fa-images"></i> <%= review.images.count %></p>
       </div>
     <% end %>
+    <div class="card-actions justify-end mt-1">
     <!-- いいね・ブックマーク・Xシェア機能実装後に使う部分
-    <div class="card-actions justify-end">
       <i class="fa-regular fa-heart"></i>
       <i class="fa-regular fa-bookmark"></i>
-      <i class="fa-brands fa-square-x-twitter"></i>
-    </div>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="インク沼" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     -->
+      <%= link_to "https://twitter.com/share?url=#{post_review_url(review)}&text=#{review.product.brand.name}%20#{review.product.name}をレビュー！%0a%0a#{review.title}&hashtags=インク沼", title: "Xでシェア" do %>
+        <i class="fa-brands fa-square-x-twitter text-[24px]"></i>
+      <% end %>
+    </div>
   </div>
   <div class="card-body gap-0 flex-shrink-0 w-[340px] p-4">
     <h2 class="card-title overflow-hidden mb-1 text-lg font-bold text-ellipsis whitespace-nowrap"><%= review.title %></h2>
