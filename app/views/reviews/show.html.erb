@@ -1,8 +1,8 @@
 <section class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-10 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <% if @review.images.present? %>
-        <div class="flax flex-col lg:w-1/2">
+      <div class="flex flex-col lg:w-1/2">
+        <% if @review.images.present? %>
           <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 lg:w-[350px] lg:h-[350px]">
             <div class="swiper-wrapper">
               <% @review.images.each do |image| %>
@@ -19,12 +19,17 @@
               <% end %>
             </div>
           </div>
+        <% else %>
+          <div>
+            <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded mx-auto" %>
+          </div>
+        <% end %>
+        <div class="mt-5 mx-auto">
+          <%= link_to "https://twitter.com/share?url=#{post_review_url(@review)}&text=#{@review.product.brand.name}%20#{@review.product.name}をレビュー！%0a%0a#{@review.title}&hashtags=インク沼", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[350px]" do %>
+            <i class="fa-brands fa-x-twitter text-[24px]"></i></i><span class="text-[20px]">でシェア</span>
+          <% end %>
         </div>
-      <% else %>
-        <div class="lg:w-1/2">
-          <%= image_tag "kkrn_icon_shashin_3.png", class: "lg:w-[350px] w-full lg:h-[350px] h-64 object-cover object-center rounded mx-auto" %>
-        </div>
-      <% end %>
+      </div>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
         <div class="flex mb-4">
