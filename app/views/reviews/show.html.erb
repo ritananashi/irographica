@@ -41,7 +41,9 @@
         </div>
         <p class="leading-relaxed whitespace-pre-wrap"><%= @review.body %></p>
         <div class="mt-6 items-center pb-5 border-t-2 border-gray-100 mb-5">
-          <p><%= link_to @review.product.brand.name, "#", class: "link text-[#3F51B5]" %></p>
+          <%= link_to product_path(@review.product.id), class: "link text-[#3F51B5]" do %>
+            <p><%= @review.product.brand.name %><%= @review.product.name %></p>
+          <% end %>
           <p><%= t('reviews.show.using_paper') %><%= @review.paper %></p>
           <p><%= t('reviews.show.using_pen') %><%= @review.pen %></p>
         </div>
