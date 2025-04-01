@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    session[:referer] = request.referer
   end
 
   def edit
@@ -50,7 +51,11 @@ class ReviewsController < ApplicationController
     review.images.purge if review.images.attached?
     review.destroy!
     flash[:notice] = t('reviews.delete.notice')
-    redirect_to root_path, status: :see_other
+    if session[:referer].include?('users')
+      redirect_to user_path(current_user), status: :see_other
+    else
+      redirect_to root_path, status: :see_other
+    end
   end
 
   def search
