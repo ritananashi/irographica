@@ -4,7 +4,7 @@
     <h2 class="card-title"><%= product.name %></h2>
     <% if request.path.include?("search") %>
       <div class="card-actions justify-end">
-        <%= link_to "詳しく見る", product_path(product), class: "btn btn-sm btn-primary" %>
+        <%= link_to t('product.index.show_product'), product_path(product), class: "btn btn-sm btn-primary" %>
       </div>
     <% else %>
       <form method="dialog">

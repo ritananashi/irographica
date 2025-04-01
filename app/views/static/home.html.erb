@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="flex flex-wrap justify-center items-center gap-4 mt-2 mb-10">
-    <p>色で探す</p>
+    <p><%= t('search.category') %></p>
     <% @category.each do |c| %>
       <%= link_to c.color, search_products_path(c: c.id), class: "link" %>
     <% end %>

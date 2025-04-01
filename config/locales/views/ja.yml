@@ -19,6 +19,13 @@ ja:
   time:
     formats:
       default: "%Y.%m.%d"
+  search:
+    submit: 検索
+    product: インク
+    review: レビュー
+    keyword: キーワードで検索
+    result: の検索結果
+    category: 色で探す
   header:
     sign_in: ログイン
     sign_out: ログアウト
@@ -66,6 +73,7 @@ ja:
       find_the_product: お探しのインクはありましたか？
       without_product: インクがありません
       select_product: このインクを選択
+      show_product: 詳しく見る
     new:
       title: インクを登録する
       notice: インクを登録しました
