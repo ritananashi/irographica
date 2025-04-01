@@ -1,13 +1,22 @@
 
-<p class="text-center"><%= @q %>の検索結果</p>
+<p class="text-center">
+  <% if @q.present? && @c.present? %>
+    <%= Category.find(@c).color %>インク <%= @q %>
+  <% elsif @q.present? %>
+    <%= @q %>
+  <% elsif @c.present? %>
+    <%= Category.find(@c).color %>インク
+  <% end %>
+  の検索結果
+</p>
 <div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 w-1/2 mx-auto mb-5">
   <ul class="flex flex-wrap justify-center items-center -mb-px">
     <li>
-      <%= link_to "インク", search_products_path(q: params[:q]),
+      <%= link_to "インク", search_products_path(q: params[:q], c: params[:c]),
         class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("products") ? "active_tabs" : "not_active_tabs"}" %>
     </li>
     <li>
-      <%= link_to "レビュー", search_reviews_path(q: params[:q]),
+      <%= link_to "レビュー", search_reviews_path(q: params[:q], c: params[:c]),
         class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("reviews") ? "active_tabs" : "not_active_tabs"}", "aria-current": "page" %>
     </li>
   </ul>
