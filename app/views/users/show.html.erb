@@ -2,7 +2,7 @@
   <div class="container px-5 py-10 mx-auto">
     <% if current_user == @user %>
       <div class="flex justify-end">
-        <%= link_to "プロフィールの編集", edit_user_registration_path, class: "btn btn-accent" %>
+        <%= link_to t('users.show.edit_profile'), edit_user_registration_path, class: "btn btn-accent" %>
       </div>
     <% end %>
     <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
@@ -18,8 +18,8 @@
         <!-- フォローフォロワー機能実装誤に使用
         <div>0フォロー　0フォロワー</div>
         -->
-        <div><%= @user.body %></div>
-        <div class="flex items-center gap-4">
+        <p><%= @user.body %></p>
+        <div class="flex items-center gap-4 mt-6">
           <% if @user.x_account.present? %>
             <%= link_to @user.x_account do %>
               <i class="fa-brands fa-square-x-twitter text-[24px]"></i>

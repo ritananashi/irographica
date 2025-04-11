@@ -12,6 +12,11 @@ ja:
         account: ユーザーID
         password: パスワード
         password_confirmation: パスワード確認
+        body: プロフィール文
+        x_account: Xアカウント
+        instagram_account: instagramアカウント
+        youtube_account: YouTubeチャンネル
+        avatar: アイコン
       review:
         title: タイトル
         body: 本文
