@@ -6,12 +6,17 @@
       </div>
     <% end %>
     <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
-      <div class="items-center">
+      <div class="flex flex-col">
         <% if @user.avatar.attached? %>
           <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag @user.avatar %></div>
         <% else %>
           <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag 'kkrn_icon_user_1.png' %></div>
         <% end %>
+        <div class="mt-5 mx-auto items-center justify-center">
+          <%= link_to "https://twitter.com/share?url=#{post_profile_url(@user)}&text=#{@user.name}さんのプロフィール%0a%0a%23インク沼%20%23INKLOG", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[110px]" do %>
+            <i class="fa-brands fa-x-twitter text-[16px]"></i></i><span class="text-[16px]">でシェア</span>
+          <% end %>
+        </div>
       </div>
       <div class="mx-10 flex flex-col">
         <span class="text-[36px] text-center"><%= @user.name %></span>
