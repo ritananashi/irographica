@@ -1,13 +1,43 @@
-<div class="container mx-auto w-full px-10 py-10">
-  <div class="flex justify-center items-center gap-10 my-2">
-    <div>
-      <div class="bg-white w-[150px] rounded-full mx-10"><%= image_tag 'kkrn_icon_user_1.png' %> </div>
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-10 mx-auto">
+    <% if current_user == @user %>
+      <div class="flex justify-end">
+        <%= link_to "プロフィールの編集", edit_user_registration_path, class: "btn btn-accent" %>
+      </div>
+    <% end %>
+    <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
+      <div class="items-center">
+        <% if @user.avatar.attached? %>
+          <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag @user.avatar %></div>
+        <% else %>
+          <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag 'kkrn_icon_user_1.png' %></div>
+        <% end %>
+      </div>
+      <div class="mx-10 flex flex-col">
+        <span class="text-[36px] text-center"><%= @user.name %></span>
+        <!-- フォローフォロワー機能実装誤に使用
+        <div>0フォロー　0フォロワー</div>
+        -->
+        <div><%= @user.body %></div>
+        <div class="flex items-center gap-4">
+          <% if @user.x_account.present? %>
+            <%= link_to @user.x_account do %>
+              <i class="fa-brands fa-square-x-twitter text-[24px]"></i>
+            <% end %>
+          <% end %>
+          <% if @user.instagram_account.present? %>
+            <%= link_to @user.instagram_account do %>
+              <i class="fa-brands fa-instagram text-[24px]"></i>
+            <% end %>
+          <% end %>
+          <% if @user.youtube_account.present? %>
+            <%= link_to @user.youtube_account do %>
+              <i class="fa-brands fa-youtube text-[24px]"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div>
-      <p class="text-[36px] mx-10"><%= current_user.name %></p>
-    </div>
-  </div>
-  <div>
     <div class="w-full mx-auto">
       <p class="text-[36px] mx-10 text-center"><%= t('users.show.current_user_reviews') %></p>
     </div>
@@ -18,4 +48,4 @@
       <div><%= t('users.show.review_not_found') %></div>
     <% end %>
   </div>
-</div>
+</section>
