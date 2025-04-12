@@ -14,7 +14,12 @@
         <% if @review.images.attached? %>
           <div class="flex mx-2 mt-2 gap-[24px]">
             <% @review.images.each do |image| %>
-              <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center" %>
+              <div class ="flex flex-col items-center justify-center">
+                <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center" %>
+                <%=link_to review_attachment_path(@review.id, image.id), data: { turbo_method: :delete } do %>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                <% end %>
+              </div>
             <% end %>
           </div>
         <% end %>
