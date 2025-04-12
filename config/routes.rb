@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
     devise_for :users, controllers: { registrations: 'users/registrations' }
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :attachments, controller: "user/attachments", only: :destroy
+  end
 
   resources :products, only: %i[index show new create] do
     get :search, on: :collection
