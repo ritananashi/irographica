@@ -9,6 +9,9 @@ ja:
         create: 登録する
         submit: 保存する
         update: 更新する
+      user:
+        create: 登録する
+        update: 更新する
     label:
       email: メールアドレス
       password: パスワード
@@ -40,9 +43,16 @@ ja:
       万年筆・ガラスペン用インクレビューサービス
   users:
     show:
-      title: マイページ
+      title: プロフィール
+      edit_profile: プロフィールを編集
       current_user_reviews: 投稿一覧
       review_not_found: 投稿がありません
+    edit:
+      title: プロフィール編集
+      body_length: 500文字以内
+      x_account_url: https://x.com/sample
+      instagram_account_url: https://www.instagram.com/sample/
+      youtube_account_url: http://youtube.com/@sample
   reviews:
     form:
       select_product: インクを選択
