@@ -18,10 +18,10 @@
     </div>
     <div class="field">
       <%= f.label :avatar %><br />
-      <%= f.file_field :avatar, class: "file-input file-input-bordered form-control mb-6 w-full mx-auto mt-2" %>
+      <%= f.file_field :avatar, accept: "image/jpeg,image/png", class: "file-input file-input-bordered form-control mb-6 w-full mx-auto mt-2" %>
       <% if @user.avatar.attached? %>
         <div class="flex flex-col items-center justify-center">
-          <%= image_tag @user.avatar, class: "w-12 rounded-full" %>
+          <%= image_tag @user.avatar, class: "w-12 rounded-full", avatar: @user.reload.avatar %>
           <%=link_to user_attachment_path(@user.id, @user.avatar.id), data: { turbo_method: :delete } do %>
             <i class="fa-regular fa-circle-xmark"></i>
           <% end %>
