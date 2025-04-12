@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
     devise_for :users, controllers: { registrations: 'users/registrations' }
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :attachments, controller: "user/attachments", only: :destroy
+  end
 
   resources :products, only: %i[index show new create] do
     get :search, on: :collection
   end
   resources :reviews, only: %i[index show new create edit update destroy] do
     get :search, on: :collection
+    resources :attachments, controller: "review/attachments", only: :destroy
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,2 @@
+module Review::AttachmentsHelper
+end
