@@ -44,3 +44,13 @@ ja:
                 one: はjpg形式とpng形式のみ投稿できます
                 other: はjpg形式とpng形式のみ投稿できます
               total_file_size_not_less_than: は3MBまで投稿できます
+        user:
+          attributes:
+            avatar:
+              content_type_invalid:
+                one: はjpg形式とpng形式のみ設定できます
+                other: はjpg形式とpng形式のみ設定できます
+              content_type_spoofed:
+                one: はjpg形式とpng形式のみ設定できます
+                other: はjpg形式とpng形式のみ設定できます
+              total_file_size_not_less_than: は1MBまでの画像が設定できます

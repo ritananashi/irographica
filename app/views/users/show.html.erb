@@ -8,9 +8,9 @@
     <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
       <div class="flex flex-col">
         <% if @user.avatar.attached? %>
-          <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag @user.avatar %></div>
+          <%= image_tag @user.avatar, class: "object-cover w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
         <% else %>
-          <div class="bg-white w-[150px] rounded-full mx-10 border-[2px] border-gray-200"><%= image_tag 'kkrn_icon_user_1.png' %></div>
+          <%= image_tag 'kkrn_icon_user_1.png', class: "w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
         <% end %>
         <div class="mt-5 mx-auto items-center justify-center">
           <%= link_to "https://twitter.com/share?url=#{post_profile_url(@user)}&text=#{@user.name}さんのプロフィール%0a%0a%23インク沼%20%23INKLOG", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[110px]" do %>
