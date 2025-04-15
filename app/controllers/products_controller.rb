@@ -17,11 +17,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     result = ActiveRecord::Base.transaction do
                 brand_name = params[:product][:brand_name]
-                brand = Brand.find_or_create_by!(name: brand_name)
+                brand = Brand.find_or_create_by(name: brand_name)
                 if brand.present?
                   @product.brand_id = brand.id
                 else
-                  raise ActiveRecord::Rollback, "メーカーが登録されていません"
+                  raise ActiveRecord::Rollback, t('brand.new.alert')
                 end
 
                 if @product.save

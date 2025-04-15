@@ -10,9 +10,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(process_images(review_params))
     result = ActiveRecord::Base.transaction do
-                product_name = params[:review][:product_name]
-                product = Product.find_by(name: product_name)
-                @review.product_id = product.id if product
+                set_product
 
                 if @review.save
                   flash[:notice] = t('reviews.new.notice')
@@ -39,9 +37,7 @@ class ReviewsController < ApplicationController
   def update
     @review = current_user.reviews.find(params[:id])
     result = ActiveRecord::Base.transaction do
-                product_name = params[:review][:product_name]
-                product = Product.find_by(name: product_name)
-                @review.product_id = product.id if product
+                set_product
 
                 if @review.update(process_images(review_params))
                   flash[:notice] = t('reviews.edit.notice')
@@ -92,5 +88,11 @@ class ReviewsController < ApplicationController
       end
     end
     params
+  end
+
+  def set_product
+    product_name = params[:review][:product_name]
+    product = Product.find_by(name: product_name)
+    @review.product_id = product.id if product
   end
 end
