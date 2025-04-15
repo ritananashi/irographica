@@ -9,14 +9,19 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(process_images(review_params))
-    product_name = params[:review][:product_name]
-    product = Product.find_by(name: product_name)
-    @review.product_id = product.id if product
+    result = ActiveRecord::Base.transaction do
+                product_name = params[:review][:product_name]
+                product = Product.find_by(name: product_name)
+                @review.product_id = product.id if product
 
-    if @review.save
-      flash[:notice] = t('reviews.new.notice')
-      redirect_to root_path
-    else
+                if @review.save
+                  flash[:notice] = t('reviews.new.notice')
+                  redirect_to root_path
+                else
+                  raise ActiveRecord::Rollback
+                end
+              end
+    unless result
       flash.now[:alert] = t('reviews.new.alert')
       render :new, status: :unprocessable_entity
     end
@@ -33,14 +38,19 @@ class ReviewsController < ApplicationController
 
   def update
     @review = current_user.reviews.find(params[:id])
-    product_name = params[:review][:product_name]
-    product = Product.find_by(name: product_name)
-    @review.product_id = product.id if product
+    result = ActiveRecord::Base.transaction do
+                product_name = params[:review][:product_name]
+                product = Product.find_by(name: product_name)
+                @review.product_id = product.id if product
 
-    if @review.update(process_images(review_params))
-      flash[:notice] = t('reviews.edit.notice')
-      redirect_to review_path(@review)
-    else
+                if @review.update(process_images(review_params))
+                  flash[:notice] = t('reviews.edit.notice')
+                  redirect_to review_path(@review)
+                else
+                  raise ActiveRecord::Rollback
+                end
+              end
+    unless result
       flash.now[:alert] = t('reviews.edit.alert')
       render :edit, status: :unprocessable_entity
     end
@@ -48,8 +58,10 @@ class ReviewsController < ApplicationController
 
   def destroy
     review = current_user.reviews.find(params[:id])
-    review.images.purge if review.images.attached?
-    review.destroy!
+    ActiveRecord::Base.transaction do
+      review.destroy!
+      review.images.purge_later if review.images.attached?
+    end
     flash[:notice] = t('reviews.delete.notice')
     if session[:referer].include?('users')
       redirect_to user_path(current_user), status: :see_other
