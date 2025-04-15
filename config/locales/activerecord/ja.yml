@@ -28,6 +28,8 @@ ja:
       product:
         name: インクの名前
         brand_name: メーカー名
+        category_id: 色系統
+        brand: メーカー名
     errors:
       models:
         review:
@@ -54,3 +56,7 @@ ja:
                 one: はjpg形式とpng形式のみ設定できます
                 other: はjpg形式とpng形式のみ設定できます
               total_file_size_not_less_than: は1MBまでの画像が設定できます
+        product:
+          attributes:
+            category_id:
+              blank: を選択してください

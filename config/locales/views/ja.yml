@@ -1,11 +1,11 @@
 ja:
   helpers:
     submit:
-      reviews:
+      review:
         create: 投稿する
         submit: 保存する
         update: 編集する
-      products:
+      product:
         create: 登録する
         submit: 保存する
         update: 更新する
@@ -95,3 +95,6 @@ ja:
   category:
     select:
       include_blank: 色系統を選択
+  brand:
+    new:
+      alert: メーカーの登録に失敗しました

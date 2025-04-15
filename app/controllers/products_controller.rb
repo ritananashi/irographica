@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
                 if brand.present?
                   @product.brand_id = brand.id
                 else
-                  raise ActiveRecord::Rollback, "メーカーが登録されていません"
+                  raise ActiveRecord::Rollback, t('brand.new.alert')
                 end
 
                 if @product.save
