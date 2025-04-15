@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :pen, length: { maximum: 50 }
   validates :images,  total_size: { less_than: 3.megabytes, },
                       limit: { max: 4 },
-                      content_type: { in: ['image/png', 'image/jpeg'], spoofing_protection: true }
+                      content_type: { in: ['image/png', 'image/jpeg', 'image/webp'], spoofing_protection: true }
 
   def self.ransackable_attributes(auth_object = nil)
     ["body", "product_id", "title", "paper", "pen"]
