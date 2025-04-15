@@ -15,14 +15,22 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    brand_name = params[:product][:brand_name]
-    brand = Brand.find_or_create_by!(name: brand_name)
-    @product.brand_id = brand.id
+    result = ActiveRecord::Base.transaction do
+                brand_name = params[:product][:brand_name]
+                brand = Brand.find_or_create_by!(name: brand_name)
+                if brand.present?
+                  @product.brand_id = brand.id
+                else
+                  raise ActiveRecord::Rollback, "メーカーが登録されていません"
+                end
 
-    if @product.save
-      flash[:notice] = t('product.new.notice')
-      redirect_to products_path
-    else
+                if @product.save
+                  redirect_to products_path, notice: t('product.new.notice')
+                else
+                  raise ActiveRecord::Rollback
+                end
+              end
+    unless result
       flash.now[:alert] = t('product.new.alert')
       render :new, status: :unprocessable_entity
     end
