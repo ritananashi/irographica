@@ -74,13 +74,11 @@ class ReviewsController < ApplicationController
   def process_images(params)
     if params[:images].present?
       params[:images].each do |image|
-        logger.debug "加工前の画像の情報：#{image.tempfile}, #{image.original_filename}, #{image.content_type}"
         image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
         image.original_filename = "#{File.basename(image.original_filename, ".*")}.webp"
         image.content_type = "image/webp"
-        logger.debug "加工後の画像の情報：#{image.tempfile}, #{image.original_filename}, #{image.content_type}"
       end
-      params
     end
+    params
   end
 end
