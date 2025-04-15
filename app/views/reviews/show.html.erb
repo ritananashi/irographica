@@ -15,7 +15,7 @@
           <div thumbsSlider="" class="swiper mySwiper lg:w-[350px] mt-1">
             <div class="swiper-wrapper">
               <% @review.images.each do |image| %>
-                <%= image_tag image.variant(resize_to_limit: [80, 80]).processed, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center rounded swiper-slide" %>
+                <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-fill object-center rounded swiper-slide" %>
               <% end %>
             </div>
           </div>
@@ -34,13 +34,11 @@
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
         <div class="flex mb-4">
           <%= link_to user_path(@review.user), class: "flex items-center gap-2" do %>
-            <div class="w-10 rounded-full border-[2px] border-gray-200">
-              <% if @review.user.avatar.attached? %>
-                <%= image_tag @review.user.avatar %>
-              <% else %>
-                <%= image_tag 'kkrn_icon_user_1.png' %>
-              <% end %>
-            </div>
+            <% if @review.user.avatar.attached? %>
+              <%= image_tag @review.user.avatar, class: "w-10 rounded-full border-[2px] border-gray-200" %>
+            <% else %>
+              <%= image_tag 'kkrn_icon_user_1.png', class: "w-10 rounded-full border-[2px] border-gray-200" %>
+            <% end %>
             <p><%= @review.user.name %></p>
           <% end %>
           <div class="flex ml-auto items-center justify-center text-[#959595]"><%= l(@review.created_at) %></div>

@@ -20,9 +20,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+
+    if params[:user][:avatar].present?
+      process_avatar = ImageProcessing::MiniMagick.source(params[:user][:avatar].tempfile).resize_to_fit(300, 300).convert("webp").call
+      filename_base = File.basename(params[:user][:avatar].original_filename, ".*")
+      @user.avatar.attach(io: process_avatar, filename: "#{filename_base}.webp", content_type: "image/webp")
+    end
+  end
 
   # DELETE /resource
   # def destroy

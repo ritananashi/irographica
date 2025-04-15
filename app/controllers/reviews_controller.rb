@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = current_user.reviews.build(review_params)
+    @review = current_user.reviews.build(process_images(review_params))
     product_name = params[:review][:product_name]
     product = Product.find_by(name: product_name)
     @review.product_id = product.id if product
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
     product = Product.find_by(name: product_name)
     @review.product_id = product.id if product
 
-    if @review.update(review_params)
+    if @review.update(process_images(review_params))
       flash[:notice] = t('reviews.edit.notice')
       redirect_to review_path(@review)
     else
@@ -69,5 +69,16 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :body, :product_id, :paper, :pen, images: [])
+  end
+
+  def process_images(params)
+    if params[:images].present?
+      params[:images].each do |image|
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
+        image.original_filename = "#{File.basename(image.original_filename, ".*")}.webp"
+        image.content_type = "image/webp"
+      end
+    end
+    params
   end
 end

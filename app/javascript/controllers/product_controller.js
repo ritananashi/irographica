@@ -8,7 +8,6 @@ export default class extends Controller {
 
   select(e) {
     const button = e.currentTarget
-    console.log(button.dataset.name)
     this.nameTarget.value = button.dataset.name;
   }
 }

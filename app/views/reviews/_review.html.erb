@@ -1,9 +1,9 @@
 <div class="card card-side m-4 shadow" id="review-<%= review.id %>">
   <div class="px-4 py-4 relative">
     <% if review.images.attached? %>
-      <%= image_tag review.images[0].variant(resize_to_limit: [170, 170]).processed, class: "h-[170px] w-[170px] rounded-lg" %>
+      <%= image_tag review.images[0], class: "h-[170px] w-[170px] rounded-lg" %>
     <% else %>
-      <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg" %>
+      <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg object-cover" %>
     <% end %>
     <% if review.images.count > 1 %>
       <div class=" bg-black bg-opacity-50 absolute top-4 right-4 rounded-tr-lg rounded-bl-lg px-2">
@@ -24,13 +24,11 @@
   <div class="card-body gap-0 flex-shrink-0 w-[340px] p-4">
     <div class="card-title overflow-hidden mb-1 justify-between">
       <span class="w-3/4 text-[24px] font-bold text-ellipsis line-clamp-1"><%= review.title %></span>
-      <div class="w-8 rounded-full border-[2px] border-gray-200">
-        <% if review.user.avatar.attached? %>
-          <%= image_tag review.user.avatar %>
-        <% else %>
-          <%= image_tag 'kkrn_icon_user_1.png' %>
-        <% end %>
-      </div>
+      <% if review.user.avatar.attached? %>
+        <%= image_tag review.user.avatar, class: "w-8 rounded-full border-[2px] border-gray-200" %>
+      <% else %>
+        <%= image_tag 'kkrn_icon_user_1.png', class: "w-8 rounded-full border-[2px] border-gray-200" %>
+      <% end %>
     </div>
     <div class="text-sm"><%= review.product.name %></div>
     <div class="text-sm"><%= review.product.brand.name %></div>
