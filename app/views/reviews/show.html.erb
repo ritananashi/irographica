@@ -15,7 +15,7 @@
           <div thumbsSlider="" class="swiper mySwiper lg:w-[350px] mt-1">
             <div class="swiper-wrapper">
               <% @review.images.each do |image| %>
-                <%= image_tag image.variant(resize_to_limit: [80, 80]).processed, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center rounded swiper-slide" %>
+                <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-fill object-center rounded swiper-slide" %>
               <% end %>
             </div>
           </div>

@@ -12,10 +12,10 @@
         <%= f.label :images, class: "px-3" %><%= t('reviews.form.number_of_images') %>
         <%= f.file_field :images, accept: "image/jpeg,image/png", class: "file-input file-input-bordered w-full mx-auto", multiple: true, include_hidden: false %>
         <% if @review.images.attached? %>
-          <div class="flex mx-2 mt-2 gap-[24px]">
+          <div class="flex mx-2 mt-2 gap-[24px] items-center justify-center">
             <% @review.images.each do |image| %>
               <div class ="flex flex-col items-center justify-center">
-                <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-cover object-center" %>
+                <%= image_tag image, class: "lg:w-[80px] w-full lg:h-[80px] h-64 object-fill object-center" %>
                 <%=link_to review_attachment_path(@review.id, image.id), data: { turbo_method: :delete } do %>
                   <i class="fa-regular fa-circle-xmark"></i>
                 <% end %>
