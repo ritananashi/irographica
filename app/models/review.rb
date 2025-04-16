@@ -19,4 +19,8 @@ class Review < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["product"]
   end
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end
