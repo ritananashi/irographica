@@ -32,7 +32,7 @@
       </div>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
-        <div class="flex mb-4">
+        <div class="flex">
           <%= link_to user_path(@review.user), class: "flex items-center gap-2" do %>
             <% if @review.user.avatar.attached? %>
               <%= image_tag @review.user.avatar, class: "w-10 rounded-full border-[2px] border-gray-200" %>
@@ -42,6 +42,9 @@
             <p><%= @review.user.name %></p>
           <% end %>
           <div class="flex ml-auto items-center justify-center text-[#959595]"><%= l(@review.created_at) %></div>
+        </div>
+        <div class="flex mb-4 mx-3">
+          <%= render "reviews/like_btn", review: @review %>
         </div>
         <p class="leading-relaxed whitespace-pre-wrap"><%= @review.body %></p>
         <div class="mt-6 items-center pb-5 border-t-2 border-gray-100 mb-5">
