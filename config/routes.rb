@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
+    get :bookmarks, on: :member
   end
 
   resources :products, only: %i[index show new create] do
@@ -12,10 +13,7 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[index show new create edit update destroy] do
     resources :attachments, controller: "review/attachments", only: :destroy
     resource :like, only: %i[create destroy]
-    collection do
-      get :search
-      get :bookmarks
-    end
+    get :search, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -29,6 +27,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "static#home"
   get '/users/:account', to: 'users#show'
+  get '/users/:account/bookmarks', to: 'users#bookmarks'
+  root "static#home"
 end
