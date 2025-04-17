@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :reviews, only: %i[index show new create edit update destroy] do
-    get :search, on: :collection
     resources :attachments, controller: "review/attachments", only: :destroy
+    resource :like, only: %i[create destroy]
+    get :search, on: :collection
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

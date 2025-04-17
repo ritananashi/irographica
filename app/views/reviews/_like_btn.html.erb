@@ -1,0 +1,13 @@
+<div class="flex flex-col items-center justify-center">
+  <% if user_signed_in? %>
+    <% if review.liked_by?(current_user) %>
+      <%= render "reviews/unlike", {review: review} %>
+    <% else %>
+      <%= render "reviews/like", {review: review} %>
+    <% end %>
+    <%= render "reviews/like_count", {review: review} %>
+  <% else %>
+    <%= render "reviews/like", {review: review} %>
+    <%= render "reviews/like_count", {review: review} %>
+  <% end %>
+</div>
