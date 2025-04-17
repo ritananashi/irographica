@@ -1,0 +1,3 @@
+<%= link_to review_like_path(review), id: "like-btn-for-review-#{review.id}", data: { turbo_method: :post } do %>
+  <i class="fa-regular fa-heart"></i>
+<% end %>
