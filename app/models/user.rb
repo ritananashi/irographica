@@ -22,4 +22,16 @@ class User < ApplicationRecord
   def to_param
     account
   end
+
+  def bookmark(review)
+    bookmark_reviews << review
+  end
+
+  def unbookmark(review)
+    bookmark_reviews.destroy(review)
+  end
+
+  def bookmarked_by?(review)
+    bookmark_reviews.exists?(review_id: review.id)
+  end
 end
