@@ -32,6 +32,6 @@ class User < ApplicationRecord
   end
 
   def bookmarked_by?(review)
-    bookmark_reviews.exists?(review_id: review.id)
+    bookmark_reviews.include?(review)
   end
 end
