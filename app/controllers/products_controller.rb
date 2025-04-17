@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    @q = params[:q]
-    @products = Product.ransack(name_or_brand_name_cont: @q).result(distinct: true).order(:created_at, :id)
+    if params[:q].blank?
+      @q = params[:q]
+    else
+      @q = params[:q].split(/[\s　]/)
+    end
+    @products = Product.ransack(name_or_brand_name_cont_all: @q).result(distinct: true).order(:created_at, :id)
   end
 
   def show
@@ -37,9 +41,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @q = params[:q]
+    @q = params[:q].split(/[\s　]/)
     @c = params[:c]
-    @products = Product.ransack(name_or_brand_name_cont: @q, category_id_eq: @c).result(distinct: true).
+    @products = Product.ransack(name_or_brand_name_cont_all: @q, category_id_eq: @c).result(distinct: true).
                 includes(:brand).order(:created_at, :id)
   end
 
