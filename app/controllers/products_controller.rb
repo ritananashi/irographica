@@ -41,9 +41,13 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @q = params[:q].split(/[\s　]/)
+    if params[:q].blank?
+      @q = params[:q]
+    else
+      @q = params[:q].split(/[\s　]/)
+    end
     @c = params[:c]
-    @products = Product.ransack(name_or_brand_name_cont_all: @q, category_id_eq: @c).result(distinct: true).
+    @products = Product.ransack(name_or_brand_name_cont_any: @q, category_id_eq: @c).result(distinct: true).
                 includes(:brand).order(:created_at, :id)
   end
 

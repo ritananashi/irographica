@@ -67,10 +67,14 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @q = params[:q].split(/[\s　]/)
+    if params[:q].blank?
+      @q = params[:q]
+    else
+      @q = params[:q].split(/[\s　]/)
+    end
     @c = params[:c]
-    @reviews = Review.ransack(title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name_cont_all: @q, product_category_id_eq: @c).
-                result(distinct: true).includes(:user, product: :brand).order(:created_at, :id)
+    @reviews = Review.ransack(title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name_cont_any: @q, product_category_id_eq: @c).
+                result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC")
   end
 
   private
