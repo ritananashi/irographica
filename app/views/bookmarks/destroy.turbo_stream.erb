@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "unbookmark-btn-for-review-#{@review.id}" do %>
+  <%= render 'reviews/bookmark', review: @review %>
+<% end %>
