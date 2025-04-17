@@ -1,20 +1,13 @@
 <div class="flex flex-col items-center justify-center">
   <% if user_signed_in? %>
     <% if review.liked_by?(current_user) %>
-      <%= link_to review_like_path(review), data: { turbo_method: :delete } do %>
-        <i class="fa-solid fa-heart"></i>
-      <% end %>
-      <p class="text-xs -mt-1"><%= review.likes.count %></p>
+      <%= render "reviews/unlike", {review: review} %>
     <% else %>
-      <%= link_to review_like_path(review), data: { turbo_method: :post } do %>
-        <i class="fa-regular fa-heart"></i>
-      <% end %>
-      <p class="text-xs -mt-1"><%= review.likes.count %></p>
+      <%= render "reviews/like", {review: review} %>
     <% end %>
+    <%= render "reviews/like_count", {review: review} %>
   <% else %>
-    <%= link_to review_like_path(review), data: { turbo_method: :post } do %>
-        <i class="fa-regular fa-heart"></i>
-    <% end %>
-    <p class="text-xs -mt-1"><%= review.likes.count %></p>
+    <%= render "reviews/like", {review: review} %>
+    <%= render "reviews/like_count", {review: review} %>
   <% end %>
 </div>
