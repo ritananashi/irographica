@@ -5,8 +5,8 @@
       <%= render "profile_tab" %>
     </div>
     <div class="flex flex-wrap justify-center items-center p-5 gap-5">
-      <% if @reviews.present? %>
-        <%= render partial: 'reviews/review', collection: @reviews %>
+      <% if @bookmark_reviews.present? %>
+        <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
       <% else %>
         <div><%= t('users.show.review_not_found') %></div>
       <% end %>
