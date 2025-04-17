@@ -5,7 +5,7 @@
         class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("bookmarks") ? "not_active_tabs" : "active_tabs"}" %>
     </li>
     <li>
-      <%= link_to "ブックマーク", bookmarks_user_path(@user),
+      <%= link_to t('users.show.current_user_bookmarks'), bookmarks_user_path(@user),
         class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("bookmarks") ? "active_tabs" : "not_active_tabs"}", "aria-current": "page" %>
     </li>
   </ul>

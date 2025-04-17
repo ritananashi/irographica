@@ -8,7 +8,7 @@
       <% if @bookmark_reviews.present? %>
         <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
       <% else %>
-        <div><%= t('users.show.review_not_found') %></div>
+        <div><%= t('users.show.bookmark_not_found') %></div>
       <% end %>
     </div>
   </div>
