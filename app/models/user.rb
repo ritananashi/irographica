@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_reviews, through: :bookmarks, source: :review
   has_one_attached :avatar
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 10 }
@@ -19,5 +21,17 @@ class User < ApplicationRecord
 
   def to_param
     account
+  end
+
+  def bookmark(review)
+    bookmark_reviews << review
+  end
+
+  def unbookmark(review)
+    bookmark_reviews.destroy(review)
+  end
+
+  def bookmarked_by?(review)
+    bookmark_reviews.include?(review)
   end
 end

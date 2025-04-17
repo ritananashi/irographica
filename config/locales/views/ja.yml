@@ -45,8 +45,10 @@ ja:
     show:
       title: プロフィール
       edit_profile: プロフィールを編集
-      current_user_reviews: 投稿一覧
+      current_user_reviews: コレクション
+      current_user_bookmarks: ブックマーク
       review_not_found: 投稿がありません
+      bookmark_not_found: ブックマークがありません
     edit:
       title: プロフィール編集
       body_length: 500文字以内

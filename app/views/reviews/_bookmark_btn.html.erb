@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <% if current_user.bookmarked_by?(review) %>
+      <%= render "reviews/unbookmark", {review: review} %>
+    <% else %>
+      <%= render "reviews/bookmark", {review: review} %>
+    <% end %>
+  <% else %>
+    <%= render "reviews/bookmark", {review: review} %>
+  <% end %>

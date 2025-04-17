@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
+    get :bookmarks, on: :member
   end
 
   resources :products, only: %i[index show new create] do
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     resource :like, only: %i[create destroy]
     get :search, on: :collection
   end
+  resources :bookmarks, only: %i[create destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  root "static#home"
   get '/users/:account', to: 'users#show'
+  get '/users/:account/bookmarks', to: 'users#bookmarks'
+  root "static#home"
 end
