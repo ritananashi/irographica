@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
       @q = params[:q].split(/[\s　]/)
       @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
     end
-    logger.debug "#{@grouping_word}"
     @products = Product.ransack({ combinator: "and", groupings: @grouping_word }).
                 result(distinct: true).includes(:brand).order(created_at: "DESC")
   end
