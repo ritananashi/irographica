@@ -13,6 +13,8 @@ class Review < ApplicationRecord
                       limit: { max: 4 },
                       content_type: { in: ['image/png', 'image/jpeg', 'image/webp'], spoofing_protection: true }
 
+  ransack_alias :review_search, :title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name
+
   def self.ransackable_attributes(auth_object = nil)
     ["body", "product_id", "title", "paper", "pen"]
   end

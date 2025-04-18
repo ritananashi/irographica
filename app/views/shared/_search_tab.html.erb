@@ -1,13 +1,25 @@
 
 <p class="text-center">
   <% if @q.present? && @c.present? %>
-    <%= Category.find(@c).color %><%= t('search.product')%> <%= @q %>
+    <%= Category.find(@c).color %><%= t('search.product')%>
+    <% @q.each do |word| %>
+      <%= word %>
+    <% end %>
   <% elsif @q.present? %>
-    <%= @q %>
+    <% @q.each do |word| %>
+      <%= word %>
+    <% end %>
   <% elsif @c.present? %>
     <%= Category.find(@c).color %><%= t('search.product')%>
   <% end %>
   <%= t('search.result')%>
+</p>
+<p class="text-center">
+  <% if request.path.include?("reviews") %>
+    <%= @reviews.count %>件
+  <% else %>
+    <%= @products.count %>件
+  <% end %>
 </p>
 <div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 w-1/2 mx-auto mb-5">
   <ul class="flex flex-wrap justify-center items-center -mb-px">
