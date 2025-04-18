@@ -2,10 +2,14 @@ class ProductsController < ApplicationController
   def index
     if params[:q].blank?
       @q = params[:q]
+      @grouping_word = @q
     else
       @q = params[:q].split(/[\s　]/)
+      @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
     end
-    @products = Product.ransack(name_or_brand_name_cont_all: @q).result(distinct: true).order(:created_at, :id)
+    logger.debug "#{@grouping_word}"
+    @products = Product.ransack({ combinator: "and", groupings: @grouping_word }).
+                result(distinct: true).includes(:brand).order(created_at: "DESC")
   end
 
   def show
@@ -47,8 +51,10 @@ class ProductsController < ApplicationController
       @q = params[:q].split(/[\s　]/)
     end
     @c = params[:c]
-    @products = Product.ransack(name_or_brand_name_cont_any: @q, category_id_eq: @c).result(distinct: true).
-                includes(:brand).order(:created_at, :id)
+    @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
+    @grouping_word["Category_refine"] = { category_id_eq: @c }
+    @products = Product.ransack({ combinator: "and", groupings: @grouping_word }).
+                result(distinct: true).includes(:brand).order(created_at: "DESC")
   end
 
   private
