@@ -73,7 +73,9 @@ class ReviewsController < ApplicationController
       @q = params[:q].split(/[\s　]/)
     end
     @c = params[:c]
-    @reviews = Review.ransack(title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name_cont_any: @q, product_category_id_eq: @c).
+    @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { review_search_cont: word })}
+    @grouping_word["Category_refine"] = { product_category_id_eq: @c }
+    @reviews = Review.ransack({ combinator: "and", groupings: @grouping_word }).
                 result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC")
   end
 
