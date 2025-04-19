@@ -71,3 +71,5 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'active_hash'
 
 gem 'ransack'
+
+gem 'csv'
