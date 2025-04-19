@@ -69,11 +69,12 @@ class ReviewsController < ApplicationController
   def search
     if params[:q].blank?
       @q = params[:q]
+      @grouping_word = {"0"=>{review_search_cont: @q}}
     else
       @q = params[:q].split(/[\s　]/)
+      @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { review_search_cont: word })}
     end
     @c = params[:c]
-    @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { review_search_cont: word })}
     @grouping_word["Category_refine"] = { product_category_id_eq: @c }
     @reviews = Review.ransack({ combinator: "and", groupings: @grouping_word }).
                 result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC")
