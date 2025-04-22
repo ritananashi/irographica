@@ -6,7 +6,19 @@ module.exports = {
     './app/views/**/*.{erb,html}'
   ],
   theme: {
-    extend: {
+    extend: {},
+    fontFamily: {
+      body: [
+        'Hiragino Sans',
+        'ヒラギノ角ゴシック',
+        'メイリオ',
+        'Meiryo',
+        'MS Ｐゴシック',
+        'MS PGothic',
+        'sans-serif',
+        'YuGothic',
+        'Yu Gothic',
+      ]
     },
   },
   daisyui: {
