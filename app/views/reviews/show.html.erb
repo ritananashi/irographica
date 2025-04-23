@@ -25,7 +25,7 @@
           </div>
         <% end %>
         <div class="mt-5 mx-auto">
-          <%= link_to "https://twitter.com/share?url=#{post_review_url(@review)}&text=#{@review.product.brand.name}%20#{@review.product.name}をレビュー！%0a%0a%23インク沼%20%23INKLOG%0a", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[350px]", target: :_blank, rel: "noopener noreferrer nofollow" do %>
+          <%= link_to "https://twitter.com/share?url=#{post_review_url(@review)}&text=【#{review.title}】%0a#{@review.product.brand.name}%20#{@review.product.name}レビューをシェア%0a%0a%23インク沼%20%23iroGraphica%0a", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[350px]", target: :_blank, rel: "noopener noreferrer nofollow" do %>
             <i class="fa-brands fa-x-twitter text-[24px]"></i></i><span class="text-[20px]">でシェア</span>
           <% end %>
         </div>
