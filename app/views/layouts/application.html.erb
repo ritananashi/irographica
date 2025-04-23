@@ -21,12 +21,12 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body class="body-font">
     <div class="flex flex-col h-screen">
       <header class="sticky top-0 z-40">
         <%= render 'layouts/header' %>
       </header>
-      <main class="flex-grow text-[#333333] body-font">
+      <main class="flex-grow text-[#333333]">
         <%= render 'shared/flash_message' %>
         <%= yield %>
       </main>
