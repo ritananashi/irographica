@@ -3,4 +3,6 @@ class StaticController < ApplicationController
     @reviews = Review.includes(:user, :product).order(created_at: "DESC").all
     @category = Category.all
   end
+
+  def contact; end
 end
