@@ -1,5 +1,5 @@
 <%= form_with url: url, method: :get, local: true do |f| %>
-  <div class="flex">
+  <div class="flex gap-1">
     <%= f.text_field :q, class: 'form-control input input-bordered w-full max-w-xs', placeholder: "キーワードで検索" %>
     <%= f.submit t('search.submit'), class: 'btn btn-primary' %>
   </div>

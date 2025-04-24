@@ -1,10 +1,7 @@
 <div class="navbar bg-base-100 border-b border-primary h-[70px]">
   <div class="navbar-start">
     <%= link_to '/', class: "text-lg" do %>
-      iro<span class="text-[#9CACDC]">G</span>raphica
-      <!-- ロゴ作成後再使用
-      <%= image_tag 'logo_default3.png', class: 'h-[50px] w-[184px] object-contain' %>
-      <-->
+      <%= image_tag 'header_logo.png', class: 'h-[50px] w-[200px] object-cover' %>
     <% end %>
   </div>
   <div class="navbar-center">
@@ -19,8 +16,8 @@
             <span><%= t('header.post') %></span>
           <% end %>
         </li>
-        <details class="dropdown dropdown-end">
-          <summary class="btn btn-ghost m-1">
+        <details class="dropdown dropdown-end ">
+          <summary class="inline-flex items-center justify-center gap-2 m-5 cursor-pointer">
             <div class="avatar">
               <div class="w-12 rounded-full border-[2px] border-gray-200">
                 <% if current_user.avatar.attached? %>

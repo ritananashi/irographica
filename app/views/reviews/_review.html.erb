@@ -12,7 +12,7 @@
     <% end %>
     <div class="card-actions justify-end mt-1">
       <div class="flex gap-2">
-        <%= link_to "https://twitter.com/share?url=#{post_review_url(review)}&text=#{review.product.brand.name}%20#{review.product.name}をレビュー！%0a%0a%23インク沼%20%23INKLOG%0a", title: "Xでシェア" do %>
+        <%= link_to "https://twitter.com/share?url=#{post_review_url(review)}&text=【#{review.title}】%0a#{review.product.brand.name}%20#{review.product.name}のレビューをシェア%0a%0a%23インク沼%20%23iroGraphica%0a", title: "Xでシェア", target: :_blank, rel: "noopener noreferrer nofollow" do %>
           <i class="fa-brands fa-square-x-twitter text-[22px]"></i>
         <% end %>
         <%= render "reviews/bookmark_btn", review: review %>
