@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/users/:account', to: 'users#show'
   get '/users/:account/bookmarks', to: 'users#bookmarks'
+  get '/contact/', to: 'static#contact'
   root "static#home"
 end
