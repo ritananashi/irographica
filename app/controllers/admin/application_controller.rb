@@ -10,7 +10,7 @@ module Admin
 
     def authenticate_admin
       # TODO Add authentication logic here.
-      authenticate_user! unless user_signed_in?
+      authenticate_user!
       redirect_to root_path, alert: "権限がありません。" unless current_user&.admin?
     end
 
