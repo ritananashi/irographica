@@ -1,9 +1,12 @@
 <nav class="grid-flow-col gap-4">
-  <%= link_to 'お問い合わせ', contact_path %>
+  <%= link_to "お問い合わせ", contact_path %>
   <!-- ページ作成後使用
   <%= link_to '利用規約', '#' %>
   <%= link_to 'プライバシーポリシー', '#' %>
   -->
+  <% if current_user&.admin? %>
+    <%= link_to "管理", admin_root_path %>
+  <% end %>
 </nav>
 
 <aside class="grid-flow-col items-center justify-self-end">

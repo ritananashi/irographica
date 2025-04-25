@@ -16,6 +16,17 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
+
+  namespace :admin do
+    resources :bookmarks
+    resources :brands
+    resources :likes
+    resources :products
+    resources :reviews
+    resources :users
+
+    root to: "reviews#index"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

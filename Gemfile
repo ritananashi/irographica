@@ -73,3 +73,6 @@ gem 'active_hash'
 gem 'ransack'
 
 gem 'csv'
+
+gem "administrate"
+gem "administrate-field-active_storage"

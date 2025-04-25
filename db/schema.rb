@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_17_054736) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_25_070142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,6 +109,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_17_054736) do
     t.string "x_account"
     t.string "instagram_account"
     t.string "youtube_account"
+    t.boolean "admin", default: false
     t.index ["account"], name: "index_users_on_account", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
