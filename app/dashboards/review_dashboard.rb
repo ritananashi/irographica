@@ -11,8 +11,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id: Field::Number,
     body: Field::String,
     bookmarks: Field::HasMany,
-    images_attachments: Field::HasMany,
-    images_blobs: Field::HasMany,
+    images: Field::ActiveStorage,
     likes: Field::HasMany,
     paper: Field::String,
     pen: Field::String,
@@ -32,7 +31,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id
     body
     bookmarks
-    images_attachments
+    images
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,8 +40,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id
     body
     bookmarks
-    images_attachments
-    images_blobs
+    images
     likes
     paper
     pen
@@ -59,8 +57,7 @@ class ReviewDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     body
     bookmarks
-    images_attachments
-    images_blobs
+    images
     likes
     paper
     pen
@@ -87,4 +84,7 @@ class ReviewDashboard < Administrate::BaseDashboard
   # def display_resource(review)
   #   "Review ##{review.id}"
   # end
+  def permitted_attributes(_action = nil)
+    super + [:images => []]
+  end
 end
