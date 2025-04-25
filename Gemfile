@@ -73,3 +73,5 @@ gem 'active_hash'
 gem 'ransack'
 
 gem 'csv'
+
+gem "administrate"
