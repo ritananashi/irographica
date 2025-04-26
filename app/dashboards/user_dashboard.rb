@@ -12,7 +12,7 @@ class UserDashboard < Administrate::BaseDashboard
     account: Field::String,
     avatar: Field::ActiveStorage.with_options(
       destroy_url: proc do |namespace, resource, attachment|
-        [:avatar_admin_user, { id: resource.id, attachment_id: attachment.id }]
+        [:avatar_admin_user, { id: resource.account, attachment_id: attachment.id }]
       end
     ),
     body: Field::String,
