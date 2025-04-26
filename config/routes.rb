@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :likes
     resources :products
     resources :reviews
-    resources :users
+    resources :users do
+      delete :avatar, on: :member, action: :destroy_avatar
+    end
 
     root to: "reviews#index"
   end

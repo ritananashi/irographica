@@ -25,6 +25,15 @@ module Admin
       resource_class.with_attached_avatar
     end
 
+    # For illustrative purposes only.
+    #
+    # **SECURITY NOTICE**: first verify whether current user is authorized to perform the action.
+    def destroy_avatar
+      avatar = requested_resource.avatar
+      avatar.purge
+      redirect_back(fallback_location: requested_resource)
+    end
+
     # Override `resource_params` if you want to transform the submitted
     # data before it's persisted. For example, the following would turn all
     # empty values into nil values. It uses other APIs such as `resource_class`

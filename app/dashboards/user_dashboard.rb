@@ -10,7 +10,11 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     account: Field::String,
-    avatar: Field::ActiveStorage,
+    avatar: Field::ActiveStorage.with_options(
+      destroy_url: proc do |namespace, resource, attachment|
+        [:avatar_admin_user, { id: resource.id, attachment_id: attachment.id }]
+      end
+    ),
     body: Field::String,
     bookmark_reviews: Field::HasMany,
     bookmarks: Field::HasMany,
