@@ -1,14 +1,35 @@
 module Admin
   class UsersController < Admin::ApplicationController
+    def create
+      resource = new_resource(resource_params)
+      authorize_resource(resource)
+      resource.password = params[:user][:password]
+
+      if params[:user][:avatar].present?
+        process_and_resize_avatar
+        resource.avatar.attach(io: @process_avatar, filename: "#{@filename_base}.webp", content_type: "image/webp")
+      end
+
+      if resource.save
+        yield(resource) if block_given?
+        redirect_to(
+          after_resource_created_path(resource),
+          notice: translate_with_resource("create.success")
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource)
+        }, status: :unprocessable_entity
+      end
+    end
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
     def update
       super
       if params[:user][:avatar].present?
-        process_avatar = ImageProcessing::MiniMagick.source(params[:user][:avatar].tempfile).resize_to_fit(300, 300).convert("webp").call
-        filename_base = File.basename(params[:user][:avatar].original_filename, ".*")
-        requested_resource.avatar.attach(io: process_avatar, filename: "#{filename_base}.webp", content_type: "image/webp")
+        process_and_resize_avatar
+        requested_resource.avatar.attach(io: @process_avatar, filename: "#{@filename_base}.webp", content_type: "image/webp")
       end
     end
 
@@ -51,5 +72,12 @@ module Admin
 
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
+
+    private
+
+    def process_and_resize_avatar
+      @process_avatar = ImageProcessing::MiniMagick.source(params[:user][:avatar].tempfile).resize_to_fit(300, 300).convert("webp").call
+      @filename_base = File.basename(params[:user][:avatar].original_filename, ".*")
+    end
   end
 end
