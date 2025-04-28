@@ -10,7 +10,11 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     account: Field::String,
-    avatar: Field::ActiveStorage,
+    avatar: Field::ActiveStorage.with_options(
+      destroy_url: proc do |namespace, resource, attachment|
+        [:avatar_admin_user, { id: resource.account, attachment_id: attachment.id }]
+      end
+    ),
     body: Field::String,
     bookmark_reviews: Field::HasMany,
     bookmarks: Field::HasMany,
@@ -25,6 +29,7 @@ class UserDashboard < Administrate::BaseDashboard
     reviews: Field::HasMany,
     x_account: Field::String,
     youtube_account: Field::String,
+    admin: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -37,7 +42,9 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     account
+    name
     avatar
+    admin
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,21 +52,21 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     account
+    name
+    email
+    admin
     avatar
     body
+    instagram_account
+    x_account
+    youtube_account
+    likes
     bookmark_reviews
     bookmarks
-    email
-    encrypted_password
-    instagram_account
-    likes
-    name
     remember_created_at
     reset_password_sent_at
     reset_password_token
     reviews
-    x_account
-    youtube_account
     created_at
     updated_at
   ].freeze
@@ -69,21 +76,18 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     account
+    name
+    email
+    admin
     avatar
     body
-    bookmark_reviews
-    bookmarks
-    email
-    encrypted_password
     instagram_account
-    likes
-    name
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
-    reviews
     x_account
     youtube_account
+    reviews
+    likes
+    bookmark_reviews
+    bookmarks
   ].freeze
 
   # COLLECTION_FILTERS
@@ -101,7 +105,7 @@ class UserDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    "#{user.name}"
+  end
 end
