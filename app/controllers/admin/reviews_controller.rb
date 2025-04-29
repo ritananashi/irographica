@@ -76,6 +76,14 @@ module Admin
 
     private
 
+    def default_sorting_attribute
+      :id
+    end
+
+    def default_sorting_direction
+      :desc
+    end
+
     def process_images(params)
       if params[:images].present?
         params[:images].each do |image|
