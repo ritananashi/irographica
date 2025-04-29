@@ -11,7 +11,14 @@ class ReviewDashboard < Administrate::BaseDashboard
     id: Field::Number,
     body: Field::String,
     bookmarks: Field::HasMany,
-    images: Field::ActiveStorage,
+    images: Field::ActiveStorage.with_options(
+      index_preview_size: [80, 80],
+      show_preview_size: [350, 350],
+      file_field_options: { include_hidden: false },
+      destroy_url: proc do |namespace, resource, attachment|
+        [:images_admin_review, { attachment_id: attachment.id }]
+      end
+    ),
     likes: Field::HasMany,
     paper: Field::String,
     pen: Field::String,
@@ -30,23 +37,23 @@ class ReviewDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     body
-    bookmarks
     images
+    product
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    user
+    title
     body
-    bookmarks
-    images
-    likes
+    product
     paper
     pen
-    product
-    title
-    user
+    images
+    likes
+    bookmarks
     created_at
     updated_at
   ].freeze
@@ -55,15 +62,13 @@ class ReviewDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    title
     body
-    bookmarks
+    user
+    product
     images
-    likes
     paper
     pen
-    product
-    title
-    user
   ].freeze
 
   # COLLECTION_FILTERS
