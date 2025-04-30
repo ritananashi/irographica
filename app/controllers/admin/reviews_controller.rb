@@ -33,6 +33,16 @@ module Admin
       end
     end
 
+    def destroy
+      if requested_resource.destroy
+        requested_resource.images.purge_later if requested_resource.images.attached?
+        flash[:notice] = translate_with_resource("destroy.success")
+      else
+        flash[:error] = requested_resource.errors.full_messages.join("<br/>")
+      end
+      redirect_to after_resource_destroyed_path(requested_resource), status: :see_other
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
