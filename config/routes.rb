@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     resources :brands
     resources :likes
     resources :products
-    resources :reviews
+    resources :reviews do
+      delete :images, on: :member, action: :destroy_image
+    end
     resources :users do
       delete :avatar, on: :member, action: :destroy_avatar
     end
