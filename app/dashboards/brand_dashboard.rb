@@ -25,8 +25,8 @@ class BrandDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    official_shopping_url
     official_url
+    official_shopping_url
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,8 +34,8 @@ class BrandDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    official_shopping_url
     official_url
+    official_shopping_url
     products
     created_at
     updated_at
@@ -46,9 +46,8 @@ class BrandDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
-    official_shopping_url
     official_url
-    products
+    official_shopping_url
   ].freeze
 
   # COLLECTION_FILTERS
