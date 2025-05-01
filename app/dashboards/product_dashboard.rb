@@ -12,7 +12,7 @@ class ProductDashboard < Administrate::BaseDashboard
     name: Field::String,
     brand: Field::BelongsTo,
     category_id: Field::Select.with_options(
-      collection: Category.all.collect { |c| [ "#{c.color}", c.id ] },
+      collection: Category.all.collect { |c| [ c.color, c.id ] },
       include_blank: true,
     ),
     reviews: Field::HasMany,
