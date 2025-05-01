@@ -14,9 +14,6 @@ class ProductDashboard < Administrate::BaseDashboard
     category_id: Field::Select.with_options(
       collection: Category.all.collect { |c| [ "#{c.color}", c.id ] },
       include_blank: true,
-      getter: -> (field) {
-        field.resource.color
-      }
     ),
     reviews: Field::HasMany,
     created_at: Field::DateTime,
