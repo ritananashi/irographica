@@ -21,15 +21,15 @@
     <%= @products.count %>件
   <% end %>
 </p>
-<div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 w-1/2 mx-auto mb-5">
+<div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sm:w-1/2 mx-auto mb-5">
   <ul class="flex flex-wrap justify-center items-center -mb-px">
     <li>
       <%= link_to t('search.product'), search_products_path(q: params[:q], c: params[:c]),
-        class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("products") ? "active_tabs" : "not_active_tabs"}" %>
+        class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg #{request.path.include?("products") ? "active_tabs" : "not_active_tabs"}" %>
     </li>
     <li>
       <%= link_to t('search.review'), search_reviews_path(q: params[:q], c: params[:c]),
-        class: "inline-block p-4 border-b-2 text-[32px] rounded-t-lg #{request.path.include?("reviews") ? "active_tabs" : "not_active_tabs"}", "aria-current": "page" %>
+        class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg #{request.path.include?("reviews") ? "active_tabs" : "not_active_tabs"}", "aria-current": "page" %>
     </li>
   </ul>
 </div>

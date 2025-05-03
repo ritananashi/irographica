@@ -1,16 +1,16 @@
-<div class="card card-side m-4 shadow" id="review-<%= review.id %>">
-  <div class="px-4 py-4 relative">
+<div class="card sm:card-side m-4 shadow" id="review-<%= review.id %>">
+  <div class="px-10 sm:px-4 py-4 sm:relative">
     <% if review.images.attached? %>
       <%= image_tag review.images[0], class: "h-[170px] w-[170px] rounded-lg" %>
     <% else %>
-      <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg object-cover" %>
+      <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg object-fit" %>
     <% end %>
     <% if review.images.count > 1 %>
-      <div class=" bg-black bg-opacity-50 absolute top-4 right-4 rounded-tr-lg rounded-bl-lg px-2">
+      <div class=" bg-black bg-opacity-50 absolute top-4 right-10 sm:right-4 rounded-tr-lg rounded-bl-lg px-2">
         <p class="text-white"><i class="fa-solid fa-images"></i> <%= review.images.count %></p>
       </div>
     <% end %>
-    <div class="card-actions justify-end mt-1">
+    <div class="card-actions sm:justify-end mt-1">
       <div class="flex gap-2">
         <%= link_to "https://twitter.com/share?url=#{post_review_url(review)}&text=【#{review.title}】%0a#{review.product.brand.name}%20#{review.product.name}のレビューをシェア%0a%0a%23インク沼%20%23iroGraphica%0a", title: "Xでシェア", target: :_blank, rel: "noopener noreferrer nofollow" do %>
           <i class="fa-brands fa-square-x-twitter text-[22px]"></i>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="card-body gap-0 flex-shrink-0 w-[340px] p-4">
+  <div class="card-body gap-0 flex-shrink-0 w-[250px] sm:w-[340px] p-4">
     <div class="card-title overflow-hidden mb-1 justify-between">
       <span class="w-3/4 text-[24px] font-bold text-ellipsis line-clamp-1"><%= review.title %></span>
       <% if review.user.avatar.attached? %>
