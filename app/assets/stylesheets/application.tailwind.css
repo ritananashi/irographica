@@ -25,8 +25,18 @@ dialog.slideover[open] {
   animation: slide-in-from-left 250ms forwards ease;
 }
 
+dialog.slideover-search[open] {
+  animation: slide-in-from-top 250ms forwards ease;
+}
+
 @keyframes slide-in-from-left{
   from {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-from-top{
+  from {
+    transform: translateY(-100%);
   }
 }
