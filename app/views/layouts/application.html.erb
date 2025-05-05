@@ -24,10 +24,12 @@
 
   <body class="body-font">
     <div class="flex flex-col h-screen">
-      <header class="sticky top-0 z-40">
-        <%= render 'layouts/mobile_header' %>
-        <%= render 'layouts/header' %>
-      </header>
+      <% if @show_header %>
+        <header class="sticky top-0 z-40">
+          <%= render 'layouts/mobile_header' %>
+          <%= render 'layouts/header' %>
+        </header>
+      <% end %>
       <main class="flex-grow text-[#333333]">
         <%= render 'shared/flash_message' %>
         <%= yield %>
