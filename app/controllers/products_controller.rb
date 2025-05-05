@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :hide_header, only: :autocomplete
   def index
     if params[:q].blank?
       @q = params[:q]
@@ -68,9 +67,5 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :brand_id, :category_id)
-  end
-
-  def hide_header
-    @show_header = false
   end
 end
