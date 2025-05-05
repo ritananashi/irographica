@@ -1,7 +1,7 @@
 <%= form_with url: url, method: :get, local: true do |f| %>
   <div class='flex gap-1'>
     <%= f.collection_select(:c, Category.all, :id, :color, {include_blank: t('category.select.include_blank')}, {class: 'select select-bordered w-40 max-w-xs'}) %>
-    <div data-controller="autocomplete" data-autocomplete-url-value="<%= autocomplete_products_path %>" role="combobox">
+    <div data-controller="autocomplete" data-autocomplete-min-length-value="3" data-autocomplete-url-value="<%= autocomplete_products_path %>" role="combobox">
       <%= f.text_field :q, class: 'form-control input input-bordered w-full max-w-xs', data: { autocomplete_target: 'input' }, placeholder: 'キーワードで検索' %>
       <%= f.hidden_field :id, data: { autocomplete_target: 'hidden' } %>
       <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
