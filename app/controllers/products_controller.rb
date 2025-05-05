@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
     @q = params[:q]
     @products = Product.ransack(name_cont: @q).result(distinct: true)
     @brands = Brand.ransack(name_cont: @q).result(distinct: true)
+    render layout: "main_only"
   end
 
   private
