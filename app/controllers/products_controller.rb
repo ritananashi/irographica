@@ -57,6 +57,12 @@ class ProductsController < ApplicationController
                 result(distinct: true).includes(:brand).order(created_at: "DESC")
   end
 
+  def autocomplete
+    @q = params[:q]
+    @products = Product.ransack(name_cont: @q).result(distinct: true)
+    @brands = Brand.ransack(name_cont: @q).result(distinct: true)
+  end
+
   private
 
   def product_params

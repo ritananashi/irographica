@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: %i[index show new create] do
-    get :search, on: :collection
+    collection do
+      get :search
+      get :autocomplete
+    end
   end
   resources :reviews, only: %i[index show new create edit update destroy] do
     resources :attachments, controller: "review/attachments", only: :destroy
