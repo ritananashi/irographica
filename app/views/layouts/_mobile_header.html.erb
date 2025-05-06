@@ -67,7 +67,7 @@
     </div>
     <div class="navbar-end">
       <div data-controller="slideover">
-        <dialog data-slideover-target="dialog"  data-action="click->slideover#backdropClose" class="slideover-search w-full max-w-full m-0 h-[140px] p-4 backdrop:bg-black/30">
+        <dialog data-slideover-target="dialog"  data-action="click->slideover#backdropClose" class="slideover-search overflow-visible w-full max-w-full m-0 h-[140px] p-4 backdrop:bg-black/30">
           <div class="mt-6">
             <%= render 'shared/search_form', url: search_reviews_path %>
           </div>
