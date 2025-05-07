@@ -58,9 +58,21 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    @q = params[:q]
-    @products = Product.ransack(name_cont: @q).result(distinct: true)
-    @brands = Brand.ransack(name_cont: @q).result(distinct: true)
+    case
+    # 検索フォーム用
+    when params[:q]
+      @q = params[:q]
+      @products = Product.ransack(name_cont: @q).result(distinct: true)
+      @brands = Brand.ransack(name_cont: @q).result(distinct: true)
+    # インクのみ検索（投稿フォーム入力欄＆インク登録欄）
+    when params[:product_name]
+      @q = params[:product_name]
+      @products = Product.ransack(name_cont: @q).result(distinct: true)
+    # メーカー名のみ検索（インク登録欄）
+    when params[:brand_name]
+      @q = params[:brand_name]
+      @brands = Brand.ransack(name_cont: @q).result(distinct: true)
+    end
     render layout: "main_only"
   end
 
