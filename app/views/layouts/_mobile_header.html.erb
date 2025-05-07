@@ -20,7 +20,7 @@
                 </div>
                 <%= current_user.name %>
               </div>
-                <%= link_to new_review_path, class: "btn btn-wide btn-secondary", data: { action: "slideover#close" } do %>
+                <%= link_to new_review_path, class: "btn btn-wide btn-secondary", autofocus: true, data: { action: "slideover#close" } do %>
                   <i class="fa-solid fa-pen-to-square"></i>
                   <span><%= t('header.post') %></span>
                 <% end %>
@@ -28,7 +28,7 @@
                 <%= link_to t('header.notification'), "#", data: { action: "slideover#close" } %>
                 <%= link_to t('header.sign_out'), destroy_user_session_path, data: { turbo_method: :delete, action: "slideover#close" } %>
             <% else %>
-                <%= link_to t('header.sign_in'), user_session_path, class: "btn btn-wide btn-primary", data: { action: "slideover#close" } %>
+                <%= link_to t('header.sign_in'), user_session_path, class: "btn btn-wide btn-primary", autofocus: true, data: { action: "slideover#close" } %>
                 <%= link_to t('header.to_register_page'), new_user_registration_path, class: "btn btn-wide btn-secondary", data: { action: "slideover#close" } %>
             <% end %>
           </div>
