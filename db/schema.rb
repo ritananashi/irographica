@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_25_070142) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_07_111513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_25_070142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_brands_on_name", unique: true
+  end
+
+  create_table "ink_recipes", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.string "name"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_ink_recipes_on_review_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -120,6 +129,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_25_070142) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "reviews"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "ink_recipes", "reviews"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "products", "brands"
