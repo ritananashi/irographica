@@ -68,10 +68,8 @@
     <div class="navbar-end">
       <div data-controller="slideover">
         <dialog data-slideover-target="dialog"  data-action="click->slideover#backdropClose" class="slideover-search overflow-visible w-full max-w-full m-0 h-[140px] p-4 backdrop:bg-black/30">
-          <div class="mt-6">
-            <%= render 'shared/search_form', url: search_reviews_path %>
-          </div>
-          <div class="flex justify-end mt-2">
+          <%= render 'shared/search_form', url: search_reviews_path %>
+          <div class="absolute top-24 right-1">
             <button autofocus data-action="slideover#close" class="btn btn-ghost btn-circle text-sm">✕</button>
           </div>
         </dialog>
