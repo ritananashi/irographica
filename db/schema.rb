@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_07_111513) do
   create_table "ink_recipes", force: :cascade do |t|
     t.bigint "review_id", null: false
     t.string "name"
-    t.integer "amount"
+    t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_ink_recipes_on_review_id"
