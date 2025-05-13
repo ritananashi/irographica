@@ -6,7 +6,7 @@ export default class extends NestedForm {
     super.connect()
   }
 
-  openRecipe(e) {
+  openRecipe() {
     if (this.nameTarget.value.startsWith("オリジナル")) {
       this.recipeTarget.classList.remove("hidden");
     } else {
