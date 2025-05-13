@@ -36,6 +36,9 @@ ja:
     post: 投稿する
     mypage: マイページ
     notification: 通知
+  footer:
+    contact: お問い合わせ
+    admin: 管理
   home:
     see_review: レビューを見る
     copywriting: |
@@ -59,6 +62,9 @@ ja:
     form:
       select_product: インクを選択
       number_of_images: 4枚まで投稿できます
+      add_ink_recipe: 入力フォームを追加する
+      ink_recipe_name: 使用したインク
+      ink_recipe_amount: 配合量
     index:
       title: レビュー一覧
       without_review: レビューがありません
@@ -70,6 +76,7 @@ ja:
     show:
       using_paper: 使った紙：
       using_pen: 使ったペン：
+      ink_recipes: インクレシピ
     edit:
       title: 投稿の編集
       notice: レビューを編集しました
