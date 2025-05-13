@@ -54,6 +54,12 @@
           <% end %>
           <p><%= t('reviews.show.using_paper') %><%= @review.paper %></p>
           <p><%= t('reviews.show.using_pen') %><%= @review.pen %></p>
+          <% if @review.ink_recipes.present? %>
+            <p class="mt-2">インクレシピ</p>
+            <% @review.ink_recipes.each do |ink_recipe| %>
+              <p><%= ink_recipe.name %>：<%= ink_recipe.amount %>ml</p>
+            <% end %>
+          <% end %>
         </div>
         <% if current_user == @review.user %>
           <div class="flex items-center justify-center gap-4">
