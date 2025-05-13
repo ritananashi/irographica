@@ -9,5 +9,8 @@ export default class extends Controller {
   select(e) {
     const button = e.currentTarget
     this.nameTarget.value = button.dataset.name;
+
+    const event = new Event("change");
+    this.nameTarget.dispatchEvent(event);
   }
 }

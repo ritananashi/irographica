@@ -33,13 +33,13 @@
             <% end %>
           </div>
           <div class="flex flex-col justify-center items-center mt-10 gap-2">
-            <%= link_to "お問い合わせ", contact_path, data: { action: "slideover#close" } %>
+            <%= link_to t('footer.contact'), contact_path, data: { action: "slideover#close" } %>
             <!-- ページ作成後使用
             <%= link_to '利用規約', '#' %>
             <%= link_to 'プライバシーポリシー', '#' %>
             -->
             <% if current_user&.admin? %>
-              <%= link_to "管理", admin_root_path, data: { action: "slideover#close" } %>
+              <%= link_to t('footer.admin'), admin_root_path, data: { action: "slideover#close" } %>
             <% end %>
             <p>© 2025 iroGraphica.</p>
           </div>

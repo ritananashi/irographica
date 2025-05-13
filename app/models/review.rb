@@ -4,8 +4,8 @@ class Review < ApplicationRecord
   has_many_attached :images
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_many :ink_recipe, dependent: :destroy
-  accepts_nested_attributes_for :ink_recipe, reject_if: :all_blank, allow_destroy: true
+  has_many :ink_recipes, dependent: :destroy
+  accepts_nested_attributes_for :ink_recipes, reject_if: :all_blank, allow_destroy: true
 
   validates :title, presence: true, length: { maximum: 20 }
   validates :body, presence: true, length: { maximum: 2000 }

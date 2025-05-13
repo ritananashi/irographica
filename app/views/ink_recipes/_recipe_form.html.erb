@@ -1,0 +1,11 @@
+<div class="nested-form-wrapper flex flex-wrap gap-2" data-new-record="<%= f.object.new_record? %>">
+  <div class="w-[180px] sm:w-[320px] md:mb-0">
+    <%= f.text_field :name, class: "input input-bordered form-control mb-2 w-full mx-auto pl-2 text-base", placeholder: t('reviews.form.ink_recipe_name') %>
+  </div>
+  <div class="w-[70px] sm:w-[100px] md:mb-0">
+    <%= f.number_field :amount, step: "0.1", class: "input input-bordered form-control mb-2 w-full mx-auto pl-2 pr-6", placeholder: t('reviews.form.ink_recipe_amount') %>
+  </div>
+  <button type="button" data-action="nested-form#remove"><i class="fa-regular fa-circle-xmark"></i></button>
+
+  <%= f.hidden_field :_destroy %>
+</div>

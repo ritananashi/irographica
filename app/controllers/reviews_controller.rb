@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @review.ink_recipes.build
   end
 
   def create

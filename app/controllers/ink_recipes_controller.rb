@@ -1,0 +1,2 @@
+class InkRecipesController < ApplicationController
+end
