@@ -1,5 +1,5 @@
 <div data-controller="product">
-  <%= form_with(model: review, class: "w-full max-w-lg") do |f| %>
+  <%= form_with(model: review, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }, class: "w-full max-w-lg") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="flex flex-wrap -mx-3 mb-4">
       <div class="w-full px-3">
@@ -41,7 +41,21 @@
         </div>
       </div>
       <div class="w-full px-3">
-        <%= link_to t('reviews.form.select_product'), products_path, class: "btn btn-primary w-full mx-auto", data: { turbo_frame: "remote_modal" } %>
+        <%= link_to t('reviews.form.select_product'), products_path, class: "btn btn-primary w-full mx-auto mb-2", data: { turbo_frame: "remote_modal" } %>
+      </div>
+      <div class="w-full px-3">
+        <template data-nested-form-target="template">
+          <%= f.fields_for :ink_recipes, InkRecipe.new, child_index: 'NEW_RECORD' do |ink_recipe_fields| %>
+            <%= render "ink_recipes/recipe_form", f: ink_recipe_fields %>
+          <% end %>
+        </template>
+
+        <%= f.fields_for :ink_recipes do |ink_recipe_fields| %>
+          <%= render "ink_recipes/recipe_form", f: ink_recipe_fields %>
+        <% end %>
+        <%= f.label "インクレシピ", class: "px-3" %>
+        <div data-nested-form-target="target"></div>
+        <%= button_tag "インクレシピを追加する", data: { action: "nested-form#add" }, type: "button", class: "btn w-full mx-auto" %>
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-4">
