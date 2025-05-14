@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
-    get :bookmarks, on: :member
+    member do
+      get :bookmarks
+      get :following, :followers
+    end
   end
+
+  resources :relationships,       only: [:create, :destroy]
 
   resources :products, only: %i[index show new create] do
     collection do
@@ -47,6 +52,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/users/:account', to: 'users#show'
   get '/users/:account/bookmarks', to: 'users#bookmarks'
+  get '/users/:account/following', to: 'users#following'
+  get '/users/:account/followers', to: 'users#followers'
   get '/contact/', to: 'static#contact'
   root "static#home"
 end
