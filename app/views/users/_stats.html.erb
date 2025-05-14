@@ -1,0 +1,8 @@
+<div class="flex justify-center items-center gap-4 my-2">
+  <%= link_to following_user_path(@user), data: { turbo_frame: "remote_modal" } do %>
+    <%= @user.following.count %>フォロ－
+  <% end %>
+  <%= link_to followers_user_path(@user), data: { turbo_frame: "remote_modal" } do %>
+    <%= @user.followers.count %>フォロワー
+  <% end %>
+</div>

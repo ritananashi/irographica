@@ -19,6 +19,7 @@
     <!-- フォローフォロワー機能実装誤に使用
     <div>0フォロー　0フォロワー</div>
     -->
+    <%= render 'stats' %>
     <p class="whitespace-pre-wrap"><%= @user.body %></p>
     <div class="flex items-center gap-4 mt-6">
       <% if @user.x_account.present? %>
