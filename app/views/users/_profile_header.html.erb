@@ -13,12 +13,14 @@
     <div class="mt-5 mx-auto items-center justify-center hidden sm:block">
       <%= render 'x_share' %>
     </div>
+    <% unless current_user == @user %>
+      <div class="mt-2 mx-auto items-center justify-center hidden sm:block">
+        <%= render 'follow_form', user: @user %>
+      </div>
+    <% end %>
   </div>
   <div class="mx-10 flex flex-col">
     <span class="text-[36px] text-center"><%= @user.name %></span>
-    <!-- フォローフォロワー機能実装誤に使用
-    <div>0フォロー　0フォロワー</div>
-    -->
     <%= render 'stats' %>
     <p class="whitespace-pre-wrap"><%= @user.body %></p>
     <div class="flex items-center gap-4 mt-6">
@@ -41,5 +43,10 @@
     <div class="mt-5 mx-auto items-center justify-center sm:hidden">
       <%= render 'x_share' %>
     </div>
+    <% unless current_user == @user %>
+      <div class="mt-2 mx-auto items-center justify-center sm:hidden">
+        <%= render 'follow_form', user: @user %>
+      </div>
+    <% end %>
   </div>
 </div>
