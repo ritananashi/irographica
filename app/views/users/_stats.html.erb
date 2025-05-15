@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center gap-4 my-2">
+<div class="flex justify-center items-center gap-4 my-2" id="follow-count-<%= @user.id %>">
   <%= link_to following_user_path(@user), data: { turbo_frame: "remote_modal" } do %>
     <%= @user.following.count %>フォロ－
   <% end %>
