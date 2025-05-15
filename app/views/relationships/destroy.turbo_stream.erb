@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "unfollow-btn-for-user-#{@user.id}" do %>
+  <%= render 'users/follow', user: @user %>
+<% end %>
+<%= turbo_stream.replace "follow-count-#{@user.id}" do %>
+  <%= render 'users/stats', user: @user %>
+<% end %>

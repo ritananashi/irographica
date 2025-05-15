@@ -1,0 +1,11 @@
+<div class="flex justify-between border-b-2 border-gray-100 sm:py-2 my-2 w-[280px] sm:w-[380px]">
+  <%= link_to  user_path(user), class: "flex items-center", id: user.id, data: { turbo_frame: "_top", action: "remote-modal#close" } do %>
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "object-cover w-[44px] rounded-full mx-2 border-[2px] border-gray-200" %>
+    <% else %>
+      <%= image_tag 'kkrn_icon_user_1.png', class: "w-[44px] rounded-full mx-2 border-[2px] border-gray-200" %>
+    <% end %>
+    <p><%= user.name %></p>
+  <% end %>
+  <%= render 'follow_form', user: user %>
+</div>
