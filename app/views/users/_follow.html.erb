@@ -1,0 +1,1 @@
+<%= link_to "フォローする", relationships_path(followed_id: user.id), id: "follow-btn-for-user-#{user.id}", class: "btn btn-secondary w-[110px]", data: { turbo_method: :post } %>
