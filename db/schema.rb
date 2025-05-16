@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_14_045757) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_16_044708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_14_045757) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "notifable_type", null: false
+    t.bigint "notifable_id", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifable_type", "notifable_id"], name: "index_notifications_on_notifable"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "brand_id", null: false
@@ -142,6 +153,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_14_045757) do
   add_foreign_key "ink_recipes", "reviews"
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"

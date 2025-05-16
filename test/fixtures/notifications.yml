@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  notifable: one
+  notifable_type: Notifable
+  read: false
+
+two:
+  user: two
+  notifable: two
+  notifable_type: Notifable
+  read: false
