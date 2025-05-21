@@ -55,4 +55,12 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def create_notification(type)
+    notifications.create!(notifable_id: type.id, notifable_type: type.class.name)
+  end
+
+  def read_notification
+    notifications.unread.update_all(read: true)
+  end
 end
