@@ -8,9 +8,9 @@
       <% end %>
     <% end %>
     <div>
-      <%= notification.notifable.user.name %>が
+      <%= t('notifications.send_user', name: notification.notifable.user.name) %>
       <%= link_to notification.notifable.review.title, review_path(notification.notifable.review), class: "link text-[#3F51B5]" %>
-      にいいねしました。
+      <%= t('notifications.like') %>
     </div>
   </div>
 </div>

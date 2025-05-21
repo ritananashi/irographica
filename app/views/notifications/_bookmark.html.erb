@@ -8,9 +8,9 @@
       <% end %>
     <% end %>
     <div>
-      <%= notification.notifable.user.name %>が
+      <%= t('notifications.send_user', name: notification.notifable.user.name) %>
       <%= link_to notification.notifable.review.title, review_path(notification.notifable.review), class: "link text-[#3F51B5]", data: { turbo_frame: "_top", action: "remote-modal#close" } %>
-      をブックマークしました。
+      <%= t('notifications.bookmark') %>
     </div>
   </div>
 </div>

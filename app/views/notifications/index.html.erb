@@ -1,10 +1,10 @@
-<%= render "shared/remote_modal", title: "通知一覧" do %>
+<%= render "shared/remote_modal", title: t('notifications.title') do %>
   <div class="container mx-auto w-full sm:px-10 py-5">
     <div class="flex flex-col p-5 justify-center items-center">
       <% if @notifications.present? %>
         <%= render @notifications %>
       <% else %>
-        通知はありません
+        <%= t('notifications.no_notice') %>
       <% end %>
     </div>
   </div>
