@@ -31,6 +31,7 @@
       <main class="flex-grow text-[#333333]">
         <%= render 'shared/flash_message' %>
         <%= yield %>
+        <%= turbo_frame_tag "remote_modal" %>
       </main>
       <footer class="footer bg-[#A6ABBD] text-[#424656] items-center p-4 sticky bottom-0 z-40 hidden sm:block">
         <%= render 'layouts/footer' %>
