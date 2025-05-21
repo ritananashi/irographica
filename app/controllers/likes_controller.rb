@@ -5,6 +5,12 @@ class LikesController < ApplicationController
     @review = Review.find(params[:review_id])
     @like = current_user.likes.new(review_id: @review.id)
     @like.save!
+
+    if @review.liked_by?(current_user)
+      return if @review.user == current_user
+      user = @review.user
+      user.create_notification(@like)
+    end
   end
 
   def destroy
