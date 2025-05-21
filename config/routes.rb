@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
+  resources :notifications, only: :index
 
   namespace :admin do
     resources :bookmarks

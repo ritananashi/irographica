@@ -16,6 +16,7 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :notifications, dependent: :destroy
   has_one_attached :avatar
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 10 }
@@ -53,5 +54,13 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def create_notification(type)
+    notifications.create!(notifable_id: type.id, notifable_type: type.class.name)
+  end
+
+  def read_notification
+    notifications.unread.update_all(read: true)
   end
 end

@@ -1,0 +1,14 @@
+<div class="flex flex-wrap justify-start items-center border-b-2 border-gray-100 sm:py-2 my-2 w-full sm:w-[500px]">
+  <div class="flex flex-col sm:flex-row sm:justify-start sm:items-center">
+    <%= link_to  user_path(notification.notifable.follower), class: "flex items-center", id: notification.id, data: { turbo_frame: "_top", action: "remote-modal#close" } do %>
+      <% if notification.notifable.follower.avatar.attached? %>
+        <%= image_tag notification.notifable.follower.avatar, class: "object-cover w-[44px] rounded-full mx-2 border-[2px] border-gray-200" %>
+      <% else %>
+        <%= image_tag 'kkrn_icon_user_1.png', class: "w-[44px] rounded-full mx-2 border-[2px] border-gray-200" %>
+      <% end %>
+    <% end %>
+    <div>
+      <%= notification.notifable.follower.name %><%= t('notifications.followed') %>
+    </div>
+  </div>
+</div>

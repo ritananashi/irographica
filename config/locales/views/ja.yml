@@ -44,6 +44,13 @@ ja:
     copywriting: |
       インク沼のための
       万年筆・ガラスペン用インクレビューサービス
+  notifications:
+    title: 通知一覧
+    no_notice: 通知はありません
+    followed: があなたをフォローしました
+    send_user: "%{name}が"
+    bookmark: をブックマークしました
+    like: をいいねしました
   users:
     show:
       title: プロフィール

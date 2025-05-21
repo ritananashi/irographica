@@ -1,0 +1,8 @@
+<% case notification.notifable_type
+  when "Relationship" %>
+    <%= render "followed", notification: notification %>
+  <% when "Bookmark" %>
+    <%= render "bookmark", notification: notification %>
+  <% when "Like" %>
+    <%= render "like", notification: notification %>
+<% end %>
