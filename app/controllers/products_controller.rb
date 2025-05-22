@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @reviews = @product.reviews
+    @pagy, @reviews = pagy(@product.reviews, limit: 10)
   end
 
   def new
