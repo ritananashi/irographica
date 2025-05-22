@@ -34,7 +34,7 @@
     <div Class="overflow-hidden my-2 text-ellipsis line-clamp-3 whitespace-pre-wrap h-[72px]"><%= review.body %></div>
     <div class="text-xs text-[#959595]"><%= review.paper %>　<%= review.pen %></div>
     <div class="card-actions justify-end">
-      <%= link_to t('reviews.index.show_review'), review_path(review), class: "btn btn-sm btn-primary" %>
+      <%= link_to t('reviews.index.show_review'), review_path(review), class: "btn btn-sm btn-primary", data: { turbo_frame: "_top" } %>
     </div>
   </div>
 </div>
