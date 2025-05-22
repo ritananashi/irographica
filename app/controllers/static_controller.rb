@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
   def home
-    @reviews = Review.includes(:user, :product).order(created_at: "DESC").all
+    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).order(created_at: :desc), limit: 10)
     @category = Category.all
   end
 

@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
       @q = params[:q].split(/[\s　]/)
       @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
     end
-    @products = Product.ransack({ combinator: "and", groupings: @grouping_word }).
-                result(distinct: true).includes(:brand).order(created_at: "DESC")
+    @pagy, @products = pagy(Product.ransack({ combinator: "and", groupings: @grouping_word }).
+                            result(distinct: true).includes(:brand).order(created_at: "DESC"), limit: 10)
   end
 
   def show
@@ -53,8 +53,8 @@ class ProductsController < ApplicationController
     end
     @c = params[:c]
     @grouping_word["Category_refine"] = { category_id_eq: @c }
-    @products = Product.ransack({ combinator: "and", groupings: @grouping_word }).
-                result(distinct: true).includes(:brand).order(created_at: "DESC")
+    @pagy, @products = pagy(Product.ransack({ combinator: "and", groupings: @grouping_word }).
+                            result(distinct: true).includes(:brand).order(created_at: "DESC"), limit: 9)
   end
 
   def autocomplete
