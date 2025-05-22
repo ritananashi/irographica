@@ -77,8 +77,8 @@ class ReviewsController < ApplicationController
     end
     @c = params[:c]
     @grouping_word["Category_refine"] = { product_category_id_eq: @c }
-    @reviews = Review.ransack({ combinator: "and", groupings: @grouping_word }).
-                result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC")
+    @pagy, @reviews = pagy(Review.ransack({ combinator: "and", groupings: @grouping_word }).
+                            result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC"), limit: 10)
   end
 
   private
