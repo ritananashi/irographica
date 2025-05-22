@@ -46,7 +46,7 @@
       <div class="w-full px-3 hidden" data-nested-form-target="recipe">
         <%= f.label :ink_recipes, class: "px-3" %>
         <template data-nested-form-target="template">
-          <%= f.fields_for :ink_recipes, @review.ink_recipes, child_index: 'NEW_RECORD' do |ink_recipe_fields| %>
+          <%= f.fields_for :ink_recipes, InkRecipe.new, child_index: 'NEW_RECORD' do |ink_recipe_fields| %>
             <%= render "ink_recipes/recipe_form", f: ink_recipe_fields %>
           <% end %>
         </template>
