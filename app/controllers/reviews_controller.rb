@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :redirect_root, only: :new
 
-  def index; end
+  def index
+    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).order(created_at: :desc), limit: 10)
+  end
 
   def new
     @review = Review.new
