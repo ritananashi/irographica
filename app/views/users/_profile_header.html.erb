@@ -2,7 +2,7 @@
   <%= turbo_frame_tag "profile_header" do %>
     <% if current_user == @user %>
       <div class="flex justify-end">
-        <%= link_to t('users.show.edit_profile'), edit_user_registration_path, class: "btn btn-accent" %>
+        <%= link_to t('users.show.edit_profile'), edit_user_registration_path, class: "btn btn-accent", data: { turbo_frame: "_top" } %>
       </div>
     <% end %>
     <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
