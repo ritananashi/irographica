@@ -1,4 +1,5 @@
-<div data-controller="product">
+<div data-controller="product loading">
+  <%= render "shared/loading" %>
   <%= form_with(model: review, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }, class: "w-full max-w-lg") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="flex flex-wrap -mx-3 mb-4">
@@ -68,7 +69,7 @@
         <%= f.text_field :pen, class: "input input-bordered form-control mb-6 w-full mx-auto pl-2 text-base" %>
       </div>
     </div>
-    <%= f.submit nil, class: "btn btn-secondary w-full mx-auto mt-2" %>
+    <%= f.submit nil, class: "btn btn-secondary w-full mx-auto mt-2", data: { action: "click->loading#show" } %>
   <% end %>
   <%= turbo_frame_tag "remote_modal" %>
 </div>
