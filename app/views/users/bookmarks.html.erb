@@ -4,12 +4,22 @@
     <div class="w-full mx-auto mt-5">
       <%= render "profile_tab" %>
     </div>
-    <div class="flex flex-wrap justify-center items-center p-5 gap-5">
-      <% if @bookmark_reviews.present? %>
-        <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
-      <% else %>
-        <div><%= t('users.show.bookmark_not_found') %></div>
+    <% if turbo_frame_request? %>
+      <%= turbo_frame_tag "show_bookmark" do %>
+        <div class="flex flex-wrap justify-center items-center p-5 gap-5">
+          <% if @bookmark_reviews.present? %>
+            <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
+          <% else %>
+            <div><%= t('users.show.bookmark_not_found') %></div>
+          <% end %>
+        </div>
       <% end %>
-    </div>
+    <% else %>
+      <%= turbo_frame_tag "show_bookmark", src: bookmarks_user_path(@user) do %>
+        <div class="flex flex-wrap justify-center items-center p-5 gap-5">
+          <%= render "shared/skeleton_card" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </section>
