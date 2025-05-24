@@ -1,52 +1,60 @@
-<% if current_user == @user %>
-  <div class="flex justify-end">
-    <%= link_to t('users.show.edit_profile'), edit_user_registration_path, class: "btn btn-accent" %>
-  </div>
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "profile_header" do %>
+    <% if current_user == @user %>
+      <div class="flex justify-end">
+        <%= link_to t('users.show.edit_profile'), edit_user_registration_path, class: "btn btn-accent", data: { turbo_frame: "_top" } %>
+      </div>
+    <% end %>
+    <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
+      <div class="flex flex-col">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, class: "object-cover w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
+        <% else %>
+          <%= image_tag 'kkrn_icon_user_1.png', class: "w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
+        <% end %>
+        <div class="mt-5 mx-auto items-center justify-center hidden sm:block">
+          <%= render 'x_share' %>
+        </div>
+        <% unless current_user == @user %>
+          <div class="mt-2 mx-auto items-center justify-center hidden sm:block">
+            <%= render 'follow_form', user: @user %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mx-10 flex flex-col">
+        <span class="text-[36px] text-center"><%= @user.name %></span>
+        <%= render 'stats' %>
+        <p class="whitespace-pre-wrap"><%= @user.body %></p>
+        <div class="flex items-center gap-4 mt-6">
+          <% if @user.x_account.present? %>
+            <%= link_to @user.x_account do %>
+              <i class="fa-brands fa-square-x-twitter text-[24px]"></i>
+            <% end %>
+          <% end %>
+          <% if @user.instagram_account.present? %>
+            <%= link_to @user.instagram_account do %>
+              <i class="fa-brands fa-instagram text-[24px]"></i>
+            <% end %>
+          <% end %>
+          <% if @user.youtube_account.present? %>
+            <%= link_to @user.youtube_account do %>
+              <i class="fa-brands fa-youtube text-[24px]"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="mt-5 mx-auto items-center justify-center sm:hidden">
+          <%= render 'x_share' %>
+        </div>
+        <% unless current_user == @user %>
+          <div class="mt-2 mx-auto items-center justify-center sm:hidden">
+            <%= render 'follow_form', user: @user %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <%= turbo_frame_tag "profile_header", src: user_path(@user) do %>
+    <%= render "profile_skeleton" %>
+  <% end %>
 <% end %>
-<div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
-  <div class="flex flex-col">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, class: "object-cover w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
-    <% else %>
-      <%= image_tag 'kkrn_icon_user_1.png', class: "w-[150px] rounded-full mx-10 border-[2px] border-gray-200" %>
-    <% end %>
-    <div class="mt-5 mx-auto items-center justify-center hidden sm:block">
-      <%= render 'x_share' %>
-    </div>
-    <% unless current_user == @user %>
-      <div class="mt-2 mx-auto items-center justify-center hidden sm:block">
-        <%= render 'follow_form', user: @user %>
-      </div>
-    <% end %>
-  </div>
-  <div class="mx-10 flex flex-col">
-    <span class="text-[36px] text-center"><%= @user.name %></span>
-    <%= render 'stats' %>
-    <p class="whitespace-pre-wrap"><%= @user.body %></p>
-    <div class="flex items-center gap-4 mt-6">
-      <% if @user.x_account.present? %>
-        <%= link_to @user.x_account do %>
-          <i class="fa-brands fa-square-x-twitter text-[24px]"></i>
-        <% end %>
-      <% end %>
-      <% if @user.instagram_account.present? %>
-        <%= link_to @user.instagram_account do %>
-          <i class="fa-brands fa-instagram text-[24px]"></i>
-        <% end %>
-      <% end %>
-      <% if @user.youtube_account.present? %>
-        <%= link_to @user.youtube_account do %>
-          <i class="fa-brands fa-youtube text-[24px]"></i>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="mt-5 mx-auto items-center justify-center sm:hidden">
-      <%= render 'x_share' %>
-    </div>
-    <% unless current_user == @user %>
-      <div class="mt-2 mx-auto items-center justify-center sm:hidden">
-        <%= render 'follow_form', user: @user %>
-      </div>
-    <% end %>
-  </div>
-</div>

@@ -1,97 +1,105 @@
-<section class="overflow-hidden">
-  <div class="container px-5 py-10 mx-auto">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
-      <div class="flex flex-col lg:w-1/2 items-center justify-center">
-        <% if @review.images.present? %>
-          <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 w-[300px] sm:w-[350px] h-[300px] sm:h-[350px]">
-            <div class="swiper-wrapper">
-              <% @review.images.each do |image| %>
-                <%= image_tag image, class: "w-[300px] sm:w-[350px] h-[300px] sm:h-[350px] object-cover object-center rounded swiper-slide mr-[30px]" %>
-              <% end %>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-          <div thumbsSlider="" class="swiper mySwiper w-[300px] sm:w-[350px] mt-1">
-            <div class="swiper-wrapper">
-              <% @review.images.each do |image| %>
-                <%= image_tag image, class: "w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] object-fill object-center rounded swiper-slide" %>
-              <% end %>
-            </div>
-          </div>
-        <% else %>
-          <div>
-            <%= image_tag "kkrn_icon_shashin_3.png", class: "w-[300px] sm:w-[350px] h-[300px] sm:h-[350px] object-cover object-center rounded mx-auto" %>
-          </div>
-        <% end %>
-        <div class="mt-5 mx-auto">
-          <%= link_to "https://twitter.com/share?url=#{post_review_url(@review)}&text=【#{@review.title}】%0a#{@review.product.brand.name}%20#{@review.product.name}のレビューをシェア%0a%0a%23インク沼%20%23iroGraphica%0a", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[300px] sm:w-[350px]", target: :_blank, rel: "noopener noreferrer nofollow" do %>
-            <i class="fa-brands fa-x-twitter text-[24px]"></i></i><span class="text-[20px]">でシェア</span>
-          <% end %>
-        </div>
-      </div>
-      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
-        <div class="flex">
-          <%= link_to user_path(@review.user), class: "flex items-center gap-2" do %>
-            <% if @review.user.avatar.attached? %>
-              <%= image_tag @review.user.avatar, class: "w-10 rounded-full border-[2px] border-gray-200" %>
+<% if turbo_frame_request? %>
+  <%= turbo_frame_tag "show_review" do %>
+    <section class="overflow-hidden">
+      <div class="container px-5 py-10 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap items-center justify-center">
+          <div class="flex flex-col lg:w-1/2 items-center justify-center">
+            <% if @review.images.present? %>
+              <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 w-[300px] sm:w-[350px] h-[300px] sm:h-[350px]">
+                <div class="swiper-wrapper">
+                  <% @review.images.each do |image| %>
+                    <%= image_tag image, class: "w-[300px] sm:w-[350px] h-[300px] sm:h-[350px] object-cover object-center rounded swiper-slide mr-[30px]" %>
+                  <% end %>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+              <div thumbsSlider="" class="swiper mySwiper w-[300px] sm:w-[350px] mt-1">
+                <div class="swiper-wrapper">
+                  <% @review.images.each do |image| %>
+                    <%= image_tag image, class: "w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] object-fill object-center rounded swiper-slide" %>
+                  <% end %>
+                </div>
+              </div>
             <% else %>
-              <%= image_tag 'kkrn_icon_user_1.png', class: "w-10 rounded-full border-[2px] border-gray-200" %>
+              <div>
+                <%= image_tag "kkrn_icon_shashin_3.png", class: "w-[300px] sm:w-[350px] h-[300px] sm:h-[350px] object-cover object-center rounded mx-auto" %>
+              </div>
             <% end %>
-            <p><%= @review.user.name %></p>
-          <% end %>
-          <div class="flex ml-auto items-center justify-center text-[#959595]"><%= l(@review.created_at) %></div>
-        </div>
-        <div class="flex mb-4 mx-3 gap-2">
-          <%= render "reviews/like_btn", review: @review %>
-          <%= render "reviews/bookmark_btn", review: @review %>
-        </div>
-        <p class="leading-relaxed whitespace-pre-wrap"><%= @review.body %></p>
-        <div class="mt-6 items-center pb-5 border-t-2 border-gray-100 mb-5">
-          <%= link_to product_path(@review.product.id), class: "link text-[#3F51B5]" do %>
-            <p><%= @review.product.brand.name %><%= @review.product.name %></p>
-          <% end %>
-          <p><%= t('reviews.show.using_paper') %><%= @review.paper %></p>
-          <p><%= t('reviews.show.using_pen') %><%= @review.pen %></p>
-          <% if @review.ink_recipes.present? %>
-            <p class="mt-2">インクレシピ</p>
-            <% @review.ink_recipes.each do |ink_recipe| %>
-              <p><%= ink_recipe.name %>：<%= ink_recipe.amount %>ml</p>
-            <% end %>
-          <% end %>
-        </div>
-        <% if current_user == @review.user %>
-          <div class="flex items-center justify-center gap-4">
-            <%= link_to t('reviews.edit.button'), edit_review_path, class: "btn btn-accent" %>
-            <%= link_to t('reviews.delete.button'), review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: t('reviews.delete.delete_confirm') } %>
+            <div class="mt-5 mx-auto">
+              <%= link_to "https://twitter.com/share?url=#{post_review_url(@review)}&text=【#{@review.title}】%0a#{@review.product.brand.name}%20#{@review.product.name}のレビューをシェア%0a%0a%23インク沼%20%23iroGraphica%0a", title: "Xでシェア", class: "btn btn-neutral gap-0 w-[300px] sm:w-[350px]", target: :_blank, rel: "noopener noreferrer nofollow" do %>
+                <i class="fa-brands fa-x-twitter text-[24px]"></i></i><span class="text-[20px]">でシェア</span>
+              <% end %>
+            </div>
           </div>
-        <% end %>
+          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @review.title %></h1>
+            <div class="flex">
+              <%= link_to user_path(@review.user), class: "flex items-center gap-2", data: { turbo_frame: "_top" } do %>
+                <% if @review.user.avatar.attached? %>
+                  <%= image_tag @review.user.avatar, class: "w-10 rounded-full border-[2px] border-gray-200" %>
+                <% else %>
+                  <%= image_tag 'kkrn_icon_user_1.png', class: "w-10 rounded-full border-[2px] border-gray-200" %>
+                <% end %>
+                <p><%= @review.user.name %></p>
+              <% end %>
+              <div class="flex ml-auto items-center justify-center text-[#959595]"><%= l(@review.created_at) %></div>
+            </div>
+            <div class="flex mb-4 mx-3 gap-2">
+              <%= render "reviews/like_btn", review: @review %>
+              <%= render "reviews/bookmark_btn", review: @review %>
+            </div>
+            <p class="leading-relaxed whitespace-pre-wrap"><%= @review.body %></p>
+            <div class="mt-6 items-center pb-5 border-t-2 border-gray-100 mb-5">
+              <%= link_to product_path(@review.product.id), class: "link text-[#3F51B5]", data: { turbo_frame: "_top" } do %>
+                <p><%= @review.product.brand.name %><%= @review.product.name %></p>
+              <% end %>
+              <p><%= t('reviews.show.using_paper') %><%= @review.paper %></p>
+              <p><%= t('reviews.show.using_pen') %><%= @review.pen %></p>
+              <% if @review.ink_recipes.present? %>
+                <p class="mt-2">インクレシピ</p>
+                <% @review.ink_recipes.each do |ink_recipe| %>
+                  <p><%= ink_recipe.name %>：<%= ink_recipe.amount %>ml</p>
+                <% end %>
+              <% end %>
+            </div>
+            <% if current_user == @review.user %>
+              <div class="flex items-center justify-center gap-4">
+                <%= link_to t('reviews.edit.button'), edit_review_path, class: "btn btn-accent", data: { turbo_frame: "_top" } %>
+                <%= link_to t('reviews.delete.button'), review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: t('reviews.delete.delete_confirm') } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="text-center mt-5 mb-5">
-    <%= link_to t('helpers.links.back'), 'javascript:history.back()', class: "btn btn-outline btn-primary" %>
-  </div>
-</section>
+      <div class="text-center mt-5 mb-5">
+        <%= link_to t('helpers.links.back'), 'javascript:history.back()', class: "btn btn-outline btn-primary" %>
+      </div>
+    </section>
 
-<script>
-  var swiper = new Swiper(".mySwiper", {
-    loop: true,
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-  var swiper2 = new Swiper(".mySwiper2", {
-    loop: true,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    thumbs: {
-      swiper: swiper,
-    },
-  });
-</script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+    </script>
+  <% end %>
+<% else %>
+  <%= turbo_frame_tag "show_review", src: review_path(@review) do %>
+    <%= render "show_skeleton" %>
+  <% end %>
+<% end %>

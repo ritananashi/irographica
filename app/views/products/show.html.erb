@@ -15,17 +15,23 @@
         <% end %>
       </div>
     </div>
-    <%= turbo_frame_tag "show_product_reviews" do %>
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-wrap -m-4 justify-center items-center">
-          <% if @reviews.present? %>
-            <%= render partial: 'reviews/review', collection: @reviews %>
-          <% else %>
-            <div class="tracking-wider"><%= t('reviews.index.without_review') %></div>
-          <% end %>
+    <% if turbo_frame_request? %>
+      <%= turbo_frame_tag "show_product_reviews" do %>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-wrap -m-4 justify-center items-center">
+            <% if @reviews.present? %>
+              <%= render partial: 'reviews/review', collection: @reviews %>
+            <% else %>
+              <div class="tracking-wider"><%= t('reviews.index.without_review') %></div>
+            <% end %>
+          </div>
+          <%= render "shared/load_more_button" %>
         </div>
-        <%= render "shared/load_more_button" %>
-      </div>
+      <% end %>
+    <% else %>
+      <%= turbo_frame_tag "show_product_reviews", src: product_path(@product) do %>
+        <%= render "shared/skeleton_card" %>
+      <% end %>
     <% end %>
   </div>
 </section>
