@@ -16,13 +16,12 @@ module ApplicationHelper
         title: :title,
         description: :description,
         type: 'website',
-        url: 'https://irographica.com/',
+        url: request.original_url,
         image: image_url('irographica-staticOgp.png'),
         local: 'ja-JP'
       },
       twitter: {
         card: 'summary_large_image',
-        image: image_url('irographica-staticOgp.png')
       }
     }
   end
