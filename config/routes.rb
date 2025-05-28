@@ -26,13 +26,22 @@ Rails.application.routes.draw do
 
   direct :cdn_image do |model, options|
     expires_in = options.delete(:expires_in) { ActiveStorage.urls_expire_in }
+    cdn_options = if Rails.env.development?
+                    Rails.application.routes.default_url_options
+                  else
+                    {
+                      protocol: 'https',
+                      port: 443,
+                      host: Rails.env.production? ? "https://d2jjiem87n2bn7.cloudfront.net" : "#{Rails.env}.d2jjiem87n2bn7.cloudfront.net"
+                    }
+                  end
 
     if model.respond_to?(:signed_id)
       route_for(
         :rails_service_blob_proxy,
         model.signed_id(expires_in: expires_in),
         model.filename,
-        options.merge(host: ENV["CDN_HOST"])
+        options.merge(cdn_options)
       )
     else
       signed_blob_id = model.blob.signed_id(expires_in: expires_in)
@@ -44,7 +53,7 @@ Rails.application.routes.draw do
         signed_blob_id,
         variation_key,
         filename,
-        options.merge(host: ENV["CDN_HOST"])
+        options.merge(cdn_options)
       )
     end
   end
