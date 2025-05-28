@@ -1,3 +1,5 @@
+<% set_meta_tags og: { title: @review.title } %>
+<% set_meta_tags og: { title: @review.title, image: request.base_url+rails_storage_proxy_path(@review.images.first) } if @review.images.attached? %>
 <% if turbo_frame_request? %>
   <%= turbo_frame_tag "show_review" do %>
     <section class="overflow-hidden">
