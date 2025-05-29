@@ -24,16 +24,17 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
+  # 画像をCDN配信する用のルーティング
   direct :cdn_image do |model, options|
     expires_in = options.delete(:expires_in) { ActiveStorage.urls_expire_in }
-    cdn_options = if Rails.env.development?
-                    Rails.application.routes.default_url_options
-                  else
+    cdn_options = if Rails.env.production?
                     {
                       protocol: 'https',
                       port: 443,
-                      host: Rails.env.production? ? "https://d2jjiem87n2bn7.cloudfront.net" : "#{Rails.env}.d2jjiem87n2bn7.cloudfront.net"
+                      host: ENV["CDN_HOST"]
                     }
+                  else
+                    Rails.application.routes.default_url_options
                   end
 
     if model.respond_to?(:signed_id)
