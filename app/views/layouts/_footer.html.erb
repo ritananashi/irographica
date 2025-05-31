@@ -1,8 +1,8 @@
 <nav class="grid-flow-col gap-4">
   <%= link_to t('footer.contact'), contact_path %>
+  <%= link_to 'プライバシーポリシー', privacy_policy_path %>
   <!-- ページ作成後使用
   <%= link_to '利用規約', '#' %>
-  <%= link_to 'プライバシーポリシー', '#' %>
   -->
   <% if current_user&.admin? %>
     <%= link_to t('footer.admin'), admin_root_path %>
