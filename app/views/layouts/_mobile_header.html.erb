@@ -41,7 +41,7 @@
           </div>
           <div class="flex flex-col justify-center items-center mt-10 gap-2">
             <%= link_to t('footer.contact'), contact_path, data: { action: "slideover#close" } %>
-            <%= link_to '利用規約', term_path %>
+            <%= link_to t('footer.term'), term_path %>
             <%= link_to t('footer.privacy_policy'), privacy_policy_path, data: { action: "slideover#close" } %>
             <% if current_user&.admin? %>
               <%= link_to t('footer.admin'), admin_root_path, data: { action: "slideover#close" } %>

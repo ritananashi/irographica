@@ -1,6 +1,6 @@
 <nav class="grid-flow-col gap-4">
   <%= link_to t('footer.contact'), contact_path %>
-  <%= link_to '利用規約', term_path %>
+  <%= link_to t('footer.term'), term_path %>
   <%= link_to t('footer.privacy_policy'), privacy_policy_path %>
   <% if current_user&.admin? %>
     <%= link_to t('footer.admin'), admin_root_path %>
