@@ -6,4 +6,6 @@ class StaticController < ApplicationController
   def contact; end
 
   def privacy_policy; end
+
+  def term; end
 end
