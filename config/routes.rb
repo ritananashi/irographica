@@ -93,5 +93,6 @@ Rails.application.routes.draw do
   get '/users/:account/followers', to: 'users#followers'
   get '/contact/', to: 'static#contact'
   get '/privacy_policy/', to: 'static#privacy_policy'
+  get '/term/', to: 'static#term'
   root "static#home"
 end
