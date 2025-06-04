@@ -2,7 +2,7 @@
   <%= link_to t('footer.contact'), contact_path %>
   <%= link_to t('footer.term'), term_path %>
   <%= link_to t('footer.privacy_policy'), privacy_policy_path %>
-  <%= link_to "iroGraphicaについて", guide_path %>
+  <%= link_to t('footer.guide'), guide_path %>
   <% if current_user&.admin? %>
     <%= link_to t('footer.admin'), admin_root_path %>
   <% end %>
