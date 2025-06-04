@@ -1,0 +1,77 @@
+<div class="container mx-auto px-5 py-5">
+  <div class="mb-4">
+    <h1 class="font-bold text-2xl"><i class="fa-solid fa-feather pr-1"></i>iroGraphicaについて</h1>
+    <p class="pl-8">iroGraphicaは、<span class="font-bold">万年筆・ガラスペン用インクのレビュー投稿・共有サービス</span>です。</p>
+    <p class="pl-8"><span class="font-bold">色</span>や<span class="font-black">フリーワード</span>でレビューを検索でき、色見本を見ながら気になるインクを探すことができます。</p>
+    <p class="pl-8">実際にインクを使用しているユーザーのレビューを見ることができるため、<span class="font-bold">気になるインクを実際に使ったときのイメージ</span>がつきやすくなります！</p>
+  </div>
+  <div class="mb-4">
+    <h1 class="font-bold text-2xl"><i class="fa-regular fa-circle-question pr-1"></i>ご利用ガイド</h1>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" checked="checked" />
+      <div class="collapse-title text-xl font-medium">レビューについて</div>
+      <div class="collapse-content">
+        <p>投稿されたレビューはどなたでも閲覧することができます。</p>
+        <p>
+          <%= link_to t('header.sign_in'), user_session_path, class: "link text-[#3F51B5]" %>すると、
+          レビューに<span class="font-bold">いいね</span>をつけたり、気に入ったレビューを<span class="font-bold">ブックマーク</span>しておけます。
+        </p>
+        <p><%= link_to t('header.sign_in'), user_session_path, class: "link text-[#3F51B5]" %>すると、お手持ちのインクのレビューを投稿することもできます！</p>
+        <p>レビューを投稿する際に、画像を4枚まで添付できます。</p>
+        <p>
+          レビューするインクは、「インクを選択」から一つだけ選択できます。
+          また、レビューするインクが登録されていない場合は、「インクを選択」から表示される「インクを探す」画面の、「インクを登録する」からレビューしたいインクを登録することができます。
+        </p>
+        <p>投稿したレビューは、詳細画面の「編集」ボタンから編集できます。</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">検索について</div>
+      <div class="collapse-content">
+        <p>ヘッダーから検索を行えます。モバイルの場合は<i class="fa-solid fa-magnifying-glass"></i>マークをタップすると検索バーが表示されます。</p>
+        <p>検索はAND検索です。検索バーには複数の検索ワードを入力できます。</p>
+        <p>「色系統を選択」から探したいインクの色を選ぶことができます。</p>
+        <p>検索結果のタブでレビューとインクの検索結果を切り替えることができます。</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">インクの詳細画面について</div>
+      <div class="collapse-content">
+        <p>レビューの詳細画面のリンクや、検索結果のインク一覧から、インクの詳細画面を表示できます。</p>
+        <p>インクの詳細画面では、そのインクについて投稿されたレビューの一覧が表示されます。</p>
+        <p>メーカーの公式サイトや公式通販へのリンクもあります。</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">SNSシェアについて</div>
+      <div class="collapse-content">
+        <p>レビュー一覧画面の<i class="fa-brands fa-square-x-twitter text-[22px]"></i>マークか、レビュー詳細画面のXシェアボタンから、気に入ったレビューをXで共有することができます。</p>
+        <p>また、自分や他のユーザーのプロフィールもXで共有することができます。</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">プロフィールについて</div>
+      <div class="collapse-content">
+        <p><%= link_to t('header.sign_in'), user_session_path, class: "link text-[#3F51B5]" %>すると、プロフィールが作成されます。</p>
+        <p>自分のプロフィールでは、<span class="font-bold">自分の投稿したレビュー</span>と<span class="font-b">ブックマークしたレビュー</span>を閲覧することができます。</p>
+        <p>また、左上の「プロフィールを編集」で、プロフィールを編集できます。</p>
+        <p>
+          編集画面では、<span class="font-bold">ユーザーID</span>、<span class="font-bold">ユーザー名</span>、<span class="font-bold">プロフィール文</span>、
+          <span class="font-bold">アイコン</span>、<span class="font-bold">外部SNS（X、Instagram、YouTube）</span>を設定することができます。
+        </p>
+        <p>他のユーザーのプロフィールから、他のユーザーをフォローすることもできます。</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-100">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">利用規約・プライバシーポリシー・お問い合わせ</div>
+      <div class="collapse-content">
+        <p>利用規約・プライバシーポリシー・お問い合わせは、下部フッター（モバイルの場合は<i class="fa-solid fa-bars"></i>タップで表示されるメニュー一覧）よりアクセスできます。</p>
+      </div>
+    </div>
+  </div>
+</div>
