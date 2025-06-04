@@ -94,5 +94,6 @@ Rails.application.routes.draw do
   get '/contact/', to: 'static#contact'
   get '/privacy_policy/', to: 'static#privacy_policy'
   get '/term/', to: 'static#term'
+  get '/guide/', to: 'static#guide'
   root "static#home"
 end
