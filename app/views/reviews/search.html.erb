@@ -12,7 +12,7 @@
       <%= render "shared/load_more_button" %>
     <% end %>
   <% else %>
-    <%= turbo_frame_tag "search_reviews", src: search_reviews_path do %>
+    <%= turbo_frame_tag "search_reviews", src: search_reviews_path(q: params[:q], c: params[:c]) do %>
       <%= render "shared/skeleton_card" %>
     <% end %>
   <% end %>
