@@ -8,4 +8,6 @@ class StaticController < ApplicationController
   def privacy_policy; end
 
   def term; end
+
+  def guide; end
 end
