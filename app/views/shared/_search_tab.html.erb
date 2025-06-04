@@ -15,11 +15,7 @@
   <%= t('search.result')%>
 </p>
 <p class="text-center">
-  <% if request.path.include?("reviews") %>
-    <%= @reviews.count %>件
-  <% else %>
-    <%= @products.count %>件
-  <% end %>
+  <%= @pagy.count %>件
 </p>
 <div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sm:w-1/2 mx-auto mb-5">
   <ul class="flex flex-wrap justify-center items-center -mb-px">
