@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
-    devise_for :users, controllers: { registrations: 'users/registrations' }
+    devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
