@@ -33,6 +33,25 @@ class User < ApplicationRecord
     account
   end
 
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = User.dummy_email(auth)
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+      user.account = auth.info.nickname
+      process_avatar = ImageProcessing::MiniMagick.source(auth.info.image).resize_to_fit(300, 300).convert("webp").call
+      filename_base = File.basename(auth.info.image, ".*")
+      user.avatar.attach(io: process_avatar, filename: "#{filename_base}.webp", content_type: "image/webp")
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
+  end
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
   def bookmark(review)
     bookmark_reviews << review
   end
