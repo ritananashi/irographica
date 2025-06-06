@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_one_attached :avatar
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 10 }
+  validates :name, presence: true, length: { maximum: 10 }
   validates :account, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 4, maximum: 20 }
   validates :body, length: { maximum: 500 }
   validates :avatar, size: { less_than: 1.megabytes, },
