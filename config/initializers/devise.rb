@@ -274,7 +274,7 @@ Devise.setup do |config|
   config.omniauth :twitter2,
                   Rails.env.production? ? ENV["TWITTER_CLIENT_ID"] : Rails.application.credentials.dig(:twitter, :TWITTER_CLIENT_ID),
                   Rails.env.production? ? ENV["TWITTER_CLIENT_SECRET"] : Rails.application.credentials.dig(:twitter, :TWITTER_CLIENT_SECRET),
-                  callback_path: "/users/auth/twitter2/callback", scope: "tweet.read users.read offline.access"
+                  callback_path: "/users/auth/twitter2/callback", scope: "tweet.read users.read"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
