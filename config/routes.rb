@@ -7,6 +7,7 @@ Rails.application.routes.draw do
                                     }
     devise_scope :user do
       get 'reset_request', to: 'users/passwords#reset_request'
+      get 'complete_password_change', to: 'users/passwords#complete_password_change'
     end
   end
   resources :users, only: :show do
