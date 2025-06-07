@@ -1,14 +1,14 @@
 <div data-controller="loading">
   <%= render "shared/loading" %>
   <div class="container mx-auto w-full sm:w-[540px] px-10 py-5">
-    <h2 class="text-[24px] sm:text-5xl font-bold text-center mb-10"></h2>
+    <h2 class="text-[24px] sm:text-5xl font-bold text-center mb-10"><%= t('devise.passwords.title') %></h2>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <%= f.hidden_field :reset_password_token %>
 
       <div class="field">
-        <%= f.label :password, "New password" %><br />
+        <%= f.label :password, t('devise.passwords.edit.new_password') %><br />
         <% if @minimum_password_length %>
           <%= t('devise.registrations.new.minimum_password_length', password_length: @minimum_password_length) %><br />
         <% end %>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
+        <%= f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password') %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered form-control mb-6 w-full mx-auto mt-2" %>
       </div>
 
