@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
-    devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+    devise_for :users, controllers: {
+                                      registrations: 'users/registrations',
+                                      omniauth_callbacks: 'users/omniauth_callbacks',
+                                      passwords: 'users/passwords'
+                                    }
+    devise_scope :user do
+      get 'reset_request', to: 'users/passwords#reset_request'
+      get 'complete_password_change', to: 'users/passwords#complete_password_change'
+    end
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
@@ -76,6 +84,8 @@ Rails.application.routes.draw do
 
     root to: "reviews#index"
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
