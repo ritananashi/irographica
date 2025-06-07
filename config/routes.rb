@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
-    devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+    devise_for :users, controllers: {
+                                      registrations: 'users/registrations',
+                                      omniauth_callbacks: 'users/omniauth_callbacks',
+                                      passwords: 'users/passwords'
+                                    }
+    devise_scope :user do
+      get 'reset_request', to: 'users/passwords#reset_request'
+    end
   end
   resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
