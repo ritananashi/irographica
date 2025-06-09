@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.update_with_password(user_params)
       # Sign in the user by passing validation in case their password changed
       bypass_sign_in(@user)
-      redirect_to user_path(current_user), notice: "設定を変更しました"
+      redirect_to user_path(current_user), notice: t('users.setting.notice')
     else
       render :edit, status: :unprocessable_entity
     end

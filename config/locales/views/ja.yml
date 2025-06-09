@@ -71,6 +71,7 @@ ja:
       youtube_account_url: http://youtube.com/@sample
     setting:
       title: 設定変更
+      notice: 設定を変更しました
   reviews:
     form:
       select_product: インクを選択
