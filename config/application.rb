@@ -29,5 +29,14 @@ module Myapp
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.active_model.i18n_customize_full_message = true
+
+    config.generators do |g|
+      g.test_framework :rspec, # テストフレームワークとしてRSpecを指定
+      request_specs: false, # リクエストスペックを作成しない
+      fixtures: false, # テストデータを作るfixtureを作成しない
+      view_specs: false, # ビュー用のスペックを作成しない
+      helper_specs: false, # ヘルパー用のスペックを作成しない
+      routing_specs: false # ルーティングのスペックを作成しない
+    end
   end
 end
