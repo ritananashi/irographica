@@ -42,6 +42,7 @@
                   <% end %>
                 <% end %>
               </li>
+              <li><%= link_to t('header.setting'), edit_user_path(current_user) %></li>
               <li><%= link_to t('header.sign_out'), destroy_user_session_path, data: { turbo_method: :delete } %></li>
             </ul>
           </details>
