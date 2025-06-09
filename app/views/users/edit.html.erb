@@ -1,7 +1,7 @@
 <div data-controller="loading">
   <%= render "shared/loading" %>
   <div class="container mx-auto w-full sm:w-[540px] px-10 py-5">
-    <h1 class="text-[24px] sm:text-5xl font-bold text-center mb-10">設定変更</h1>
+    <h1 class="text-[24px] sm:text-5xl font-bold text-center mb-10"><%= t('users.setting.title') %></h1>
 
     <%= form_with model: @user, url: update_password_users_path do |f| %>
       <%= render "devise/shared/error_messages", resource: current_user %>
@@ -11,11 +11,11 @@
       </div>
       <div class="field">
         <%= f.label :password %><br />
-        <%= f.password_field :password, :autocomplete => "off", class: "input input-bordered form-control mb-6 w-full mx-auto mt-2"  %>
+        <%= f.password_field :password, :autocomplete => "off", class: "input input-bordered form-control mb-6 w-full mx-auto mt-2", placeholder: t('devise.registrations.new.minimum_password_length', password_length: 6)  %>
       </div>
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, class: "input input-bordered form-control mb-6 w-full mx-auto mt-2" %>
+        <%= f.password_field :password_confirmation, class: "input input-bordered form-control mb-6 w-full mx-auto mt-2", placeholder: t('devise.registrations.new.re_input_password') %>
       </div>
       <div class="field">
         <%= f.label :current_password %><br />

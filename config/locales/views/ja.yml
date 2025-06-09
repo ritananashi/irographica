@@ -35,6 +35,7 @@ ja:
     to_register_page: 新規登録
     post: 投稿する
     mypage: マイページ
+    setting: 設定
     notification: 通知
   footer:
     contact: お問い合わせ
@@ -68,6 +69,8 @@ ja:
       x_account_url: https://x.com/sample
       instagram_account_url: https://www.instagram.com/sample/
       youtube_account_url: http://youtube.com/@sample
+    setting:
+      title: 設定変更
   reviews:
     form:
       select_product: インクを選択
