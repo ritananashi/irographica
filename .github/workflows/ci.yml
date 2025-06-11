@@ -75,6 +75,7 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
           # REDIS_URL: redis://localhost:6379/0
         run: |
+          bundle exec rake assets:precompile
           bin/rails db:test:prepare
           bundle exec rspec
 
