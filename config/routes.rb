@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
     devise_for :users, controllers: {
-                                      registrations: 'users/registrations',
-                                      omniauth_callbacks: 'users/omniauth_callbacks',
-                                      passwords: 'users/passwords'
+                                      registrations: "users/registrations",
+                                      omniauth_callbacks: "users/omniauth_callbacks",
+                                      passwords: "users/passwords"
                                     }
     devise_scope :user do
-      get 'reset_request', to: 'users/passwords#reset_request'
-      get 'complete_password_change', to: 'users/passwords#complete_password_change'
+      get "reset_request", to: "users/passwords#reset_request"
+      get "complete_password_change", to: "users/passwords#complete_password_change"
     end
   end
   resources :users, only: %i[show edit] do
     resources :attachments, controller: "user/attachments", only: :destroy
-    patch 'update_password', on: :collection
+    patch "update_password", on: :collection
     member do
       get :bookmarks
       get :following, :followers
@@ -36,15 +36,16 @@ Rails.application.routes.draw do
   # 画像をCDN配信する用のルーティング
   direct :cdn_image do |model, options|
     expires_in = options.delete(:expires_in) { ActiveStorage.urls_expire_in }
-    cdn_options = if Rails.env.production?
-                    {
-                      protocol: 'https',
-                      port: 443,
-                      host: ENV["CDN_HOST"]
-                    }
-                  else
-                    Rails.application.routes.default_url_options
-                  end
+    cdn_options =
+      if Rails.env.production?
+        {
+          protocol: "https",
+          port: 443,
+          host: ENV["CDN_HOST"]
+        }
+      else
+        Rails.application.routes.default_url_options
+      end
 
     if model.respond_to?(:signed_id)
       route_for(
@@ -98,13 +99,13 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  get '/users/:account', to: 'users#show'
-  get '/users/:account/bookmarks', to: 'users#bookmarks'
-  get '/users/:account/following', to: 'users#following'
-  get '/users/:account/followers', to: 'users#followers'
-  get '/contact/', to: 'static#contact'
-  get '/privacy_policy/', to: 'static#privacy_policy'
-  get '/term/', to: 'static#term'
-  get '/guide/', to: 'static#guide'
+  get "/users/:account", to: "users#show"
+  get "/users/:account/bookmarks", to: "users#bookmarks"
+  get "/users/:account/following", to: "users#following"
+  get "/users/:account/followers", to: "users#followers"
+  get "/contact/", to: "static#contact"
+  get "/privacy_policy/", to: "static#privacy_policy"
+  get "/term/", to: "static#term"
+  get "/guide/", to: "static#guide"
   root "static#home"
 end

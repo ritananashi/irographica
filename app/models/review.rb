@@ -11,9 +11,9 @@ class Review < ApplicationRecord
   validates :body, presence: true, length: { maximum: 2000 }
   validates :paper, length: { maximum: 50 }
   validates :pen, length: { maximum: 50 }
-  validates :images,  total_size: { less_than: 3.megabytes, },
+  validates :images,  total_size: { less_than: 3.megabytes },
                       limit: { max: 4 },
-                      content_type: { in: ['image/png', 'image/jpeg', 'image/webp'], spoofing_protection: true }
+                      content_type: { in: ["image/png", "image/jpeg", "image/webp"], spoofing_protection: true }
 
   ransack_alias :review_search, :title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name
 

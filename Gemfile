@@ -45,47 +45,47 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'rspec-rails', '~> 8.0.0'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem "rspec-rails", "~> 8.0.0"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'letter_opener_web', '~> 3.0'
+  gem "letter_opener_web", "~> 3.0"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 end
 
 group :production do
   gem "aws-sdk-s3", "1.114.0", require: false
-  gem 'aws-sdk-cloudfront', '~> 1.118', require: false
+  gem "aws-sdk-cloudfront", "~> 1.118", require: false
 end
 
 gem "tailwindcss-rails"
 gem "tailwindcss-ruby", "3.4.17"
 
-gem 'devise'
-gem 'omniauth-twitter2'
+gem "devise"
+gem "omniauth-twitter2"
 gem "omniauth-rails_csrf_protection"
 
-gem 'rails-i18n', '~> 7.0.0'
+gem "rails-i18n", "~> 7.0.0"
 
-gem 'active_hash'
+gem "active_hash"
 
-gem 'ransack'
+gem "ransack"
 
-gem 'csv'
+gem "csv"
 
 gem "administrate"
 gem "administrate-field-active_storage"
 
 gem "meta-tags"
 
-gem 'pagy', '~> 9.3'
+gem "pagy", "~> 9.3"
