@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.update_with_password(user_params)
       # Sign in the user by passing validation in case their password changed
       bypass_sign_in(@user)
-      redirect_to user_path(current_user), notice: t('users.setting.notice')
+      redirect_to user_path(current_user), notice: t("users.setting.notice")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -28,14 +28,14 @@ class UsersController < ApplicationController
     @title = "フォロー一覧"
     @user = User.find_by(account: params[:id])
     @users = @user.following
-    render 'show_follow'
+    render "show_follow"
   end
 
   def followers
     @title = "フォロワー一覧"
     @user = User.find_by(account: params[:id])
     @users = @user.followers
-    render 'show_follow'
+    render "show_follow"
   end
 
   private

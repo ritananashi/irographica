@@ -16,14 +16,14 @@ class ReviewsController < ApplicationController
                 set_product
 
                 if @review.save
-                  flash[:notice] = t('reviews.new.notice')
+                  flash[:notice] = t("reviews.new.notice")
                   redirect_to root_path
                 else
                   raise ActiveRecord::Rollback
                 end
               end
     unless result
-      flash.now[:alert] = t('reviews.new.alert')
+      flash.now[:alert] = t("reviews.new.alert")
       render :new, status: :unprocessable_entity
     end
   end
@@ -43,14 +43,14 @@ class ReviewsController < ApplicationController
                 set_product
 
                 if @review.update(process_images(review_params))
-                  flash[:notice] = t('reviews.edit.notice')
+                  flash[:notice] = t("reviews.edit.notice")
                   redirect_to review_path(@review)
                 else
                   raise ActiveRecord::Rollback
                 end
               end
     unless result
-      flash.now[:alert] = t('reviews.edit.alert')
+      flash.now[:alert] = t("reviews.edit.alert")
       render :edit, status: :unprocessable_entity
     end
   end
@@ -61,8 +61,8 @@ class ReviewsController < ApplicationController
       review.destroy!
       review.images.purge_later if review.images.attached?
     end
-    flash[:notice] = t('reviews.delete.notice')
-    if session[:referer].include?('users')
+    flash[:notice] = t("reviews.delete.notice")
+    if session[:referer].include?("users")
       redirect_to user_path(current_user), status: :see_other
     else
       redirect_to root_path, status: :see_other

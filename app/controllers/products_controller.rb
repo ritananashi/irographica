@@ -28,17 +28,17 @@ class ProductsController < ApplicationController
                 if brand.present?
                   @product.brand_id = brand.id
                 else
-                  raise ActiveRecord::Rollback, t('brand.new.alert')
+                  raise ActiveRecord::Rollback, t("brand.new.alert")
                 end
 
                 if @product.save
-                  redirect_to products_path, notice: t('product.new.notice')
+                  redirect_to products_path, notice: t("product.new.notice")
                 else
                   raise ActiveRecord::Rollback
                 end
               end
     unless result
-      flash.now[:alert] = t('product.new.alert')
+      flash.now[:alert] = t("product.new.alert")
       render :new, status: :unprocessable_entity
     end
   end
