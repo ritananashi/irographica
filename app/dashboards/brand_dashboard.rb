@@ -14,7 +14,7 @@ class BrandDashboard < Administrate::BaseDashboard
     official_url: Field::String,
     products: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

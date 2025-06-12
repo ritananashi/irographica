@@ -21,7 +21,7 @@ module ApplicationHelper
         local: "ja-JP"
       },
       twitter: {
-        card: "summary_large_image",
+        card: "summary_large_image"
       }
     }
   end
