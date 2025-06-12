@@ -9,6 +9,6 @@ class Category < ActiveHash::Base
       { id: 7, color: "紫色" },
       { id: 8, color: "茶色" },
       { id: 9, color: "グレー" },
-      { id: 10, color: "黒" },
+      { id: 10, color: "黒" }
   ]
 end
