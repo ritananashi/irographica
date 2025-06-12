@@ -1,12 +1,12 @@
 module FlashHelper
   def flash_type(key)
     case key
-      when 'alert'
-        'warning'
-      when 'notice'
-        'success'
-      when 'error'
-        'danger'
+    when 'alert'
+      'warning'
+    when 'notice'
+      'success'
+    when 'error'
+      'danger'
     end
   end
 

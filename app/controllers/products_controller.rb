@@ -2,10 +2,10 @@ class ProductsController < ApplicationController
   def index
     if params[:q].blank?
       @q = params[:q]
-      @grouping_word = {"0"=>{name_or_brand_name_cont: @q}}
+      @grouping_word = { "0"=>{ name_or_brand_name_cont: @q } }
     else
       @q = params[:q].split(/[\s　]/)
-      @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
+      @grouping_word = @q.each_with_index.reduce({}) { |hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word }) }
     end
     @pagy, @products = pagy(Product.ransack({ combinator: "and", groupings: @grouping_word }).
                             result(distinct: true).includes(:brand).order(created_at: "DESC"), limit: 10)
@@ -46,10 +46,10 @@ class ProductsController < ApplicationController
   def search
     if params[:q].blank?
       @q = params[:q]
-      @grouping_word = {"0"=>{name_or_brand_name_cont: @q}}
+      @grouping_word = { "0"=>{ name_or_brand_name_cont: @q } }
     else
       @q = params[:q].split(/[\s　]/)
-      @grouping_word = @q.each_with_index.reduce({}){|hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word })}
+      @grouping_word = @q.each_with_index.reduce({}) { |hash, (word, i)| hash.merge(i.to_s => { name_or_brand_name_cont: word }) }
     end
     @c = params[:c]
     @grouping_word["Category_refine"] = { category_id_eq: @c }

@@ -11,7 +11,7 @@ module ApplicationHelper
       keywords: '万年筆,ガラスペン,インク,インク沼,レビュー,共有',
       canonical: 'https://irographica.com/',
       separator: '|',
-      og:{
+      og: {
         site_name: :site,
         title: :title,
         description: :description,

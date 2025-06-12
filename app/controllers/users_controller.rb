@@ -44,5 +44,4 @@ class UsersController < ApplicationController
     # NOTE: Using `strong_parameters` gem
     params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
   end
-
 end

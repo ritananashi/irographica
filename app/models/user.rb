@@ -25,9 +25,9 @@ class User < ApplicationRecord
   validates :body, length: { maximum: 500 }
   validates :avatar, size: { less_than: 1.megabytes, },
                       content_type: { in: ['image/png', 'image/jpeg', 'image/webp'], spoofing_protection: true }
-  validates :x_account, format: { with: /\Ahttps?:\/\/x.com\/[^\n]+\z/ , message: "のURLを入力してください" }, allow_blank: true
-  validates :instagram_account, format: { with: /\Ahttps?:\/\/www.instagram.com\/[^\n]+\z/ , message: "のURLを入力してください" }, allow_blank: true
-  validates :youtube_account, format: { with: /\Ahttps?:\/\/youtube.com\/[^\n]+\z/ , message: "のURLを入力してください" }, allow_blank: true
+  validates :x_account, format: { with: /\Ahttps?:\/\/x.com\/[^\n]+\z/, message: "のURLを入力してください" }, allow_blank: true
+  validates :instagram_account, format: { with: /\Ahttps?:\/\/www.instagram.com\/[^\n]+\z/, message: "のURLを入力してください" }, allow_blank: true
+  validates :youtube_account, format: { with: /\Ahttps?:\/\/youtube.com\/[^\n]+\z/, message: "のURLを入力してください" }, allow_blank: true
 
   def to_param
     account

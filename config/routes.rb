@@ -36,15 +36,16 @@ Rails.application.routes.draw do
   # 画像をCDN配信する用のルーティング
   direct :cdn_image do |model, options|
     expires_in = options.delete(:expires_in) { ActiveStorage.urls_expire_in }
-    cdn_options = if Rails.env.production?
-                    {
-                      protocol: 'https',
-                      port: 443,
-                      host: ENV["CDN_HOST"]
-                    }
-                  else
-                    Rails.application.routes.default_url_options
-                  end
+    cdn_options =
+      if Rails.env.production?
+        {
+          protocol: 'https',
+          port: 443,
+          host: ENV["CDN_HOST"]
+        }
+      else
+        Rails.application.routes.default_url_options
+      end
 
     if model.respond_to?(:signed_id)
       route_for(
