@@ -1,8 +1,103 @@
 {
   "RSpec": {
     "coverage": {
-      "/myapp/spec/system/statics_spec.rb": {
+      "/myapp/spec/models/user_spec.rb": {
         "lines": [
+          1,
+          null,
+          1,
+          1,
+          19,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           1,
@@ -10,6 +105,9 @@
           1,
           1,
           1,
+          1,
+          1,
+          null,
           null,
           null,
           null
@@ -925,6 +1023,25 @@
           null
         ]
       },
+      "/myapp/spec/factories/users.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          null,
+          null
+        ]
+      },
       "/myapp/config/routes.rb": {
         "lines": [
           1,
@@ -965,6 +1082,7 @@
           null,
           1,
           0,
+          null,
           0,
           null,
           0,
@@ -1336,6 +1454,20 @@
           null
         ]
       },
+      "/myapp/spec/system/statics_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/myapp/app/controllers/static_controller.rb": {
         "lines": [
           1,
@@ -1505,6 +1637,6 @@
         ]
       }
     },
-    "timestamp": 1749624438
+    "timestamp": 1749803358
   }
 }
