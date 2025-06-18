@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true, length: { maximum: 10 }
-  validates :account, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/ }, length: { minimum: 4, maximum: 20 }
+  validates :account, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_]+\z/ }, length: { minimum: 4, maximum: 20 }
   validates :body, length: { maximum: 500 }
   validates :avatar, size: { less_than: 1.megabytes },
                       content_type: { in: ["image/png", "image/jpeg", "image/webp"], spoofing_protection: true }
