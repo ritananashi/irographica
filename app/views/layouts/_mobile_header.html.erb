@@ -33,7 +33,7 @@
                     </div>
                   <% end %>
                 <% end %>
-                <%= link_to t('header.setting'), edit_user_path(current_user), data: { action: "slideover#close" } %>
+                <%= link_to t('header.setting'), edit_settings_path, data: { action: "slideover#close" } %>
                 <%= link_to t('header.sign_out'), destroy_user_session_path, data: { turbo_method: :delete, action: "slideover#close" } %>
             <% else %>
                 <%= link_to t('header.sign_in'), user_session_path, class: "btn btn-wide btn-primary", data: { action: "slideover#close" } %>
