@@ -10,13 +10,16 @@ Rails.application.routes.draw do
       get "complete_password_change", to: "users/passwords#complete_password_change"
     end
   end
-  resources :users, only: %i[show edit] do
+  resources :users, only: :show do
     resources :attachments, controller: "user/attachments", only: :destroy
-    patch "update_password", on: :collection
     member do
       get :bookmarks
       get :following, :followers
     end
+  end
+
+  resource :settings, only: :edit do
+    patch "update_setting", as: :update, on: :collection
   end
 
   resources :relationships, only: %i[create destroy]
