@@ -68,7 +68,7 @@
             <% if current_user == @review.user %>
               <div class="flex items-center justify-center gap-4">
                 <%= link_to t('reviews.edit.button'), edit_review_path, class: "btn btn-accent", data: { turbo_frame: "_top" } %>
-                <%= link_to t('reviews.delete.button'), review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: t('reviews.delete.delete_confirm') } %>
+                <%= link_to t('reviews.delete.button'), review_path(@review), class: "btn btn-error", data: { turbo_method: :delete, turbo_confirm: t('reviews.delete.delete_confirm'), turbo_frame: "_top" } %>
               </div>
             <% end %>
           </div>
