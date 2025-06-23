@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :redirect_root, only: :new
+  before_action :redirect_root, only: %i[new edit]
+  before_action :verify_access, only: :edit
 
   def index
     @pagy, @reviews = pagy(Review.includes(:user, product: :brand).order(created_at: :desc), limit: 10)
@@ -104,5 +105,10 @@ class ReviewsController < ApplicationController
     product_name = params[:review][:product_name]
     product = Product.find_by(name: product_name)
     @review.product_id = product.id if product
+  end
+
+  def verify_access
+    @review = Review.find(params[:id])
+    redirect_to root_path, alert: "アクセスできません" unless @review.user.id == current_user.id
   end
 end
