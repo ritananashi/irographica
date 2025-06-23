@@ -21,3 +21,6 @@ application.register("product", ProductController)
 
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)
+
+import TabStatusController from "./tab_status_controller"
+application.register("tab-status", TabStatusController)

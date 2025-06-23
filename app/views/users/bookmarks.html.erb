@@ -4,21 +4,23 @@
     <div class="w-full mx-auto mt-5">
       <%= render "profile_tab" %>
     </div>
-    <% if turbo_frame_request? %>
-      <%= turbo_frame_tag "show_bookmark" do %>
-        <div class="flex flex-wrap justify-center items-center p-5 gap-5">
-          <% if @bookmark_reviews.present? %>
-            <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
-          <% else %>
-            <div><%= t('users.show.bookmark_not_found') %></div>
-          <% end %>
-        </div>
-      <% end %>
-    <% else %>
-      <%= turbo_frame_tag "show_bookmark", src: bookmarks_user_path(@user) do %>
-        <div class="flex flex-wrap justify-center items-center p-5 gap-5">
-          <%= render "shared/skeleton_card" %>
-        </div>
+    <%= turbo_frame_tag "profile_tabs" do %>
+      <% if turbo_frame_request? %>
+        <%= turbo_frame_tag "show_bookmark" do %>
+          <div class="flex flex-wrap justify-center items-center p-5 gap-5">
+            <% if @bookmark_reviews.present? %>
+              <%= render partial: 'reviews/review', collection: @bookmark_reviews %>
+            <% else %>
+              <div><%= t('users.show.bookmark_not_found') %></div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= turbo_frame_tag "show_bookmark", src: bookmarks_user_path(@user) do %>
+          <div class="flex flex-wrap justify-center items-center p-5 gap-5">
+            <%= render "shared/skeleton_card" %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

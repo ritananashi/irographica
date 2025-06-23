@@ -1,12 +1,18 @@
-<div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sm:w-1/2 mx-auto mb-5">
-  <ul class="flex justify-center items-center -mb-px">
-    <li>
-      <%= link_to t('users.show.current_user_reviews'), user_path(@user),
-        class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg #{request.path.include?("bookmarks") ? "not_active_tabs" : "active_tabs"}" %>
-    </li>
-    <li>
-      <%= link_to t('users.show.current_user_bookmarks'), bookmarks_user_path(@user),
-        class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg #{request.path.include?("bookmarks") ? "active_tabs" : "not_active_tabs"}", "aria-current": "page" %>
-    </li>
-  </ul>
+<div data-controller="tab-status">
+  <div class="font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 sm:w-1/2 mx-auto mb-5">
+    <ul class="flex justify-center items-center -mb-px">
+      <li>
+        <%= link_to t('users.show.current_user_reviews'), user_path(@user),
+          class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg",
+          id: "collection",
+          data: { turbo_frame: "profile_tabs", turbo_action: :advance, tab_status_target: "collection", action: "tab-status#select" } %>
+      </li>
+      <li>
+        <%= link_to t('users.show.current_user_bookmarks'), bookmarks_user_path(@user),
+          class: "inline-block p-4 border-b-2 text-[16px] sm:text-[32px] rounded-t-lg",
+          id: "bookmark",
+          data: { turbo_frame: "profile_tabs", turbo_action: :advance, tab_status_target: "bookmark", action: "tab-status#select" } %>
+      </li>
+    </ul>
+  </div>
 </div>
