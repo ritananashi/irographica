@@ -14,6 +14,7 @@
               <div><%= t('users.show.bookmark_not_found') %></div>
             <% end %>
           </div>
+          <%= render "shared/load_more_button" %>
         <% end %>
       <% else %>
         <%= turbo_frame_tag "show_bookmark", src: bookmarks_user_path(@user) do %>
