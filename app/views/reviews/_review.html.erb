@@ -1,5 +1,5 @@
 <div class="card sm:card-side m-4 shadow" id="review-<%= review.id %>">
-  <div class="px-10 sm:px-4 py-4 sm:relative">
+  <div class="px-10 sm:px-4 pt-4 sm:py-4 sm:relative">
     <% if review.images.attached? %>
       <%= image_tag review.images[0], class: "h-[170px] w-[170px] rounded-lg" %>
     <% else %>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="card-body gap-0 flex-shrink-0 w-[250px] sm:w-[340px] p-4">
+  <div class="card-body gap-0 flex-shrink-0 w-[250px] sm:w-[340px] px-4 py-2 sm:p-4">
     <div class="card-title overflow-hidden mb-1 justify-between">
       <span class="w-3/4 text-[24px] font-bold text-ellipsis line-clamp-1"><%= review.title %></span>
       <% if review.user.avatar.attached? %>
