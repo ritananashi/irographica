@@ -1,7 +1,8 @@
 <div class="container mx-auto px-5 py-5">
-  <div class="flex flex-wrap justify-center items-center h-[270px]">
-    <%= image_tag "irographica-biglogo.png", class: "h-[270px] w-[370px] sm:w-[720px] object-contain sm:object-cover flex-1" %>
-    <div class="text-center text-2xl flex-1 tracking-wider">
+  <div class="flex flex-wrap justify-center items-center h-[140px] sm:h-[270px]">
+    <%= image_tag "irographica-biglogo.png", class: "h-[270px] w-[720px] object-contain sm:object-cover flex-1 hidden sm:block" %>
+    <%= image_tag "mobile_logo.png", class: "h-[140px] object-cover flex-1 sm:hidden" %>
+    <div class="text-center text-2xl flex-1 tracking-wider hidden sm:block">
       <%= simple_format(t('home.copywriting')) %>
     </div>
   </div>
