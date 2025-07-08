@@ -25,5 +25,9 @@ closes #<issue番号>
 [nits] → ささいな指摘(nitpick) 
 [ask] → 質問  
 [fyi] → 参考情報
+
+### お願い
+
+- Pull Request Overview、Reviewed Changes、コメントは全て必ず日本語で書いてください
 <!-- for GitHub Copilot review rule-->
 <!-- I want to review in Japanese. -->
