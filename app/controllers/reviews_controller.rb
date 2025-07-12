@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :verify_access, only: :edit
 
   def index
-    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).order(created_at: :desc), limit: 10)
+    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).public_send(sort_parameter), limit: 10)
   end
 
   def new
