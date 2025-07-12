@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  include SortStatus
+
   belongs_to :user
   belongs_to :product
   has_many_attached :images
@@ -14,10 +16,6 @@ class Review < ApplicationRecord
   validates :images,  total_size: { less_than: 3.megabytes },
                       limit: { max: 4 },
                       content_type: { in: ["image/png", "image/jpeg", "image/webp"], spoofing_protection: true }
-
-  scope :latest, -> { order(created_at: :desc) }
-  scope :old, -> { order(created_at: :asc) }
-  scope :likes, -> { order(likes_count: :desc) }
 
   ransack_alias :review_search, :title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name
 
