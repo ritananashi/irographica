@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
     @c = params[:c]
     @grouping_word["Category_refine"] = { product_category_id_eq: @c }
     @pagy, @reviews = pagy(Review.ransack({ combinator: "and", groupings: @grouping_word }).
-                            result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC"), limit: 10)
+                           result(distinct: true).includes(:user, product: :brand).public_send(sort_parameter), limit: 10)
   end
 
   private
@@ -105,6 +105,19 @@ class ReviewsController < ApplicationController
     product_name = params[:review][:product_name]
     product = Product.find_by(name: product_name)
     @review.product_id = product.id if product
+  end
+
+  def sort_parameter
+    case
+    when params[:latest]
+      :latest
+    when params[:old]
+      :old
+    when params[:likes]
+      :likes
+    else
+      :latest
+    end
   end
 
   def verify_access
