@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  include SortStatus
+
   validates :name, presence: true, uniqueness: true
   validates :category_id, presence: true
 
