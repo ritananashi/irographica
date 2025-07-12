@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
+  include Sortable
+
   before_action :redirect_root, only: %i[new edit]
   before_action :verify_access, only: :edit
 
   def index
-    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).order(created_at: :desc), limit: 10)
+    @pagy, @reviews = pagy(Review.includes(:user, product: :brand).public_send(sort_parameter), limit: 10)
   end
 
   def new
@@ -81,7 +83,7 @@ class ReviewsController < ApplicationController
     @c = params[:c]
     @grouping_word["Category_refine"] = { product_category_id_eq: @c }
     @pagy, @reviews = pagy(Review.ransack({ combinator: "and", groupings: @grouping_word }).
-                            result(distinct: true).includes(:user, product: :brand).order(created_at: "DESC"), limit: 10)
+                           result(distinct: true).includes(:user, product: :brand).public_send(sort_parameter), limit: 10)
   end
 
   private

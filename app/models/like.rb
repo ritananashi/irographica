@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :review
+  belongs_to :review, counter_cache: true
 
   has_one :notification, as: :notifable, dependent: :destroy
 

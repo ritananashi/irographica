@@ -1,4 +1,11 @@
 <%= turbo_frame_tag "reviews" do %>
+  <div class="flex justify-center">
+    <%= link_to "新着順", reviews_path(latest: true) %>
+    <span class="w-[1px] bg-black mx-2"></span>
+    <%= link_to "投稿順", reviews_path(old: true) %>
+    <span class="w-[1px] bg-black mx-2"></span>
+    <%= link_to "人気順", reviews_path(likes: true) %>
+  </div>
   <div class="flex flex-wrap justify-center items-center px-5 sm:p-5 gap-5">
     <% if @reviews.present? %>
       <%= render @reviews %>
