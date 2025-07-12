@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  include Sortable
+
   before_action :redirect_root, only: %i[new edit]
   before_action :verify_access, only: :edit
 
@@ -105,19 +107,6 @@ class ReviewsController < ApplicationController
     product_name = params[:review][:product_name]
     product = Product.find_by(name: product_name)
     @review.product_id = product.id if product
-  end
-
-  def sort_parameter
-    case
-    when params[:latest]
-      :latest
-    when params[:old]
-      :old
-    when params[:likes]
-      :likes
-    else
-      :latest
-    end
   end
 
   def verify_access
