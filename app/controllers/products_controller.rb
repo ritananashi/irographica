@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include Sortable
+
   def index
     if params[:q].blank?
       @q = params[:q]
@@ -13,7 +15,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @pagy, @reviews = pagy(@product.reviews, limit: 10)
+    @pagy, @reviews = pagy(@product.reviews.public_send(sort_parameter), limit: 10)
   end
 
   def new
