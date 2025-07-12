@@ -4,7 +4,7 @@
     <h2 class="card-title"><%= product.name %></h2>
     <% if request.path.include?("search") %>
       <div class="card-actions justify-end">
-        <%= link_to t('product.index.show_product'), product_path(product), class: "btn btn-sm btn-primary", data: { turbo_frame: "_top" } %>
+        <%= link_to t('product.index.show_product'), product_path(product, latest: true), class: "btn btn-sm btn-primary", data: { turbo_frame: "_top" } %>
       </div>
     <% else %>
       <form method="dialog">

@@ -18,6 +18,13 @@
     <% if turbo_frame_request? %>
       <%= turbo_frame_tag "show_product_reviews" do %>
         <div class="flex flex-col gap-4">
+          <div class="flex justify-center">
+            <%= link_to "新着順", product_path(@product, latest: true) %>
+            <span class="w-[1px] bg-black mx-2"></span>
+            <%= link_to "投稿順", product_path(@product, old: true) %>
+            <span class="w-[1px] bg-black mx-2"></span>
+            <%= link_to "人気順", product_path(@product, likes: true) %>
+          </div>
           <div class="flex flex-wrap -m-4 justify-center items-center">
             <% if @reviews.present? %>
               <%= render partial: 'reviews/review', collection: @reviews %>
