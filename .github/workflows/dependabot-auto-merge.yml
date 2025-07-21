@@ -25,7 +25,6 @@ jobs:
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           (steps.metadata.outputs.update-type == 'version-update:semver-minor' && steps.metadata.outputs.dependency-type == 'direct:development')
         run: |
-          gh pr review --approve
           gh pr edit "$PR_URL" -t "(auto merged) $PR_TITLE"
           gh pr merge --auto --merge "$PR_URL"
         env:
