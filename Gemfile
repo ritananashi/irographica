@@ -88,4 +88,4 @@ gem "administrate-field-active_storage"
 
 gem "meta-tags"
 
-gem "pagy", "~> 9.3"
+gem "pagy", "~> 9.4"
