@@ -92,3 +92,4 @@ gem "pagy", "~> 9.4"
 
 gem "rakuten_web_service"
 
+gem "solid_queue", "~> 1.2"
