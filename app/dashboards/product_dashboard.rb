@@ -16,6 +16,8 @@ class ProductDashboard < Administrate::BaseDashboard
       include_blank: true,
     ),
     reviews: Field::HasMany,
+    productUrl: Field::Url,
+    imageUrl: ImageField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -30,6 +32,8 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     brand
     category_id
+    productUrl
+    imageUrl
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,6 +44,8 @@ class ProductDashboard < Administrate::BaseDashboard
     brand
     category_id
     reviews
+    productUrl
+    imageUrl
     created_at
     updated_at
   ].freeze
