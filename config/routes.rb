@@ -79,7 +79,9 @@ Rails.application.routes.draw do
     resources :bookmarks
     resources :brands
     resources :likes
-    resources :products
+    resources :products do
+      get :search, on: :collection
+    end
     resources :reviews do
       delete :images, on: :member, action: :destroy_image
     end
