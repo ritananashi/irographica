@@ -58,6 +58,8 @@ class ProductDashboard < Administrate::BaseDashboard
     brand
     category_id
     reviews
+    productUrl
+    imageUrl
   ].freeze
 
   # COLLECTION_FILTERS
