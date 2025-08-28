@@ -20,7 +20,7 @@ module Admin
 
       sleep(1)
 
-      render json: results.first(10)
+      render json: results.first(5)
 
     end
 
