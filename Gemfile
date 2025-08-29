@@ -64,7 +64,7 @@ group :test do
 end
 
 group :production do
-  gem "aws-sdk-s3", "1.197.0", require: false
+  gem "aws-sdk-s3", "1.198.0", require: false
   gem "aws-sdk-cloudfront", "~> 1.127", require: false
 end
 
