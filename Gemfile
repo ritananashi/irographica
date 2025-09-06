@@ -65,7 +65,7 @@ end
 
 group :production do
   gem "aws-sdk-s3", "1.198.0", require: false
-  gem "aws-sdk-cloudfront", "~> 1.127", require: false
+  gem "aws-sdk-cloudfront", "~> 1.128", require: false
 end
 
 gem "tailwindcss-rails"
