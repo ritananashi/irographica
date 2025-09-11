@@ -3,7 +3,7 @@ RakutenWebService.configure do |c|
   c.application_id = Rails.env.production? ? ENV["RAKUTEN_APPLICATION_ID"] : Rails.application.credentials.dig(:rakuten, :RAKUTEN_APPLICATION_ID)
 
   # (任意) 楽天アフィリエイトID
-  c.affiliate_id = Rails.env.production? ? ENV['RAKUTEN_AFFILIATE_ID'] : Rails.application.credentials.dig(:rakuten, :RAKUTEN_AFFILIATE_ID)
+  c.affiliate_id = Rails.env.production? ? ENV["RAKUTEN_AFFILIATE_ID"] : Rails.application.credentials.dig(:rakuten, :RAKUTEN_AFFILIATE_ID)
 
   # (任意) リクエストのリトライ回数
   # 一定期間の間のリクエスト数が制限を超えた時、APIはリクエスト過多のエラーを返す。

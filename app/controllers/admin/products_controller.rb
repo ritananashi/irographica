@@ -7,23 +7,17 @@ module Admin
     #   super
     #   send_foo_updated_email(requested_resource)
     # end
-
     def search
       q = params[:keyword]
-
       key = "インク #{q}"
-      results = RakutenWebService::Ichiba::Product.search(keyword: key, genreId: '215783')
+      results = RakutenWebService::Ichiba::Product.search(keyword: key, genreId: "215783")
       unless results.any?
         sleep(1)
-        results = RakutenWebService::Ichiba::Item.search(keyword: key, genreId: '215783')
+        results = RakutenWebService::Ichiba::Item.search(keyword: key, genreId: "215783")
       end
-
       sleep(1)
-
       render json: results.first(5)
-
     end
-
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
