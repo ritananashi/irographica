@@ -1,5 +1,10 @@
-<div class="card bg-base-100 w-96 shadow">
-  <div class="card-body">
+<div class="card sm:card-side bg-base-100 w-96 shadow">
+  <% if product.imageUrl.present? %>
+    <figure class="px-10 pt-2 sm:pb-10">
+      <%= image_tag product.imageUrl %>
+    </figure>
+  <% end %>
+  <div class="card-body pt-2 pb-5 sm:pt-10 sm:pb-10">
     <p class="text-[#959595]"><%= product.brand.name %></p>
     <h2 class="card-title"><%= product.name %></h2>
     <% if request.path.include?("search") %>
