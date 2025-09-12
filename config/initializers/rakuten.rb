@@ -13,5 +13,5 @@ RakutenWebService.configure do |c|
   # (任意) デバッグモード
   # trueの時、クライアントはすべてのHTTPリクエストとレスポンスを
   # 標準エラー出力に流す。
-  c.debug = true # default: false
+  c.debug = Rails.env.development? # default: false
 end

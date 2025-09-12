@@ -18,7 +18,7 @@
       <div class="flex flex-wrap justify-center items-center">
         <div class="flex justify-center items-center sm:mx-4 my-5 sm:my-0">
           <% if @product.productUrl.present? %>
-            <%= link_to "楽天で見る", @product.productUrl, class: "btn btn-wide bg-[#B31B22] hover:bg-[#87141a] text-white text-[20px]", target: :_blank, rel: "noopener noreferrer nofolloe" %>
+            <%= link_to "楽天で見る", @product.productUrl, class: "btn btn-wide bg-[#B31B22] hover:bg-[#87141a] text-white text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
           <% end %>
         </div>
         <div class="flex justify-center items-center sm:mx-1 my-1 sm:my-0">

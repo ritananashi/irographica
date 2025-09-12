@@ -30,17 +30,23 @@ export default class extends Controller {
 					let resultListHtml = "";
 
 					for (let i in results) {
+						// 取得した楽天の商品ページURLと画像、商品名を変数に保存（商品価格ナビAPIと商品検索APIでパラメータが違うのでどちらかを取得）
+						const resultUrl = results[i]["params"]["productUrlPC"] || results[i]["params"]["itemUrl"]
+						const resultImage = results[i]["params"]["mediumImageUrl"] || results[i]["params"]["mediumImageUrls"][0]
+						const resultName = results[i]["params"]["productName"] || results[i]["params"]["itemName"]
 						//検索結果表示用のHTMLを構築
 						resultListHtml += `<li>
-																<input type="radio" name="result" value="${results[i]["params"]["productUrlPC"] || results[i]["params"]["itemUrl"]},${results[i]["params"]["mediumImageUrl"] || results[i]["params"]["mediumImageUrls"][0]}" data-action="click->rakuten-search#set">
+																<input type="radio" name="result" value="${resultUrl},${resultImage}" data-action="click->rakuten-search#set">
 																<figure>
-																	<img src="${results[i]["params"]["mediumImageUrl"] || results[i]["params"]["mediumImageUrls"][0]}" />
+																	<img src="${resultImage}" />
 																</figure>
 																<div>
-																	${results[i]["params"]["productName"] || results[i]["params"]["itemName"]}
+																	${resultName}
 																</div>
 															</li>`;
 					}
+					// 既存の検索結果の表示をリセット
+					displayResultWrapper.innerHTML = ''
 					// 楽天の検索結果を画面上に表示
 					displayResultWrapper.insertAdjacentHTML('beforeend', resultListHtml);
 				} else {
@@ -50,8 +56,8 @@ export default class extends Controller {
 	}
 
 	set(e) {
-		const redioButton = e.currentTarget;
-		const rakutenData = redioButton.value.split(",");
+		const radioButton = e.currentTarget;
+		const rakutenData = radioButton.value.split(",");
 		const url = document.getElementById("product_productUrl");
 		const image = document.getElementById("product_imageUrl");
 		url.value = rakutenData[0];

@@ -48,7 +48,7 @@ services:
     command: bash -c "./bin/jobs"
     volumes:
       - .:/myapp
-      - bundle_data:/usr/local/bundle:cashed
+      - bundle_data:/usr/local/bundle:cached
 volumes:
   bundle_data:
   postgresql_data:
