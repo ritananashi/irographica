@@ -12,6 +12,8 @@ module Myapp
     config.load_defaults 7.2
     config.active_storage.variant_processor = :mini_magick
 
+    config.autoload_paths << "#{root}/app/fields"
+    config.autoload_paths << "#{root}/app/services"
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

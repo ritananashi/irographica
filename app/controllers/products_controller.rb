@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
                 end
 
                 if @product.save
+                  RakutenDataFetchJob.perform_later(@product.id)
                   redirect_to products_path, notice: t("product.new.notice")
                 else
                   raise ActiveRecord::Rollback

@@ -1,18 +1,36 @@
 <section class="overflow-hidden">
   <div class="container px-5 py-10 sm:py-24 mx-auto">
-    <div class="flex flex-wrap w-full sm:w-1/2 justify-center mx-auto mb-5 sm:mb-20 rounded-lg border border-gray-400 p-8 sm:gap-10">
-      <div class="flex flex-col gap-2">
-        <h1 class="text-3xl font-bold"><%= @product.name %></h1>
-        <p><%= @product.brand.name %></p>
-        <p><%= @product.category.color %><%= t('product.show.color') %></p>
+    <div class="flex flex-col flex-wrap w-full justify-center mx-auto mb-5 sm:mb-20 rounded-lg border border-gray-400 px-5 py-2 sm:p-8 sm:gap-10">
+      <div class="flex flex-wrap justify-center items-center w-full">
+        <div class="mx-5">
+          <figure>
+            <% if @product.imageUrl.present? %>
+              <%= image_tag @product.imageUrl %>
+            <% end %>
+          </figure>
+        </div>
+        <div class="flex flex-wrap flex-col gap-2">
+          <h1 class="text-3xl font-bold text-wrap"><%= @product.name %></h1>
+          <p class="text-wrap"><%= @product.brand.name %></p>
+          <p><%= @product.category.color %><%= t('product.show.color') %></p>
+        </div>
       </div>
-      <div class="flex flex-col justify-center items-center gap-4">
-        <% if @product.brand.official_url.present? %>
-          <%= link_to t('product.show.official_url'), @product.brand.official_url, class: "btn btn-primary btn-wide text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
-        <% end %>
-        <% if @product.brand.official_shopping_url.present? %>
-          <%= link_to t('product.show.official_shopping_url'), @product.brand.official_shopping_url, class: "btn btn-secondary btn-wide text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
-        <% end %>
+      <div class="flex flex-wrap justify-center items-center">
+        <div class="flex justify-center items-center sm:mx-4 my-5 sm:my-0">
+          <% if @product.productUrl.present? %>
+            <%= link_to "楽天で見る", @product.productUrl, class: "btn btn-wide bg-[#B31B22] hover:bg-[#87141a] text-white text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
+          <% end %>
+        </div>
+        <div class="flex justify-center items-center sm:mx-1 my-1 sm:my-0">
+          <% if @product.brand.official_url.present? %>
+            <%= link_to t('product.show.official_url'), @product.brand.official_url, class: "btn btn-primary btn-wide text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
+          <% end %>
+        </div>
+        <div class="flex justify-center items-center">
+          <% if @product.brand.official_shopping_url.present? %>
+            <%= link_to t('product.show.official_shopping_url'), @product.brand.official_shopping_url, class: "btn btn-secondary btn-wide text-[20px]", target: :_blank, rel: "noopener noreferrer nofollow" %>
+          <% end %>
+        </div>
       </div>
     </div>
     <% if turbo_frame_request? %>

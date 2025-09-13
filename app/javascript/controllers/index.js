@@ -19,6 +19,9 @@ application.register("nested-form", NestedFormController)
 import ProductController from "./product_controller"
 application.register("product", ProductController)
 
+import RakutenSearchController from "./rakuten_search_controller"
+application.register("rakuten-search", RakutenSearchController)
+
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)
 

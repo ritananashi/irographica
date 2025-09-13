@@ -7,7 +7,12 @@ module Admin
     #   super
     #   send_foo_updated_email(requested_resource)
     # end
-
+    def search
+      q = params[:keyword]
+      key = "インク #{q}"
+      results = RakutenSearchService.call(key)
+      render json: results.first(5)
+    end
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
