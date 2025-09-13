@@ -5,13 +5,7 @@ class RakutenDataFetchJob < ApplicationJob
     product = Product.find(product_id)
 
     key = "インク #{product.name}"
-    results_list = RakutenWebService::Ichiba::Product.search(keyword: key, genreId: "215783")
-    unless results_list.any?
-      sleep(1) # 制限回避用
-      results_list = RakutenWebService::Ichiba::Item.search(keyword: key, genreId: "215783")
-    end
-
-    sleep(1) # 制限回避用
+    results_list = RakutenSearchService.call(key)
 
     if results_list.any?
       result = results_list.first

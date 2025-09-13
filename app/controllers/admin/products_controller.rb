@@ -10,12 +10,7 @@ module Admin
     def search
       q = params[:keyword]
       key = "インク #{q}"
-      results = RakutenWebService::Ichiba::Product.search(keyword: key, genreId: "215783")
-      unless results.any?
-        sleep(1)
-        results = RakutenWebService::Ichiba::Item.search(keyword: key, genreId: "215783")
-      end
-      sleep(1)
+      results = RakutenSearchService.call(key)
       render json: results.first(5)
     end
     # Override this method to specify custom lookup behavior.
