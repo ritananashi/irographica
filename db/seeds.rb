@@ -19,12 +19,12 @@ require "csv"
 # end
 
 # Product登録用
-CSV.foreach('db/csv/products.csv', headers: true) do |row|
-  brand = Brand.find_by(name: row['brand_name'])
-  category = Category.find_by(color: row['category'])
-  Product.find_or_create_by!(name: row['name']) do |product|
-    product.name = row['name']
-    product.brand_id = brand.id
-    product.category_id = category.id
-  end
-end
+# CSV.foreach('db/csv/products.csv', headers: true) do |row|
+#   brand = Brand.find_by(name: row['brand_name'])
+#   category = Category.find_by(color: row['category'])
+#   Product.find_or_create_by!(name: row['name']) do |product|
+#     product.name = row['name']
+#     product.brand_id = brand.id
+#     product.category_id = category.id
+#  end
+# end
