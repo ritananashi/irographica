@@ -89,14 +89,8 @@ test:
 #
 production:
   primary: &primary_production
-    <<: *default
     url: <%= ENV["DATABASE_URL"] %>
-    database: myapp_production
-    username: myapp
-    password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
   queue:
     url: <%= ENV["QUEUE_DATABASE_URL"] %>
-    <<: *primary_production
-    database: myapp_production_queue
     migrations_paths: db/queue_migrate
 
