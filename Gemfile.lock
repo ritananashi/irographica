@@ -47,7 +47,7 @@ GEM
       rails-html-sanitizer (~> 1.6)
     active_hash (4.0.0)
       activesupport (>= 6.1.0)
-    active_storage_validations (3.0.1)
+    active_storage_validations (3.0.2)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
       activestorage (>= 6.1.4)
@@ -259,7 +259,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (2.0.12)
       faraday (>= 0.17.3, < 4.0)
