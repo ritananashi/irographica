@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :redirect_root, only: :new
   include Sortable
 
   def index
