@@ -43,7 +43,7 @@
             <span class="w-[1px] bg-black mx-2"></span>
             <%= link_to "人気順", product_path(@product, likes: true) %>
           </div>
-          <div class="flex flex-wrap -m-4 justify-center items-center">
+          <div class="flex flex-wrap -m-4 justify-center items-center" id="sort-test-id">
             <% if @reviews.present? %>
               <%= render partial: 'reviews/review', collection: @reviews %>
             <% else %>
