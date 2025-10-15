@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   resources :relationships, only: %i[create destroy]
 
+  resources :brands, only: :index
+
   resources :products, only: %i[index show new create] do
     collection do
       get :search
