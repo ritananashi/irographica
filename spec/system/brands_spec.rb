@@ -15,8 +15,8 @@ RSpec.describe "Brands", type: :system do
       context 'メーカー一覧からインクの詳細画面にアクセス' do
         it 'インクの詳細画面に遷移する' do
           visit brands_path
-          find('#brand-name').click
-          find('#product-name').click
+          find("#brand-name-#{brand.id}").click
+          find("#product-name-#{product.id}").click
           expect(page).to have_content product.name
           expect(current_path).to eq product_path(product)
         end
