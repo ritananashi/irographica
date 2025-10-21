@@ -1,0 +1,18 @@
+<ul class="menu bg-base-100 rounded-box w-max sm:w-1/3 px-0 sm:px-5">
+  <li>
+    <% if @brands.present? %>
+      <% @brands.each do |brand| %>
+        <details>
+          <summary id="brand-name-<%= brand.id %>"><%= brand.name %>（<%= brand.products.size %>）</summary>
+          <ul>
+            <% brand.products.order(:id).each do |product| %>
+              <li><%= link_to "#{product.name}（#{product.reviews.size}）", product_path(product), id: "product-name-#{product.id}", class: "link link-primary" %></li>
+            <% end %>
+          </ul>
+        </details>
+      <% end %>
+    <% else %>
+      <div><%= t('brand.index.without_brand') %></div>
+    <% end %>
+  </li>
+</ul>
