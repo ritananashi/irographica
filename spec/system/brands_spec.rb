@@ -17,7 +17,7 @@ RSpec.describe "Brands", type: :system do
           visit brands_path
           find("#brand-name-#{brand.id}").click
           find("#product-name-#{product.id}").click
-          expect(page).to have_content product.name
+          expect(page).to have_content '公式サイトを見る'
           expect(current_path).to eq product_path(product)
         end
       end
