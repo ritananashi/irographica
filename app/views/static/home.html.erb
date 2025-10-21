@@ -13,7 +13,7 @@
     <% end %>
   </div>
   <div class="flex justify-center items-center pt-2 mb-2 sm:mb-10">
-    <%= link_to "メーカーから探す", brands_path, class: "link" %>
+    <%= link_to t('brand.index.title'), brands_path, class: "link" %>
   </div>
   <h1 class="text-2xl sm:text-5xl font-bold text-center sm:mb-10 tracking-wider"><%= t('home.see_review') %></h1>
   <%= turbo_frame_tag "reviews", src: reviews_path, loading: :lazy do %>

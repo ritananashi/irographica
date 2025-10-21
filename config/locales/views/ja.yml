@@ -119,5 +119,8 @@ ja:
     select:
       include_blank: 色系統を選択
   brand:
+    index: 
+      title: メーカーから探す
+      without_brand: メーカーがありません
     new:
       alert: メーカーの登録に失敗しました

@@ -82,7 +82,7 @@
         <dialog data-slideover-target="dialog"  data-action="click->slideover#backdropClose" class="slideover-search overflow-visible w-full max-w-full m-0 h-[200px] p-4 backdrop:bg-black/30">
           <%= render 'shared/search_form', url: search_reviews_path %>
           <div class="pt-5">
-            <%= link_to "メーカーから探す", brands_path, class: "link" %>
+            <%= link_to t('brand.index.title'), brands_path, class: "link" %>
           </div>
           <div class="absolute top-[150px] right-1">
             <button autofocus data-action="slideover#close" class="btn btn-ghost btn-circle text-sm">✕</button>

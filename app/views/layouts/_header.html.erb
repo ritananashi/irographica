@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="navbar-center">
-      <%= link_to "メーカーから探す", brands_path, class: "link px-2" %>
+      <%= link_to t('brand.index.title'), brands_path, class: "link px-2" %>
       <%= render 'shared/search_form', url: search_reviews_path %>
     </div>
     <div class="navbar-end">
