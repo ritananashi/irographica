@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @pagy, @reviews = pagy(@product.reviews.public_send(sort_parameter), limit: 10)
+    @pagy, @reviews = pagy(@product.reviews.includes(:images_attachments, :user).public_send(sort_parameter), limit: 10)
   end
 
   def new
