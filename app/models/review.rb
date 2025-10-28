@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   include SortStatus
 
   belongs_to :user
-  belongs_to :product
+  belongs_to :product, counter_cache: true
   has_many_attached :images
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy

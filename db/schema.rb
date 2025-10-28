@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_23_064331) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_28_091449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_23_064331) do
     t.string "official_shopping_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "products_count", default: 0, null: false
     t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
@@ -99,6 +100,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_23_064331) do
     t.integer "category_id", null: false
     t.string "productUrl"
     t.string "imageUrl"
+    t.integer "reviews_count", default: 0, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name", "brand_id"], name: "index_products_on_name_and_brand_id", unique: true
