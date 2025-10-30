@@ -35,6 +35,6 @@ class Review < ApplicationRecord
 
   def update_images_count
     current_count = images.attached? ? images.count : 0
-    update_column(:images_count, images.count) unless images_count == current_count
+    update_column(:images_count, current_count) unless images_count == current_count
   end
 end
