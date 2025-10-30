@@ -5,9 +5,9 @@
     <% else %>
       <%= image_tag 'kkrn_icon_shashin_3.png', class: "h-[170px] w-[170px] rounded-lg object-fit" %>
     <% end %>
-    <% if review.images.count > 1 %>
+    <% if review.images_count > 1 %>
       <div class=" bg-black bg-opacity-50 absolute top-4 right-10 sm:right-4 rounded-tr-lg rounded-bl-lg px-2">
-        <p class="text-white"><i class="fa-solid fa-images"></i> <%= review.images.count %></p>
+        <p class="text-white"><i class="fa-solid fa-images"></i> <%= review.images_count %></p>
       </div>
     <% end %>
     <div class="card-actions sm:justify-end mt-1">
