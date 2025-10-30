@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   include SortStatus
 
   belongs_to :user
-  belongs_to :product
+  belongs_to :product, counter_cache: true
   has_many_attached :images
   has_many :likes, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -17,6 +17,8 @@ class Review < ApplicationRecord
                       limit: { max: 4 },
                       content_type: { in: ["image/png", "image/jpeg", "image/webp"], spoofing_protection: true }
 
+  after_commit :update_images_count, on: [:create, :update]
+
   ransack_alias :review_search, :title_or_body_or_product_name_or_paper_or_pen_or_product_brand_name
 
   def self.ransackable_attributes(auth_object = nil)
@@ -29,5 +31,10 @@ class Review < ApplicationRecord
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)
+  end
+
+  def update_images_count
+    current_count = images.attached? ? images.count : 0
+    update_column(:images_count, current_count) unless images_count == current_count
   end
 end

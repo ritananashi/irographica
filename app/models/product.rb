@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :brand }
   validates :category_id, presence: true
 
-  belongs_to :brand
+  belongs_to :brand, counter_cache: true
   has_many :reviews
 
   extend ActiveHash::Associations::ActiveRecordExtensions

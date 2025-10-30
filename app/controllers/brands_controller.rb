@@ -1,5 +1,5 @@
 class BrandsController < ApplicationController
   def index
-    @brands = Brand.includes(products: :reviews).all
+    @brands = Brand.order(products_count: :desc)
   end
 end

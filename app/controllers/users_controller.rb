@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(account: params[:id])
-    @pagy, @reviews = pagy(@user.reviews.order(created_at: :desc), limit: 10)
+    @pagy, @reviews = pagy(@user.reviews.includes(:images_attachments, product: :brand).order(created_at: :desc), limit: 10)
   end
 
   def bookmarks
     @user = User.find_by(account: params[:id])
-    @pagy, @bookmark_reviews = pagy(@user.bookmark_reviews.includes(:user).order(created_at: :desc), limit: 10)
+    @pagy, @bookmark_reviews = pagy(@user.bookmark_reviews.includes(:images_attachments, user: :avatar_attachment, product: :brand).order(created_at: :desc), limit: 10)
   end
 
   def following
