@@ -11,7 +11,7 @@ class ProductDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     brand: Field::BelongsTo,
-    category_id: Field::Select.with_options(
+    category_id: CategoryField.with_options(
       collection: Category.all.collect { |c| [ c.color, c.id ] },
       include_blank: true,
     ),
