@@ -1,4 +1,4 @@
-require "administrate/field/base"
+require "administrate/field/select"
 
 class CategoryField < Administrate::Field::Select
   def category_name
