@@ -44,8 +44,9 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.find(params[:id])
     result = ActiveRecord::Base.transaction do
                 set_product
+                @review.images.attach(process_images(images_params)) if images_params.present?
 
-                if @review.update(process_images(review_params))
+                if @review.update(review_params)
                   flash[:notice] = t("reviews.edit.notice")
                   redirect_to review_path(@review)
                 else
@@ -97,14 +98,16 @@ class ReviewsController < ApplicationController
   end
 
   def process_images(params)
-    if params[:images].present?
-      params[:images].each do |image|
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
-        image.original_filename = "#{File.basename(image.original_filename, ".*")}.webp"
-        image.content_type = "image/webp"
-      end
+    processed_params = []
+    params[:images].each do |image|
+      processed_image = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
+      processed_params << {
+        io: processed_image,
+        filename: "#{File.basename(image.original_filename, ".*")}.webp",
+        content_type: "image/webp"
+      }
     end
-    params
+    processed_params
   end
 
   def set_product
