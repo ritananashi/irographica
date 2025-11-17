@@ -89,7 +89,11 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :product_id, :paper, :pen, images: [], ink_recipes_attributes: [:id, :name, :amount, :_destroy])
+    params.require(:review).permit(:title, :body, :product_id, :paper, :pen, ink_recipes_attributes: [:id, :name, :amount, :_destroy])
+  end
+
+  def images_params
+    params.require(:review).permit(images: [])
   end
 
   def process_images(params)
