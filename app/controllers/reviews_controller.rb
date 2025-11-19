@@ -14,14 +14,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = current_user.reviews.build(process_images(review_params))
+    @review = current_user.reviews.build(review_params)
     result = ActiveRecord::Base.transaction do
                 set_product
+                @review.images.attach(process_images(images_params)) if images_params.present?
 
                 if @review.save
                   flash[:notice] = t("reviews.new.notice")
                   redirect_to root_path
                 else
+                  @review.images.purge if @review.images.attached?
                   raise ActiveRecord::Rollback
                 end
               end
