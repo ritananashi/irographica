@@ -89,7 +89,4 @@ class ReviewDashboard < Administrate::BaseDashboard
   # def display_resource(review)
   #   "Review ##{review.id}"
   # end
-  def permitted_attributes(_action = nil)
-    super + [:images => []]
-  end
 end
