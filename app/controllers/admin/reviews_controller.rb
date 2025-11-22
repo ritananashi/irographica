@@ -1,8 +1,11 @@
 module Admin
   class ReviewsController < Admin::ApplicationController
+    include ProcessImages
+
     def create
-      resource = new_resource(process_images(resource_params))
+      resource = new_resource(resource_params)
       authorize_resource(resource)
+      resource.images.attach(process_images(images_params))
 
       if resource.save
         yield(resource) if block_given?
@@ -11,6 +14,7 @@ module Admin
           notice: translate_with_resource("create.success")
         )
       else
+        resource.images.purge
         render :new, locals: {
           page: Administrate::Page::Form.new(dashboard, resource)
         }, status: :unprocessable_entity
@@ -20,17 +24,8 @@ module Admin
     # For example, you may want to send an email after a foo is updated.
     #
     def update
-      if requested_resource.update(process_images(resource_params))
-        redirect_to(
-          after_resource_updated_path(requested_resource),
-          notice: translate_with_resource("update.success"),
-          status: :see_other
-        )
-      else
-        render :edit, locals: {
-          page: Administrate::Page::Form.new(dashboard, requested_resource)
-        }, status: :unprocessable_entity
-      end
+      requested_resource.images.attach(process_images(images_params)) if images_params.present?
+      super
     end
 
     def destroy
@@ -86,23 +81,16 @@ module Admin
 
     private
 
+    def images_params
+      params.require(resource_class.model_name.param_key).permit(images: [])[:images]
+    end
+
     def default_sorting_attribute
       :id
     end
 
     def default_sorting_direction
       :desc
-    end
-
-    def process_images(params)
-      if params[:images].present?
-        params[:images].each do |image|
-          image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
-          image.original_filename = "#{File.basename(image.original_filename, ".*")}.webp"
-          image.content_type = "image/webp"
-        end
-      end
-      params
     end
   end
 end
