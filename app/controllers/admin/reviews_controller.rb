@@ -24,7 +24,7 @@ module Admin
     # For example, you may want to send an email after a foo is updated.
     #
     def update
-      requested_resource.images.attach(process_images(images_params))
+      requested_resource.images.attach(process_images(images_params)) if images_params.present?
       super
     end
 
@@ -82,7 +82,7 @@ module Admin
     private
 
     def images_params
-      params.require(resource_class.model_name.param_key).permit(images: [])
+      params.require(resource_class.model_name.param_key).permit(images: [])[:images]
     end
 
     def default_sorting_attribute

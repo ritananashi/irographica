@@ -96,7 +96,7 @@ class ReviewsController < ApplicationController
   end
 
   def images_params
-    params.require(:review).permit(images: [])
+    params.require(:review).permit(images: [])[:images]
   end
 
   def set_product
