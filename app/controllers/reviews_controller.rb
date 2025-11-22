@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  include Sortable
+  include Sortable, ProcessImages
 
   before_action :redirect_root, only: %i[new edit]
   before_action :verify_access, only: :edit
@@ -97,19 +97,6 @@ class ReviewsController < ApplicationController
 
   def images_params
     params.require(:review).permit(images: [])
-  end
-
-  def process_images(params)
-    processed_params = []
-    params[:images].each do |image|
-      processed_image = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(700, 700).convert("webp").call
-      processed_params << {
-        io: processed_image,
-        filename: "#{File.basename(image.original_filename, ".*")}.webp",
-        content_type: "image/webp"
-      }
-    end
-    processed_params
   end
 
   def set_product
