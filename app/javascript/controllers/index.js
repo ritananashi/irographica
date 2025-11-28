@@ -16,6 +16,9 @@ application.register("loading", LoadingController)
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
 
+import PreviewImagesController from "./preview_images_controller"
+application.register("preview-images", PreviewImagesController)
+
 import ProductController from "./product_controller"
 application.register("product", ProductController)
 
