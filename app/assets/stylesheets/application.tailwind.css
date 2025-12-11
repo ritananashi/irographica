@@ -19,6 +19,9 @@
   .not_active_tabs {
     @apply border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
   }
+  .new-image-wrapper {
+    @apply flex flex-col items-center justify-center;
+  }
 }
 
 dialog.slideover[open] {
