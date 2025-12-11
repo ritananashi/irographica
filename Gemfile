@@ -89,7 +89,7 @@ gem "administrate-field-active_storage"
 
 gem "meta-tags"
 
-gem "pagy", "~> 43.1"
+gem "pagy", "~> 43.2"
 
 gem "rakuten_web_service"
 
