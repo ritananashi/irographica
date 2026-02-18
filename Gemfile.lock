@@ -283,8 +283,9 @@ GEM
       omniauth
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
-    pagy (43.2.9)
+    pagy (43.2.10)
       json
+      uri
       yaml
     parallel (1.26.3)
     parser (3.3.7.1)
